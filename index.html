@@ -1,9 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta name="google-site-verification" content="UQCzJQF3jM0o6qL18zeOuxMkmx2nVUGTPDQ_XhH2dC4" />
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="4IRd8--xFI6Tcu9plnOVd6zkW..." />
+    
+    <meta name="description" content="Academic portfolio of Dr. Lingsen You, Postdoctoral Fellow at Zhongshan Hospital, Fudan University. Research focus: Panvascular Intervention, Bioresorbable Electronics, and Device-Vessel Suitcordance.">
+    <meta name="keywords" content="Lingsen You, 游凌森, Zhongshan Hospital, Fudan University, Panvascular Intervention, Bioresorbable Electronics, Visiting Scholar, Junbo Ge">
+    <meta name="author" content="Lingsen You">
+
     <title>Lingsen You | Panvascular Science</title>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Lato:wght@300;400;700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
@@ -11,12 +16,11 @@
     <style>
         /* --- 全局样式 --- */
         :root {
-            --primary-color: #2c3e50;    /* 深蓝灰，沉稳 */
-            --accent-color: #3498db;     /* 亮蓝，用于链接 */
+            --primary-color: #2c3e50;    
+            --accent-color: #3498db;     
             --bg-color: #ffffff;
             --text-color: #444;
             --light-gray: #f8f9fa;
-            --border-color: #eee;
         }
 
         body {
@@ -31,23 +35,19 @@
         a { text-decoration: none; color: var(--accent-color); transition: 0.3s; }
         a:hover { color: #1d6fa5; text-decoration: underline; }
 
-        /* --- 布局容器：类似 Jon Barron 的经典布局 --- */
         .container {
             max-width: 960px;
             margin: 0 auto;
             padding: 40px 20px;
             display: grid;
-            grid-template-columns: 280px 1fr; /* 左侧固定，右侧自适应 */
+            grid-template-columns: 280px 1fr; 
             gap: 50px;
         }
 
-        /* --- 左侧侧边栏 (Profile) --- */
-        .sidebar {
-            text-align: center;
-        }
+        /* --- 左侧侧边栏 --- */
+        .sidebar { text-align: center; }
         .profile-img {
-            width: 200px;
-            height: 200px;
+            width: 200px; height: 200px;
             border-radius: 50%;
             object-fit: cover;
             border: 1px solid #ddd;
@@ -68,71 +68,38 @@
             line-height: 1.4;
         }
         .social-links {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            margin-top: 20px;
+            display: flex; justify-content: center; gap: 15px; margin-top: 20px;
         }
-        .social-links a {
-            color: #555;
-            font-size: 1.2rem;
-        }
+        .social-links a { color: #555; font-size: 1.2rem; }
         .social-links a:hover { color: var(--accent-color); }
 
-        /* --- 右侧主内容 (Main) --- */
-        .main-content {
-            padding-top: 10px;
-        }
+        /* --- 右侧主内容 --- */
+        .main-content { padding-top: 10px; }
         
-        /* 章节标题 */
         h2 {
             font-family: 'Roboto', sans-serif;
             font-size: 1.4rem;
             color: var(--primary-color);
             border-bottom: 2px solid #eee;
             padding-bottom: 10px;
-            margin-top: 40px;
-            margin-bottom: 25px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
+            margin-top: 40px; margin-bottom: 25px;
+            text-transform: uppercase; letter-spacing: 1px;
         }
         h2:first-child { margin-top: 0; }
 
-        /* 简介文本 */
-        .bio-text {
-            font-size: 1rem;
-            text-align: justify;
-            margin-bottom: 30px;
-        }
+        .bio-text { font-size: 1rem; text-align: justify; margin-bottom: 30px; }
 
-        /* --- News 模块 --- */
-        .news-list {
-            list-style: none;
-            padding: 0;
-        }
-        .news-item {
-            margin-bottom: 15px;
-            display: flex;
-        }
-        .news-date {
-            font-weight: bold;
-            min-width: 100px;
-            color: #666;
-            font-size: 0.9rem;
-        }
-        .news-content {
-            font-size: 0.95rem;
-        }
+        /* --- News --- */
+        .news-list { list-style: none; padding: 0; }
+        .news-item { margin-bottom: 15px; display: flex; }
+        .news-date { font-weight: bold; min-width: 100px; color: #666; font-size: 0.9rem; }
+        .news-content { font-size: 0.95rem; }
 
-        /* --- Publications 模块 (图文布局) --- */
-        .pub-list {
-            display: flex;
-            flex-direction: column;
-            gap: 30px;
-        }
+        /* --- Publications --- */
+        .pub-list { display: flex; flex-direction: column; gap: 30px; }
         .pub-item {
             display: grid;
-            grid-template-columns: 220px 1fr; /* 左图右文 */
+            grid-template-columns: 220px 1fr;
             gap: 25px;
             align-items: start;
         }
@@ -142,72 +109,36 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             transition: transform 0.3s;
             background-color: #eee;
-            aspect-ratio: 16/9; /* 强制图片比例，防止参差不齐 */
+            aspect-ratio: 16/9;
             object-fit: cover;
         }
-        .pub-thumb:hover {
-            transform: scale(1.02);
-        }
-        .pub-info h3 {
-            margin: 0 0 8px 0;
-            font-size: 1.1rem;
-            font-weight: 600;
-        }
+        .pub-thumb:hover { transform: scale(1.02); }
+        .pub-info h3 { margin: 0 0 8px 0; font-size: 1.1rem; font-weight: 600; }
         .pub-info h3 a { color: var(--primary-color); }
         .pub-info h3 a:hover { color: var(--accent-color); }
         
-        .pub-authors {
-            font-size: 0.95rem;
-            color: #555;
-            margin-bottom: 5px;
-        }
+        .pub-authors { font-size: 0.95rem; color: #555; margin-bottom: 5px; }
         .me { font-weight: bold; color: #000; text-decoration: underline; }
         
-        .pub-venue {
-            font-style: italic;
-            color: #666;
-            font-size: 0.9rem;
-            margin-bottom: 10px;
-        }
-        .highlight-venue {
-            color: #d35400; /* 期刊名高亮色 */
-            font-weight: 500;
-        }
+        .pub-venue { font-style: italic; color: #666; font-size: 0.9rem; margin-bottom: 10px; }
+        .highlight-venue { color: #d35400; font-weight: 500; }
 
         .pub-links a {
-            display: inline-block;
-            font-size: 0.8rem;
+            display: inline-block; font-size: 0.8rem;
             padding: 2px 8px;
             border: 1px solid var(--accent-color);
             border-radius: 4px;
             margin-right: 5px;
-            text-decoration: none;
-            font-weight: 600;
+            text-decoration: none; font-weight: 600;
         }
-        .pub-links a:hover {
-            background-color: var(--accent-color);
-            color: #fff;
-            text-decoration: none;
-        }
+        .pub-links a:hover { background-color: var(--accent-color); color: #fff; }
 
-        /* --- 响应式设计 (手机端适配) --- */
+        /* --- 手机端适配 --- */
         @media (max-width: 768px) {
-            .container {
-                grid-template-columns: 1fr; /* 变为单列 */
-                gap: 30px;
-            }
-            .sidebar {
-                border-bottom: 1px solid #eee;
-                padding-bottom: 30px;
-            }
-            .pub-item {
-                grid-template-columns: 1fr; /* 论文图文也变为单列 */
-                gap: 15px;
-            }
-            .pub-thumb {
-                width: 100%;
-                max-width: 300px; /* 手机上图片别太大 */
-            }
+            .container { grid-template-columns: 1fr; gap: 30px; }
+            .sidebar { border-bottom: 1px solid #eee; padding-bottom: 30px; }
+            .pub-item { grid-template-columns: 1fr; gap: 15px; }
+            .pub-thumb { width: 100%; max-width: 300px; }
         }
     </style>
 </head>
@@ -280,7 +211,6 @@
                         </div>
                         <div class="pub-links">
                             <a href="https://doi.org/10.1093/eurheartj/ehaf418">PDF</a>
-                            <a href="#">BibTeX</a>
                         </div>
                     </div>
                 </div>
@@ -288,7 +218,7 @@
                 <div class="pub-item">
                     <img src="paper2.png" alt="Paper Thumbnail" class="pub-thumb">
                     <div class="pub-info">
-                        <h3><a href="#">The FLOW Framework: a panvascular-on-a-chip platform to model systemic disease</a></h3>
+                        <h3><a href="https://doi.org/10.1016/j.scib.2025.12.051">The FLOW Framework: a panvascular-on-a-chip platform to model systemic disease</a></h3>
                         <div class="pub-authors">
                             <span class="me">L. You</span>, Y. Chen, Z. Zhang, et al.
                         </div>
@@ -296,8 +226,7 @@
                             <span class="highlight-venue">Science Bulletin</span>, 2025
                         </div>
                         <div class="pub-links">
-                            <a href="#">PDF</a>
-                            <a href="#">Code</a>
+                            <a href="https://doi.org/10.1016/j.scib.2025.12.051">PDF</a>
                         </div>
                     </div>
                 </div>
@@ -305,7 +234,7 @@
                 <div class="pub-item">
                     <img src="paper3.png" alt="Paper Thumbnail" class="pub-thumb">
                     <div class="pub-info">
-                        <h3><a href="#">High-Suitcordance Intelligent Fibers for Panvascular Disease Monitoring-Intervention</a></h3>
+                        <h3><a href="https://doi.org/10.1007/s42765-025-00542-9">High-Suitcordance Intelligent Fibers for Panvascular Disease Monitoring-Intervention</a></h3>
                         <div class="pub-authors">
                             <span class="me">L. You</span>, Y. Luo, Q. Cheng, et al.
                         </div>
@@ -313,8 +242,7 @@
                             <span class="highlight-venue">Advanced Fiber Materials</span>, 2025
                         </div>
                         <div class="pub-links">
-                            <a href="#">PDF</a>
-                            <a href="#">Supplementary</a>
+                            <a href="https://doi.org/10.1007/s42765-025-00542-9">PDF</a>
                         </div>
                     </div>
                 </div>
@@ -322,7 +250,7 @@
                 <div class="pub-item">
                     <img src="paper4.png" alt="Paper Thumbnail" class="pub-thumb">
                     <div class="pub-info">
-                        <h3><a href="#">4A tetrahedron system: a synergistic framework for panvascular intervention</a></h3>
+                        <h3><a href="https://doi.org/10.1038/s41528-026-00537-5">4A tetrahedron system: a synergistic framework for panvascular intervention</a></h3>
                         <div class="pub-authors">
                             <span class="me">L. You</span>, et al.
                         </div>
@@ -330,7 +258,23 @@
                             <span class="highlight-venue">npj Flexible Electronics</span>, 2026
                         </div>
                         <div class="pub-links">
-                            <a href="#">PDF</a>
+                            <a href="https://doi.org/10.1038/s41528-026-00537-5">PDF</a>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="pub-item">
+                    <img src="paper5.png" alt="Paper Thumbnail" class="pub-thumb">
+                    <div class="pub-info">
+                        <h3><a href="https://doi.org/10.34133/research.0974">High Suitcordance for Panvascular Full-Watershed Organs: A New Interventional Perspective</a></h3>
+                        <div class="pub-authors">
+                            <span class="me">L. You</span>, Y. Chen, Z. Zhang, W. Wang, L. Shen, J. Ge
+                        </div>
+                        <div class="pub-venue">
+                            <span class="highlight-venue">Research (Science Partner Journal)</span>, 2025
+                        </div>
+                        <div class="pub-links">
+                            <a href="https://doi.org/10.34133/research.0974">PDF</a>
                         </div>
                     </div>
                 </div>
