@@ -1,0 +1,510 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="google-site-verification" content="UQCzJQF3jM0o6qL18zeOuxMkmx2nVUGTPDQ_XhH2dC4">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <meta name="google-site-verification" content="4IRd8--xFI6Tcu9plnOVd6zkW..." />
+    <meta name="description" content="Official academic portfolio of Dr. Lingsen You (游凌森), M.D., Ph.D. at Zhongshan Hospital, Fudan University. Bridging clinical cardiology, flexible electronics, and biomedical engineering.">
+    <meta name="author" content="Lingsen You">
+    
+    <title>Lingsen You (游凌森) | AI in Healthcare & Translational Medicine</title>
+    
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        /* --- 全局与基础排版 --- */
+        :root {
+            --primary-text: #222;
+            --secondary-text: #555;
+            --link-color: #0066cc; /* 学术蓝 */
+            --bg-color: #fff;
+            --sidebar-width: 280px;
+        }
+
+        body {
+            font-family: 'Lato', 'Roboto', sans-serif;
+            background-color: var(--bg-color);
+            color: var(--primary-text);
+            margin: 0;
+            line-height: 1.6;
+            font-size: 15px;
+        }
+
+        a { text-decoration: none; color: var(--link-color); transition: 0.2s; }
+        a:hover { text-decoration: underline; color: #004499; }
+        strong { font-weight: 700; }
+
+        .container {
+            max-width: 1100px;
+            margin: 0 auto;
+            display: flex;
+            padding: 40px 20px;
+            gap: 50px;
+        }
+
+        /* --- 左侧边栏 --- */
+        .sidebar {
+            width: var(--sidebar-width);
+            flex-shrink: 0;
+            text-align: left;
+        }
+        
+        .profile-img {
+            width: 200px;
+            height: 200px;
+            border-radius: 50%;
+            object-fit: cover;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+            margin-bottom: 20px;
+            border: 1px solid #eee;
+        }
+
+        .my-name {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 5px;
+            color: #000;
+        }
+        
+        .my-title {
+            font-size: 14px;
+            color: var(--secondary-text);
+            margin-bottom: 15px;
+            line-height: 1.4;
+        }
+
+        .contact-info {
+            font-size: 14px;
+            margin-bottom: 20px;
+        }
+        .contact-info i { width: 20px; color: #777; }
+        
+        /* 按钮通用样式 */
+        .action-btn {
+            display: inline-block;
+            margin-top: 10px;
+            padding: 8px 15px;
+            border-radius: 5px;
+            font-weight: bold;
+            font-size: 13px;
+            text-decoration: none !important;
+            box-shadow: 0 2px 4px rgba(0,0,0,0.2);
+            transition: opacity 0.2s;
+            width: 80%;
+            text-align: center;
+            color: white !important;
+        }
+        .action-btn:hover { opacity: 0.8; }
+        
+        .btn-cv { background-color: #1a0dab; }
+        .btn-app { background-color: #d35400; margin-top: 12px; }
+
+        .social-icons {
+            display: flex;
+            gap: 15px;
+            font-size: 18px;
+            margin-top: 25px;
+            margin-bottom: 30px;
+        }
+        .social-icons a { color: #444; }
+        .social-icons a:hover { color: var(--link-color); }
+
+        .visitor-map {
+            margin-top: 40px;
+            width: 100%;
+            border-top: 1px solid #eee;
+            padding-top: 20px;
+        }
+        .visitor-map img { max-width: 100%; }
+
+        /* --- 右侧主内容 --- */
+        .main-content {
+            flex-grow: 1;
+            max-width: 800px;
+        }
+
+        h2 {
+            font-family: 'Roboto', sans-serif;
+            font-size: 20px;
+            font-weight: 700;
+            color: #000;
+            border-bottom: 1px solid #eee;
+            padding-bottom: 10px;
+            margin-top: 40px;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: 0.5px;
+        }
+        h2:first-child { margin-top: 0; }
+
+        p { margin-bottom: 15px; text-align: justify; }
+
+        /* Slogan 引用样式 */
+        .slogan {
+            font-size: 16px;
+            font-style: italic;
+            color: #444;
+            border-left: 4px solid #1a0dab;
+            padding-left: 15px;
+            margin-bottom: 20px;
+            background-color: #f9f9f9;
+            padding: 10px 15px;
+            border-radius: 0 4px 4px 0;
+        }
+
+        /* 现代学术风格徽章 (期刊与IF) */
+        .badge-journal {
+            display: inline-block;
+            padding: 2px 8px;
+            background-color: #1a0dab;
+            color: white;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 4px;
+        }
+        .badge-if {
+            display: inline-block;
+            padding: 1px 7px;
+            background-color: #e8f0fe;
+            color: #1a0dab;
+            border: 1px solid #1a0dab;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-right: 5px;
+            margin-bottom: 4px;
+        }
+        .badge-highlight {
+            display: inline-block;
+            padding: 2px 8px;
+            background-color: #fce8e6;
+            color: #c5221f;
+            border-radius: 4px;
+            font-size: 12px;
+            font-weight: bold;
+            margin-bottom: 4px;
+        }
+
+        /* 研究兴趣小标签 */
+        .badge {
+            display: inline-block;
+            background: #f1f8ff;
+            color: #0066cc;
+            padding: 3px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-right: 5px;
+            margin-bottom: 5px;
+            border: 1px solid #dcecfc;
+        }
+
+        /* --- 论文列表 --- */
+        .pub-item {
+            display: flex;
+            gap: 25px;
+            margin-bottom: 30px;
+            align-items: flex-start;
+        }
+        
+        .pub-img-box {
+            width: 220px;
+            flex-shrink: 0;
+            background: #fff;
+            border: 1px solid #eee;
+            border-radius: 4px;
+            padding: 5px;
+            box-shadow: 0 2px 5px rgba(0,0,0,0.05);
+        }
+        .pub-img {
+            width: 100%;
+            height: auto;
+            display: block;
+            object-fit: contain; 
+        }
+
+        .pub-details { flex-grow: 1; }
+        .pub-title {
+            font-weight: 700;
+            font-size: 16px;
+            color: #000;
+            margin-bottom: 5px;
+            display: block;
+            line-height: 1.3;
+        }
+        .pub-authors { font-size: 14px; color: #555; margin-bottom: 6px; }
+        .me { font-weight: 700; color: #000; text-decoration: underline;}
+        
+        .pub-venue { margin-bottom: 8px; line-height: 1.8; }
+        
+        .tag-links a {
+            font-size: 11px;
+            border: 1px solid #ddd;
+            color: #555;
+            padding: 2px 6px;
+            border-radius: 3px;
+            margin-right: 5px;
+            text-transform: uppercase;
+        }
+        .tag-links a:hover { border-color: var(--link-color); color: var(--link-color); text-decoration: none;}
+
+        /* --- 奖项列表 --- */
+        .award-item { display: flex; margin-bottom: 10px; font-size: 14px; }
+        .award-year { font-weight: 700; min-width: 60px; color: #444; }
+
+        /* --- 响应式 --- */
+        @media (max-width: 768px) {
+            .container { flex-direction: column; gap: 30px; }
+            .sidebar { width: 100%; text-align: center; }
+            .profile-img { margin: 0 auto 20px; }
+            .social-icons { justify-content: center; }
+            .pub-item { flex-direction: column; gap: 15px; }
+            .pub-img-box { width: 100%; max-width: 300px; margin: 0 auto; }
+            .action-btn { width: auto; }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    
+    <div class="sidebar">
+        <img src="avatar.jpg" alt="Lingsen You" class="profile-img">
+        
+        <div class="my-name">Lingsen You (游凌森)</div>
+        <div class="my-title">
+            M.D., Ph.D.<br><br>
+            Interventional Cardiologist &<br>
+            <strong>Scientific Secretary</strong><br><br>
+            National Basic Science Center for Panvascular Interventional Complex Systems<br><br>
+            <strong>Zhongshan Hospital,<br>Fudan University</strong><br>
+            <span style="font-size: 13px; color: #666; font-weight: normal;">(QS World Rank: Top 30)</span>
+        </div>
+
+        <div class="contact-info">
+            <div style="margin-bottom:8px;">
+                <i class="fas fa-envelope"></i> 
+                <a href="mailto:lingsenyou@gmail.com">lingsenyou@gmail.com</a>
+            </div>
+            <div>
+                <i class="fas fa-map-marker-alt"></i> Shanghai, China
+            </div>
+            
+            <a href="CV_Lingsen_You.pdf" target="_blank" class="action-btn btn-cv"><i class="fas fa-file-pdf"></i> Download CV</a><br>
+            <a href="https://vascular-innovate.base44.app/" target="_blank" class="action-btn btn-app"><i class="fas fa-mobile-alt"></i> Launch Web App</a>
+        </div>
+
+        <div class="social-icons">
+            <a href="mailto:lingsenyou@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
+            <a href="https://scholar.google.com" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
+            <a href="https://www.researchgate.net/profile/Lingsen-You" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
+            <a href="https://twitter.com/lingsenyou" target="_blank" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
+            <a href="https://github.com/lingsenyou" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
+        </div>
+
+        <div class="visitor-map">
+            <div style="font-size: 12px; color:#999; margin-bottom:5px; text-align:center;">Visitor Map</div>
+            <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=RigrNS0mlwF1WgXOLJnoVSz7W7rPcRmJMDtgj6vr9xA&cl=ffffff&w=a"></script>
+        </div>
+    </div>
+
+    <div class="main-content">
+        
+        <section>
+            <h2>About Me</h2>
+            
+            <div class="slogan">
+                "I believe in AI-empowered translational medicine. I build the <strong>'Device-Vessel Suitcordance'</strong> framework to bridge large animal preclinical models with next-generation panvascular interventions."
+            </div>
+
+            <p>
+                I am an <strong>Interventional Cardiologist</strong> and <strong>Research Fellow</strong> at <strong>Zhongshan Hospital, Fudan University</strong>. 
+            </p>
+            <p>
+                Currently, I serve as the <strong>Scientific Secretary</strong> of the <strong>National Basic Science Center for Panvascular Interventional Complex Systems</strong>, working directly under the leadership of <strong>Prof. Junbo Ge</strong> (Academician of CAS). In this role, I assist in coordinating national-level research initiatives while conducting my own translational research.
+            </p>
+            <p>
+                My research bridges the critical gap between biomedical engineering and clinical cardiology. I specialize in <strong>translational medicine</strong>, spanning from <strong>large animal models</strong> (swine/canine) for preclinical validation to <strong>clinical investigation</strong> of novel interventional devices and <strong>flexible electronics</strong>.
+            </p>
+            <p>
+                My goal is to establish the <em>"Device-Vessel Suitcordance"</em> framework and accelerate the <strong>bench-to-bedside translation</strong> of next-generation medical technologies to significantly improve patient outcomes.
+            </p>
+            <p style="margin-top: 20px;">
+                <span class="badge">Scientific Management</span> 
+                <span class="badge">Interventional Cardiology</span>
+                <span class="badge">Translational Medicine</span>
+                <span class="badge">AI in Healthcare</span>
+                <span class="badge">Flexible Electronics</span>
+            </p>
+        </section>
+
+        <section>
+            <h2>Interactive Clinical Tool</h2>
+            <div style="background-color: #f8f9fa; border-left: 4px solid #d35400; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
+                <h3 style="margin-top: 0; margin-bottom: 10px; color: #d35400; font-size: 18px;">Vascular Innovate App</h3>
+                <p style="margin-bottom: 10px; font-size: 14px;">
+                    To bridge the gap between engineering concepts and clinical practice, I developed <strong>Vascular Innovate</strong>, a web-based interactive application. It visualizes the "Device-Vessel Suitcordance" and assists in translational interventional medicine.
+                </p>
+                <a href="https://vascular-innovate.base44.app/" target="_blank" style="display: inline-block; font-weight: bold; color: #fff; background-color: #d35400; padding: 5px 12px; border-radius: 4px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> Try it Now</a>
+                <span style="font-size: 12px; color: #666; margin-left: 10px;"><i class="fas fa-mobile-alt"></i> Mobile & Desktop Ready</span>
+            </div>
+        </section>
+
+        <section>
+            <h2>News</h2>
+            <ul>
+                <li><strong>[Mar 2026]</strong> Thrilled to receive the <strong>Best Cover Article Award (2024-2025)</strong> from <em>Advanced Fiber Materials</em> (IF: 21.3) for our work on intelligent panvascular fibers!</li>
+                <li>[Feb 2026] Entrusted by Academician Junbo Ge, I am currently in Europe visiting esteemed professors and long-standing international collaborators.</li>
+                <li><strong>[Jan 2026]</strong> Our work on the "FLOW Framework" was accepted by <strong>Science Bulletin</strong>.</li>
+                <li><strong>[Jan 2026]</strong> Presented at <strong>CSI America 2026</strong> in Orlando, USA.</li>
+                <li><strong>[2026]</strong> New paper published in <strong>npj Flexible Electronics</strong>.</li>
+            </ul>
+        </section>
+
+        <section>
+            <h2>Selected Publications</h2>
+            
+            <div class="pub-item">
+                <div class="pub-img-box">
+                    <img src="paper4.png" alt="Paper Thumbnail" class="pub-img">
+                </div>
+                <div class="pub-details">
+                    <a href="https://doi.org/10.1038/s41528-026-00537-5" class="pub-title">4A tetrahedron system: a synergistic framework for panvascular intervention empowered by flexible electronics</a>
+                    <div class="pub-authors">
+                        <span class="me">L. You</span>, et al.
+                    </div>
+                    <div class="pub-venue">
+                        <span class="badge-journal">npj Flexible Electronics (2026)</span>
+                        <span class="badge-highlight">Nature Portfolio</span>
+                    </div>
+                    <div class="tag-links">
+                        <a href="https://doi.org/10.1038/s41528-026-00537-5" target="_blank">[PDF]</a>
+                        <a href="#">[Journal]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-img-box">
+                    <img src="paper1.png" alt="Paper Thumbnail" class="pub-img">
+                </div>
+                <div class="pub-details">
+                    <a href="https://doi.org/10.1093/eurheartj/ehaf418" class="pub-title">The foundation and development of China's National Basic Science Center for panvascular interventional complex systems</a>
+                    <div class="pub-authors">
+                        <span class="me">L. You</span>, L. Shen, J. Ge
+                    </div>
+                    <div class="pub-venue">
+                        <span class="badge-journal">European Heart Journal (2025)</span>
+                        <span class="badge-if">IF: 35.6</span>
+                    </div>
+                    <div class="tag-links">
+                        <a href="https://doi.org/10.1093/eurheartj/ehaf418" target="_blank">[PDF]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-img-box">
+                    <img src="paper2.png" alt="Paper Thumbnail" class="pub-img">
+                </div>
+                <div class="pub-details">
+                    <a href="https://doi.org/10.1016/j.scib.2025.12.051" class="pub-title">The FLOW Framework: a panvascular-on-a-chip platform to model systemic disease</a>
+                    <div class="pub-authors">
+                        <span class="me">L. You</span>, Y. Chen, Z. Zhang, et al.
+                    </div>
+                    <div class="pub-venue">
+                        <span class="badge-journal">Science Bulletin (2025)</span>
+                        <span class="badge-if">IF: 21.1</span>
+                    </div>
+                    <div class="tag-links">
+                        <a href="https://doi.org/10.1016/j.scib.2025.12.051" target="_blank">[PDF]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-img-box">
+                    <img src="paper3.png" alt="Paper Thumbnail" class="pub-img">
+                </div>
+                <div class="pub-details">
+                    <a href="https://doi.org/10.1007/s42765-025-00542-9" class="pub-title">High-Suitcordance Intelligent Fibers for Panvascular Disease Monitoring-Intervention</a>
+                    <div class="pub-authors">
+                        <span class="me">L. You</span>, Y. Luo, Q. Cheng, et al.
+                    </div>
+                    <div class="pub-venue">
+                        <span class="badge-journal">Advanced Fiber Materials (2025)</span>
+                        <span class="badge-if">IF: 21.3</span>
+                        <span class="badge-highlight"><i class="fas fa-crown"></i> 2024-2025 Best Cover Article</span>
+                    </div>
+                    <div class="tag-links">
+                        <a href="https://doi.org/10.1007/s42765-025-00542-9" target="_blank">[PDF]</a>
+                    </div>
+                </div>
+            </div>
+
+            <div class="pub-item">
+                <div class="pub-img-box">
+                    <img src="paper5.png" alt="Paper Thumbnail" class="pub-img">
+                </div>
+                <div class="pub-details">
+                    <a href="https://doi.org/10.34133/research.0974" class="pub-title">High Suitcordance for Panvascular Full-Watershed Organs: A New Interventional Perspective</a>
+                    <div class="pub-authors">
+                        <span class="me">L. You</span>, Y. Chen, et al.
+                    </div>
+                    <div class="pub-venue">
+                        <span class="badge-journal">Research (Science Partner Journal)</span>
+                    </div>
+                    <div class="tag-links">
+                        <a href="https://doi.org/10.34133/research.0974" target="_blank">[PDF]</a>
+                    </div>
+                </div>
+            </div>
+
+        </section>
+
+        <section>
+            <h2>Honors & Awards</h2>
+            
+            <div class="award-item">
+                <div class="award-year">2024-2025</div>
+                <div class="award-desc"><strong>Best Cover Article Award</strong>, <em>Advanced Fiber Materials</em> (Springer Nature)</div>
+            </div>
+
+            <div class="award-item">
+                <div class="award-year">2025</div>
+                <div class="award-desc"><strong>National Scholarship</strong>, Ministry of Education, China</div>
+            </div>
+
+            <div class="award-item">
+                <div class="award-year">2022</div>
+                <div class="award-desc"><strong>Outstanding Prize</strong>, English Speaking Contest, Fudan University</div>
+            </div> 
+            
+            <div class="award-item">
+                <div class="award-year">2020</div>
+                <div class="award-desc"><strong>National Award</strong>, National International College Students' Innovation Competition, Ministry of Education, China</div>
+            </div>
+        </section>
+
+        <section>
+            <h2>Beyond Medicine</h2>
+            <p style="font-size: 14px; color: #444;">
+                <strong style="color: #000;">⚽ Football:</strong> An active amateur player, proudly representing Zhongshan Hospital in Shanghai's municipal football competitions.<br><br>
+                <strong style="color: #000;">🏊‍♂️ Swimming:</strong> A passionate swimmer, finding that the endurance built in the pool perfectly complements the stamina required for complex surgeries and translational research.<br><br>
+                <strong style="color: #000;">🌍 Global Explorer:</strong> Having journeyed through over a dozen countries, I am driven by an endless curiosity for diverse cultures and natural wonders. From the ancient ruins of Rome to the breathtaking Swiss Alps, my footprint continues to expand in a lifelong pursuit of global discovery.
+            </p>
+        </section>
+
+        <div style="text-align:center; margin-top:50px; padding-bottom:30px; color:#aaa; font-size:12px;">
+            &copy; 2026 Lingsen You. Template inspired by Jon Barron.
+        </div>
+    </div>
+</div>
+
+</body>
+</html>
