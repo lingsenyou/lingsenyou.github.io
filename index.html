@@ -230,32 +230,18 @@
         }
 
         .pub-details { flex-grow: 1; }
-
-        /* Nature 参考文献体例: 作者. 题名. 期刊缩写(斜体) 卷(加粗), 页 (年). */
-        .pub-cite {
-            font-size: 15px;
-            line-height: 1.7;
-            color: #333;
-            margin: 0 0 8px;
-            text-align: left;
-            text-indent: -1.1em;
-            padding-left: 1.1em;
-        }
-        .pub-authors { color: #555; }
         .pub-title {
-            display: inline;
-            font-weight: 600;
-            font-size: 15px;
+            font-weight: 700;
+            font-size: 16px;
             color: #000;
-            line-height: inherit;
+            margin-bottom: 5px;
+            display: block;
+            line-height: 1.3;
         }
-        a.pub-title { text-decoration: none; }
-        a.pub-title:hover { color: var(--link-color); text-decoration: underline; }
-        .pub-journal { font-style: italic; color: #000; }
-        .pub-vol { font-weight: 700; }
+        .pub-authors { font-size: 14px; color: #555; margin-bottom: 6px; }
         .me { font-weight: 700; color: #000; text-decoration: underline;}
-
-        .pub-venue { margin-bottom: 8px; line-height: 1.9; }
+        
+        .pub-venue { margin-bottom: 8px; line-height: 1.8; }
         
         .tag-links a {
             font-size: 11px;
@@ -315,7 +301,7 @@
             </div>
             
             <a href="CV_Lingsen_You.pdf" target="_blank" class="action-btn btn-cv"><i class="fas fa-file-pdf"></i> Download CV</a><br>
-            <a href="https://vascular-innovate.base44.app/" target="_blank" class="action-btn btn-app"><i class="fas fa-mobile-alt"></i> Launch Web App</a>
+            <a href="https://lingsenyou.github.io/panvascular/" class="action-btn btn-app"><i class="fas fa-satellite-dish"></i> Panvascular Radar &rarr;</a>
             <a href="https://lingsenyou.github.io/medeng/" class="action-btn btn-research"><i class="fas fa-user-graduate"></i> Undergraduate Research &rarr;</a>
         </div>
 
@@ -364,14 +350,14 @@
         </section>
 
         <section>
-            <h2>Interactive Clinical Tool</h2>
+            <h2>Research Tool</h2>
             <div style="background-color: #f8f9fa; border-left: 4px solid #d35400; padding: 15px; border-radius: 4px; margin-bottom: 20px;">
-                <h3 style="margin-top: 0; margin-bottom: 10px; color: #d35400; font-size: 18px;">Vascular Innovate App</h3>
+                <h3 style="margin-top: 0; margin-bottom: 10px; color: #d35400; font-size: 18px;">Panvascular Radar</h3>
                 <p style="margin-bottom: 10px; font-size: 14px;">
-                    To bridge the gap between engineering concepts and clinical practice, I developed <strong>Vascular Innovate</strong>, a web-based interactive application. It visualizes the "Device-Vessel Suitcordance" and assists in translational interventional medicine.
+                    A reading instrument for the intersection of interventional cardiology and engineering: intravascular imaging, bioresorbable scaffolds, drug-coated balloons, flexible electronics, digital twins and AI in coronary imaging. Queries run live against <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a> and every record links to its DOI, so nothing on the page is stored, ranked by hand or machine-written.
                 </p>
-                <a href="https://vascular-innovate.base44.app/" target="_blank" style="display: inline-block; font-weight: bold; color: #fff; background-color: #d35400; padding: 5px 12px; border-radius: 4px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> Try it Now</a>
-                <span style="font-size: 12px; color: #666; margin-left: 10px;"><i class="fas fa-mobile-alt"></i> Mobile & Desktop Ready</span>
+                <a href="https://lingsenyou.github.io/panvascular/" style="display: inline-block; font-weight: bold; color: #fff; background-color: #d35400; padding: 5px 12px; border-radius: 4px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> Open the radar</a>
+                <span style="font-size: 12px; color: #666; margin-left: 10px;"><i class="fas fa-database"></i> Live data &middot; OpenAlex (CC0)</span>
             </div>
         </section>
 
@@ -396,11 +382,8 @@
                     <img src="paper6.png" alt="Light: Science &amp; Applications — Intelligent Photonics and Digital Twins in Panvascular Disease" class="pub-img" onerror="this.closest('.pub-img-box').remove()">
                 </div>
                 <div class="pub-details">
-                    <p class="pub-cite">
-                        <span class="pub-authors"><span class="me">You, L.</span>, &hellip; &amp; Ge, J. B.</span>
-                        <span class="pub-title">From intravascular imaging to adaptive vascular care: intelligent photonics and digital twins in panvascular disease.</span>
-                        <span class="pub-journal">Light Sci. Appl.</span> (2026, in the press).
-                    </p>
+                    <span class="pub-title">From Intravascular Imaging to Adaptive Vascular Care: Intelligent Photonics and Digital Twins in Panvascular Disease</span>
+                    <div class="pub-authors"><span class="me">L. You</span>, &hellip;, J.B. Ge</div>
                     <div class="pub-venue">
                         <span class="badge-journal">Light: Science &amp; Applications</span>
                         <span class="badge-highlight" style="background:#e6f4ea; color:#137333;">Nature Portfolio</span>
@@ -415,14 +398,11 @@
                     <img src="paper4.png" alt="Paper Thumbnail" class="pub-img">
                 </div>
                 <div class="pub-details">
-                    <p class="pub-cite">
-                        <span class="pub-authors"><span class="me">You, L.</span>, &hellip; &amp; Ge, J. B.</span>
-                        <a href="https://doi.org/10.1038/s41528-026-00537-5" class="pub-title">4A tetrahedron system: a synergistic framework for panvascular intervention empowered by flexible electronics.</a>
-                        <span class="pub-journal">npj Flex. Electron.</span> <span class="pub-vol">10</span>, 35 (2026).
-                    </p>
+                    <a href="https://doi.org/10.1038/s41528-026-00537-5" class="pub-title">4A tetrahedron system: a synergistic framework for panvascular intervention empowered by flexible electronics</a>
+                    <div class="pub-authors"><span class="me">L. You</span>, &hellip;, J.B. Ge</div>
                     <div class="pub-venue">
-                        <span class="badge-journal">npj Flexible Electronics</span>
-                        <span class="badge-highlight" style="background:#e6f4ea; color:#137333;">Nature Portfolio</span>
+                        <span class="badge-journal">npj Flexible Electronics (2026)</span>
+                        <span class="badge-highlight">Nature Portfolio</span>
                     </div>
                     <div class="tag-links">
                         <a href="https://doi.org/10.1038/s41528-026-00537-5" target="_blank">[PDF]</a>
@@ -436,13 +416,10 @@
                     <img src="paper1.png" alt="Paper Thumbnail" class="pub-img">
                 </div>
                 <div class="pub-details">
-                    <p class="pub-cite">
-                        <span class="pub-authors"><span class="me">You, L.</span>, Shen, L. &amp; Ge, J. B.</span>
-                        <a href="https://doi.org/10.1093/eurheartj/ehaf418" class="pub-title">The foundation and development of China's National Basic Science Center for panvascular interventional complex systems: pioneering device-vessel <em>suitcordance</em> research.</a>
-                        <span class="pub-journal">Eur. Heart J.</span> <span class="pub-vol">46</span>, 3400&ndash;3403 (2025).
-                    </p>
+                    <a href="https://doi.org/10.1093/eurheartj/ehaf418" class="pub-title">The foundation and development of China's National Basic Science Center for panvascular interventional complex systems</a>
+                    <div class="pub-authors"><span class="me">L. You</span>, &hellip;, J.B. Ge</div>
                     <div class="pub-venue">
-                        <span class="badge-journal">European Heart Journal</span>
+                        <span class="badge-journal">European Heart Journal (2025)</span>
                         <span class="badge-if">IF: 35.6</span>
                     </div>
                     <div class="tag-links">
@@ -456,13 +433,10 @@
                     <img src="paper2.png" alt="Paper Thumbnail" class="pub-img">
                 </div>
                 <div class="pub-details">
-                    <p class="pub-cite">
-                        <span class="pub-authors"><span class="me">You, L.</span>, &hellip; &amp; Ge, J. B.</span>
-                        <a href="https://doi.org/10.1016/j.scib.2025.12.051" class="pub-title">The FLOW framework: a panvascular-on-a-chip platform to model systemic disease and guide panvascular interventional device suitcordance.</a>
-                        <span class="pub-journal">Sci. Bull.</span> <span class="pub-vol">71</span>, 654&ndash;670 (2026).
-                    </p>
+                    <a href="https://doi.org/10.1016/j.scib.2025.12.051" class="pub-title">The FLOW Framework: a panvascular-on-a-chip platform to model systemic disease</a>
+                    <div class="pub-authors"><span class="me">L. You</span>, &hellip;, J.B. Ge</div>
                     <div class="pub-venue">
-                        <span class="badge-journal">Science Bulletin</span>
+                        <span class="badge-journal">Science Bulletin (2025)</span>
                         <span class="badge-if">IF: 21.1</span>
                     </div>
                     <div class="tag-links">
@@ -476,13 +450,10 @@
                     <img src="paper3.png" alt="Paper Thumbnail" class="pub-img">
                 </div>
                 <div class="pub-details">
-                    <p class="pub-cite">
-                        <span class="pub-authors"><span class="me">You, L.</span>, &hellip; &amp; Ge, J. B.</span>
-                        <a href="https://doi.org/10.1007/s42765-025-00542-9" class="pub-title">High-suitcordance intelligent fibers for panvascular disease monitoring-intervention.</a>
-                        <span class="pub-journal">Adv. Fiber Mater.</span> <span class="pub-vol">7</span>, 1042&ndash;1072 (2025).
-                    </p>
+                    <a href="https://doi.org/10.1007/s42765-025-00542-9" class="pub-title">High-Suitcordance Intelligent Fibers for Panvascular Disease Monitoring-Intervention</a>
+                    <div class="pub-authors"><span class="me">L. You</span>, &hellip;, J.B. Ge</div>
                     <div class="pub-venue">
-                        <span class="badge-journal">Advanced Fiber Materials</span>
+                        <span class="badge-journal">Advanced Fiber Materials (2025)</span>
                         <span class="badge-if">IF: 21.3</span>
                         <span class="badge-highlight"><i class="fas fa-crown"></i> 2024-2025 Best Cover Article</span>
                     </div>
@@ -497,14 +468,10 @@
                     <img src="paper5.png" alt="Paper Thumbnail" class="pub-img">
                 </div>
                 <div class="pub-details">
-                    <p class="pub-cite">
-                        <span class="pub-authors"><span class="me">You, L.</span>, &hellip; &amp; Ge, J. B.</span>
-                        <a href="https://doi.org/10.34133/research.0974" class="pub-title">High suitcordance for panvascular full-watershed organs: a new interventional perspective.</a>
-                        <span class="pub-journal">Research</span> <span class="pub-vol">8</span>, 0974 (2025).
-                    </p>
+                    <a href="https://doi.org/10.34133/research.0974" class="pub-title">High Suitcordance for Panvascular Full-Watershed Organs: A New Interventional Perspective</a>
+                    <div class="pub-authors"><span class="me">L. You</span>, &hellip;, J.B. Ge</div>
                     <div class="pub-venue">
-                        <span class="badge-journal">Research</span>
-                        <span class="badge-highlight" style="background:#eef1f5; color:#33415c;">Science Partner Journal</span>
+                        <span class="badge-journal">Research (Science Partner Journal)</span>
                     </div>
                     <div class="tag-links">
                         <a href="https://doi.org/10.34133/research.0974" target="_blank">[PDF]</a>
