@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="robots" content="noindex">
+<title>Page not found | Lingsen You (游凌森)</title>
+<style>
+  body{margin:0;min-height:100vh;display:grid;place-items:center;background:#fff;color:#222;
+       font-family:'Lato','Roboto',system-ui,-apple-system,"Segoe UI",sans-serif;line-height:1.6}
+  .box{text-align:center;padding:28px;max-width:52ch}
+  .box h1{font-size:3rem;margin:0 0 6px;letter-spacing:-.02em}
+  .box p{color:#555;margin:0 0 18px}
+  .links{display:flex;flex-wrap:wrap;gap:10px;justify-content:center;margin-top:22px}
+  .links a{display:inline-block;padding:8px 15px;border-radius:5px;color:#fff !important;
+           text-decoration:none;font-size:13px;font-weight:bold}
+  .a1{background:#1a0dab}.a2{background:#c0263c}.a3{background:#d35400}.a4{background:#0b8f9c}
+  .note{font-size:12px;color:#999;margin-top:24px}
+</style>
+</head>
+<body>
+  <div class="box">
+    <h1>404</h1>
+    <p id="msg">That page is not here. The pages below are.</p>
+    <div class="links">
+      <a class="a1" href="/">Home</a>
+      <a class="a2" href="/scientific/">Scientific Profile</a>
+      <a class="a3" href="/panvascular/">Panvascular Radar</a>
+      <a class="a4" href="/medeng/">Undergraduate Research</a>
+    </div>
+    <p class="note">Lingsen You (游凌森) &middot; Zhongshan Hospital, Fudan University</p>
+  </div>
+<script>
+(function(){
+  /* GitHub Pages paths are case sensitive, so /Scientific/ misses a repo named
+     scientific. Rather than stranding the visitor, fold the first path segment to
+     lower case and send them on if it names a real section. */
+  var known = ["scientific", "panvascular", "medeng"];
+  var seg = (location.pathname.split("/")[1] || "").toLowerCase().replace(/[^a-z]/g, "");
+  if (known.indexOf(seg) !== -1 && location.pathname.split("/")[1] !== seg){
+    var rest = location.pathname.split("/").slice(2).join("/");
+    location.replace("/" + seg + "/" + rest + location.search + location.hash);
+    return;
+  }
+  /* a near miss is still worth catching, so offer the closest section by prefix */
+  if (seg){
+    for (var i = 0; i < known.length; i++){
+      if (known[i].indexOf(seg.slice(0, 5)) === 0 && seg.length > 3){
+        document.getElementById("msg").textContent =
+          "That page is not here. Did you mean the " + known[i] + " section?";
+        break;
+      }
+    }
+  }
+})();
+</script>
+</body>
+</html>
