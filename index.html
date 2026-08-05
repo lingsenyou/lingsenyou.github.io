@@ -263,6 +263,8 @@
         /* --- 奖项列表 --- */
         .award-item { display: flex; margin-bottom: 10px; font-size: 14px; }
         .award-year { font-weight: 700; min-width: 60px; color: #444; }
+        .award-item.featured-award { margin-bottom: 14px; }
+        .featured-award .award-desc { font-size: 16px; line-height: 1.5; }
 
         /* --- 响应式 --- */
         @media (max-width: 768px) {
@@ -506,8 +508,7 @@
         <section>
             <h2>Honors & Awards</h2>
 
-            <div class="award-item">
-                <div class="award-year"></div>
+            <div class="award-item featured-award">
                 <div class="award-desc"><strong>Shanghai Outstanding Graduate</strong> (Provincial-Level Honor)</div>
             </div>
             
