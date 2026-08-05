@@ -31,9 +31,6 @@
     }
     </script>
     
-    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;700&family=Lato:wght@400;700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    
     <style>
         /* --- 全局与基础排版 --- */
         :root {
@@ -45,7 +42,7 @@
         }
 
         body {
-            font-family: 'Lato', 'Roboto', sans-serif;
+            font-family: Arial, "Microsoft YaHei", "PingFang SC", "Helvetica Neue", sans-serif;
             background-color: var(--bg-color);
             color: var(--primary-text);
             margin: 0;
@@ -100,7 +97,7 @@
             font-size: 14px;
             margin-bottom: 20px;
         }
-        .contact-info i { width: 20px; color: #777; }
+        .ui-icon { display: inline-block; width: 20px; color: #777; }
         
         /* 按钮通用样式 */
         .action-btn {
@@ -126,21 +123,19 @@
 
         .social-icons {
             display: flex;
-            gap: 15px;
-            font-size: 18px;
+            flex-wrap: wrap;
+            gap: 7px;
+            font-size: 12px;
             margin-top: 25px;
             margin-bottom: 30px;
         }
-        .social-icons a { color: #444; }
-        .social-icons a:hover { color: var(--link-color); }
-
-        .visitor-map {
-            margin-top: 40px;
-            width: 100%;
-            border-top: 1px solid #eee;
-            padding-top: 20px;
+        .social-icons a {
+            color: #444;
+            border: 1px solid #ddd;
+            border-radius: 4px;
+            padding: 3px 7px;
         }
-        .visitor-map img { max-width: 100%; }
+        .social-icons a:hover { color: var(--link-color); border-color: var(--link-color); text-decoration: none; }
 
         /* --- 右侧主内容 --- */
         .main-content {
@@ -149,7 +144,7 @@
         }
 
         h2 {
-            font-family: 'Roboto', sans-serif;
+            font-family: Arial, "Microsoft YaHei", "PingFang SC", sans-serif;
             font-size: 20px;
             font-weight: 700;
             color: #000;
@@ -317,34 +312,29 @@
 
         <div class="contact-info">
             <div style="margin-bottom:8px;">
-                <i class="fas fa-envelope"></i>
+                <span class="ui-icon" aria-hidden="true">✉</span>
                 <a href="mailto:lingsenyou@fudan.edu.cn">lingsenyou@fudan.edu.cn</a>
             </div>
             <div style="margin-bottom:8px;">
-                <i class="fas fa-envelope"></i>
+                <span class="ui-icon" aria-hidden="true">✉</span>
                 <a href="mailto:lingsenyou@gmail.com">lingsenyou@gmail.com</a>
             </div>
             <div>
-                <i class="fas fa-map-marker-alt"></i> Shanghai, China
+                <span class="ui-icon" aria-hidden="true">●</span> Shanghai, China
             </div>
             
-            <a href="CV_Lingsen_You.pdf" target="_blank" class="action-btn btn-cv"><i class="fas fa-file-pdf"></i> Download CV</a><br>
-            <a href="https://lucas-you.com/scientific/" class="action-btn btn-sci"><i class="fas fa-heart-pulse"></i> Scientific Profile &rarr;</a>
-            <a href="https://lucas-you.com/panvascular/" class="action-btn btn-app"><i class="fas fa-satellite-dish"></i> Panvascular Radar &rarr;</a>
-            <a href="https://lucas-you.com/medeng/" class="action-btn btn-research"><i class="fas fa-user-graduate"></i> Undergraduate Research &rarr;</a>
+            <a href="CV_Lingsen_You.pdf" target="_blank" class="action-btn btn-cv">Download CV</a><br>
+            <a href="https://lucas-you.com/scientific/" class="action-btn btn-sci">Scientific Profile &rarr;</a>
+            <a href="https://lucas-you.com/panvascular/" class="action-btn btn-app">Panvascular Radar &rarr;</a>
+            <a href="https://lucas-you.com/medeng/" class="action-btn btn-research">Undergraduate Research &rarr;</a>
         </div>
 
         <div class="social-icons">
-            <a href="mailto:lingsenyou@gmail.com" title="Email"><i class="fas fa-envelope"></i></a>
-            <a href="https://scholar.google.com" target="_blank" title="Google Scholar"><i class="fas fa-graduation-cap"></i></a>
-            <a href="https://www.researchgate.net/profile/Lingsen-You" target="_blank" title="ResearchGate"><i class="fab fa-researchgate"></i></a>
-            <a href="https://twitter.com/lingsenyou" target="_blank" title="Twitter / X"><i class="fab fa-x-twitter"></i></a>
-            <a href="https://github.com/lingsenyou" target="_blank" title="GitHub"><i class="fab fa-github"></i></a>
-        </div>
-
-        <div class="visitor-map">
-            <div style="font-size: 12px; color:#999; margin-bottom:5px; text-align:center;">Visitor Map</div>
-            <script type="text/javascript" id="mapmyvisitors" src="//mapmyvisitors.com/map.js?d=RigrNS0mlwF1WgXOLJnoVSz7W7rPcRmJMDtgj6vr9xA&cl=ffffff&w=a"></script>
+            <a href="mailto:lingsenyou@gmail.com" title="Email">Email</a>
+            <a href="https://scholar.google.com" target="_blank" rel="noopener" title="Google Scholar">Scholar</a>
+            <a href="https://www.researchgate.net/profile/Lingsen-You" target="_blank" rel="noopener" title="ResearchGate">ResearchGate</a>
+            <a href="https://twitter.com/lingsenyou" target="_blank" rel="noopener" title="Twitter / X">X</a>
+            <a href="https://github.com/lingsenyou" target="_blank" rel="noopener" title="GitHub">GitHub</a>
         </div>
     </div>
 
@@ -388,8 +378,8 @@
                 <p style="margin-bottom: 10px; font-size: 14px;">
                     A reading instrument for the intersection of interventional cardiology and engineering: intravascular imaging, bioresorbable scaffolds, drug-coated balloons, flexible electronics, digital twins and AI in coronary imaging. Queries run live against <a href="https://openalex.org" target="_blank" rel="noopener">OpenAlex</a> and every record links to its DOI, so nothing on the page is stored, ranked by hand or machine-written.
                 </p>
-                <a href="https://lucas-you.com/panvascular/" style="display: inline-block; font-weight: bold; color: #fff; background-color: #d35400; padding: 5px 12px; border-radius: 4px; font-size: 13px;"><i class="fas fa-external-link-alt"></i> Open the radar</a>
-                <span style="font-size: 12px; color: #666; margin-left: 10px;"><i class="fas fa-database"></i> Live data &middot; OpenAlex (CC0)</span>
+                <a href="https://lucas-you.com/panvascular/" style="display: inline-block; font-weight: bold; color: #fff; background-color: #d35400; padding: 5px 12px; border-radius: 4px; font-size: 13px;">Open the radar</a>
+                <span style="font-size: 12px; color: #666; margin-left: 10px;">Live data &middot; OpenAlex (CC0)</span>
             </div>
         </section>
 
@@ -411,7 +401,7 @@
 
             <div class="pub-item">
                 <div class="pub-img-box">
-                    <img src="paper6.png" alt="Light: Science &amp; Applications — Intelligent Photonics and Digital Twins in Panvascular Disease" class="pub-img" onerror="this.closest('.pub-img-box').remove()">
+                    <img src="paper6.png" alt="Light: Science &amp; Applications — Intelligent Photonics and Digital Twins in Panvascular Disease" class="pub-img" loading="lazy" decoding="async" onerror="this.closest('.pub-img-box').remove()">
                 </div>
                 <div class="pub-details">
                     <a href="https://www.nature.com/articles/s41377-026-02410-6" class="pub-title" target="_blank" rel="noopener">From Intravascular Imaging to Adaptive Vascular Care: Intelligent Photonics and Digital Twins in Panvascular Disease</a>
@@ -430,7 +420,7 @@
             
             <div class="pub-item">
                 <div class="pub-img-box">
-                    <img src="paper4.png" alt="Paper Thumbnail" class="pub-img">
+                    <img src="paper4.png" alt="Paper Thumbnail" class="pub-img" loading="lazy" decoding="async">
                 </div>
                 <div class="pub-details">
                     <a href="https://doi.org/10.1038/s41528-026-00537-5" class="pub-title" target="_blank" rel="noopener">4A tetrahedron system: a synergistic framework for panvascular intervention empowered by flexible electronics</a>
@@ -449,7 +439,7 @@
 
             <div class="pub-item">
                 <div class="pub-img-box">
-                    <img src="paper1.png" alt="Paper Thumbnail" class="pub-img">
+                    <img src="paper1.png" alt="Paper Thumbnail" class="pub-img" loading="lazy" decoding="async">
                 </div>
                 <div class="pub-details">
                     <a href="https://doi.org/10.1093/eurheartj/ehaf418" class="pub-title" target="_blank" rel="noopener">The foundation and development of China&rsquo;s National Basic Science Center for panvascular interventional complex systems: pioneering device-vessel suitcordance research</a>
@@ -467,7 +457,7 @@
 
             <div class="pub-item">
                 <div class="pub-img-box">
-                    <img src="paper2.png" alt="Paper Thumbnail" class="pub-img">
+                    <img src="paper2.png" alt="Paper Thumbnail" class="pub-img" loading="lazy" decoding="async">
                 </div>
                 <div class="pub-details">
                     <a href="https://doi.org/10.1016/j.scib.2025.12.051" class="pub-title" target="_blank" rel="noopener">The FLOW Framework: a panvascular-on-a-chip platform to model systemic disease and guide panvascular interventional device suitcordance</a>
@@ -485,7 +475,7 @@
 
             <div class="pub-item">
                 <div class="pub-img-box">
-                    <img src="paper3.png" alt="Paper Thumbnail" class="pub-img">
+                    <img src="paper3.png" alt="Paper Thumbnail" class="pub-img" loading="lazy" decoding="async">
                 </div>
                 <div class="pub-details">
                     <a href="https://doi.org/10.1007/s42765-025-00542-9" class="pub-title" target="_blank" rel="noopener">High-Suitcordance Intelligent Fibers for Panvascular Disease Monitoring-Intervention</a>
@@ -494,7 +484,7 @@
                         <span class="badge-journal">Advanced Fiber Materials</span>
                         <span class="badge-if">IF 22.6</span>
                         <span class="badge-status">Published 2025</span>
-                        <span class="badge-highlight"><i class="fas fa-crown"></i> 2024-2025 Best Cover Article</span>
+                        <span class="badge-highlight">★ 2024-2025 Best Cover Article</span>
                     </div>
                     <div class="tag-links">
                         <a href="https://doi.org/10.1007/s42765-025-00542-9" target="_blank" rel="noopener">[Article]</a>
@@ -504,7 +494,7 @@
 
             <div class="pub-item">
                 <div class="pub-img-box">
-                    <img src="paper5.png" alt="Paper Thumbnail" class="pub-img">
+                    <img src="paper5.png" alt="Paper Thumbnail" class="pub-img" loading="lazy" decoding="async">
                 </div>
                 <div class="pub-details">
                     <a href="https://doi.org/10.34133/research.0974" class="pub-title" target="_blank" rel="noopener">High Suitcordance for Panvascular Full-Watershed Organs: A New Interventional Perspective</a>
