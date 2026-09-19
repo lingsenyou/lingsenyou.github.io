@@ -376,10 +376,13 @@ summary{cursor:pointer;font-size:13.5px;color:var(--accent);font-weight:500}
         <li><b>Three revascularisation constructs remain mixed</b> in the retained set. Symptom-driven TLR
           without routine angiography biases low; surveillance-triggered TLR biases high. They are labelled
           and weighted, not unified.</li>
-        <li><b>The pan-vascular transfer claim is not supported.</b> In simulation, once the comparison is against
-          a linear model given the same continuous bed physiology, the operator's cross-bed advantage in
-          discrimination is −0.014 AUC (95% bootstrap −0.028 to +0.003). What survives is sample efficiency:
-          four physics-derived numbers reach at n = 100 what 55 raw features need roughly n = 400 to reach.</li>
+        <li><b>The pan-vascular transfer claim is not supported — it is refuted.</b> In simulation, once the
+          comparison is against a linear model given the same continuous bed physiology, the operator's
+          cross-bed advantage in discrimination is -0.024 AUC (95% bootstrap -0.041 to -0.010), an
+          interval that excludes zero. What survives is sample efficiency: the four physics-derived numbers
+          sit at AUC 0.790 from n = 100 procedures, a level 55 raw features have not
+          reached by n = 800. For a single-centre cohort, where the number of procedures is the binding
+          constraint, that is the whole argument for the operator.</li>
         <li><b>Across beds the operator transfers an ordering, not a level.</b> Absolute risk needs bed-level
           recalibration before it means anything outside the bed it was fitted in.</li>
         <li><b>Device entries are representative class parameters</b>, not specific commercial specifications,
