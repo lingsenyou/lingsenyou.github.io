@@ -1,0 +1,847 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Suitcordance Bench — device–vessel matching across the arterial tree</title>
+<meta name="description" content="An open, calibrated operator for device–vessel matching in pan-vascular intervention. Four agreement axes, a time constant, and a ranked device shortlist for any lesion, in six arterial beds. Calibrated against 16 published 12-month event rates; a research prototype, not a clinical tool.">
+<meta name="robots" content="index, follow">
+<link rel="canonical" href="https://lingsenyou.com/suitcordance/">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Suitcordance Bench — device–vessel matching across the arterial tree">
+<meta property="og:description" content="Four agreement axes, a time constant, and a ranked device shortlist for any lesion in six arterial beds. Calibrated against published 12-month event rates. A research prototype, not a clinical tool.">
+<meta property="og:url" content="https://lingsenyou.com/suitcordance/">
+<meta name="theme-color" content="#f5f7f8">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%A9%BA%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap">
+<script>
+  /* Theme is read before first paint, and shared with the radar page. */
+  try {
+    var t = localStorage.getItem("pv:theme");
+    if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "Suitcordance Bench",
+  "url": "https://lingsenyou.com/suitcordance/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "description": "A calibrated operator for device-vessel matching in pan-vascular intervention: four agreement axes, a time constant, and a ranked device shortlist, in six arterial beds. Research prototype, not a clinical decision tool.",
+  "author": { "@id": "https://lingsenyou.com/#person" },
+  "isPartOf": { "@id": "https://lingsenyou.com/#website" },
+  "publisher": { "@id": "https://lingsenyou.com/#person" }
+}
+</script>
+<style>
+html{color-scheme:light dark}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+:root{
+  --bg:#f5f7f8; --panel:#ffffff; --panel-2:#eef1f3;
+  --ink:#10151b; --ink-2:#414c58; --muted:#6c7884; --hair:#dbe1e6;
+  --accent:#0a6d9e; --accent-soft:#e4eef4;
+  --axis-g:#0a6d9e; --axis-m:#c2692a; --axis-h:#7a5ea8; --axis-b:#2f8f5b;
+  --alarm:#a8332a; --alarm-soft:#f6e4e1;
+  --shadow:0 1px 2px rgba(16,21,27,.06), 0 8px 24px rgba(16,21,27,.05);
+  --sans:"Barlow","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --cond:"Barlow Condensed","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14181d; --panel:#1b2027; --panel-2:#222831;
+  --ink:#e7ebef; --ink-2:#b6c0ca; --muted:#8d98a5; --hair:#2b323b;
+  --accent:#2e93c4; --accent-soft:#1c2c38;
+  --axis-g:#2e93c4; --axis-m:#c87a35; --axis-h:#9179c4; --axis-b:#46a06b;
+  --alarm:#d9756a; --alarm-soft:#33211f;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+  --bg:#14181d; --panel:#1b2027; --panel-2:#222831;
+  --ink:#e7ebef; --ink-2:#b6c0ca; --muted:#8d98a5; --hair:#2b323b;
+  --accent:#2e93c4; --accent-soft:#1c2c38;
+  --axis-g:#2e93c4; --axis-m:#c87a35; --axis-h:#9179c4; --axis-b:#46a06b;
+  --alarm:#d9756a; --alarm-soft:#33211f;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;
+  line-height:1.5;-webkit-font-smoothing:antialiased;padding:0 16px;margin:0}
+.wrap{max-width:1220px;margin:0 auto;padding-block:20px 56px}
+h1,h2,h3{margin:0;text-wrap:balance}
+.eyebrow{font-family:var(--cond);text-transform:uppercase;letter-spacing:.10em;
+  font-size:12px;font-weight:600;color:var(--muted)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* header */
+header{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;
+  padding-block:8px 14px;border-bottom:1px solid var(--hair)}
+header h1{font-family:var(--cond);font-size:clamp(26px,4.4vw,38px);font-weight:700;
+  letter-spacing:.01em;line-height:1.05}
+header .sub{color:var(--ink-2);font-size:14px;max-width:62ch}
+.warn{margin-top:14px;display:flex;gap:10px;align-items:flex-start;
+  background:var(--alarm-soft);border-left:3px solid var(--alarm);
+  padding:10px 14px;font-size:13.5px;color:var(--ink-2);border-radius:0 4px 4px 0}
+.warn b{color:var(--ink)}
+
+/* layout */
+.grid{display:grid;grid-template-columns:330px minmax(0,1fr);gap:20px;margin-top:20px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--hair);border-radius:8px;
+  padding:16px;box-shadow:var(--shadow)}
+.stack{display:flex;flex-direction:column;gap:18px}
+
+/* form */
+.beds{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:16px}
+.beds button{font-family:var(--cond);font-size:14px;font-weight:600;letter-spacing:.02em;
+  padding:7px 4px;background:var(--panel-2);color:var(--ink-2);border:1px solid transparent;
+  border-radius:5px;cursor:pointer;transition:background .12s,color .12s}
+.beds button:hover{background:var(--accent-soft)}
+.beds button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.field{margin-bottom:13px}
+.field label{display:flex;justify-content:space-between;align-items:baseline;
+  font-size:12.5px;color:var(--ink-2);margin-bottom:3px;gap:8px}
+.field label .v{font-family:var(--mono);font-size:12.5px;color:var(--ink);font-weight:500}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+.toggles{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.toggles button{font-size:12.5px;padding:5px 10px;border-radius:99px;cursor:pointer;
+  background:var(--panel-2);color:var(--ink-2);border:1px solid var(--hair);font-family:var(--sans)}
+.toggles button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+select{width:100%;font-family:var(--sans);font-size:13.5px;padding:6px 8px;
+  background:var(--panel-2);color:var(--ink);border:1px solid var(--hair);border-radius:5px}
+.hint{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.45}
+
+/* headline tiles */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:8px;overflow:hidden}
+@media (max-width:560px){.tiles{grid-template-columns:1fr}}
+.tile{background:var(--panel);padding:14px 16px}
+.tile .k{font-family:var(--cond);text-transform:uppercase;letter-spacing:.09em;
+  font-size:11.5px;font-weight:600;color:var(--muted)}
+.tile .n{font-family:var(--mono);font-size:30px;font-weight:600;line-height:1.15;
+  margin-top:3px;font-variant-numeric:tabular-nums}
+.tile .d{font-size:12px;color:var(--ink-2);margin-top:2px}
+.tile.risk .n.over{color:var(--alarm)}
+
+/* axis bars */
+.axrow{display:grid;grid-template-columns:118px minmax(0,1fr) 54px;align-items:center;
+  gap:10px;padding:5px 0}
+.axrow .name{font-size:13px;color:var(--ink-2)}
+.axrow .name b{color:var(--ink);font-family:var(--mono);font-size:12.5px;margin-right:5px}
+.track{height:12px;background:var(--panel-2);border-radius:3px;position:relative;overflow:hidden}
+.bar{height:100%;border-radius:0 3px 3px 0}
+.axrow .val{font-family:var(--mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.wgt{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+
+/* chart */
+.chartbox{position:relative}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-size:12px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.swatch{width:14px;height:3px;border-radius:2px;display:inline-block}
+.tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--hair);
+  border-radius:5px;padding:7px 9px;font-size:12px;box-shadow:var(--shadow);min-width:132px;z-index:5}
+.tip .r{display:flex;justify-content:space-between;gap:12px}
+.tip .r b{font-family:var(--mono);font-weight:500}
+
+/* table */
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{font-family:var(--cond);text-transform:uppercase;letter-spacing:.07em;font-size:11.5px;
+  font-weight:600;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--hair);
+  white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid var(--hair);vertical-align:middle}
+tbody tr.pick{background:var(--accent-soft)}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--panel-2)}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;padding:2px 7px;
+  border-radius:99px;background:var(--panel-2);color:var(--ink-2);white-space:nowrap}
+.dot{width:7px;height:7px;border-radius:50%;flex:none}
+.rbar{height:9px;background:var(--panel-2);border-radius:2px;position:relative;min-width:60px}
+.rbar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink-2);border-radius:0 2px 2px 0}
+.rbar i.over{background:var(--alarm)}
+.rbar u{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--accent);opacity:.75}
+.scroll{overflow-x:auto}
+
+/* feedback */
+.fbform{display:none;margin-top:12px;gap:10px;flex-direction:column}
+.fbform.on{display:flex}
+textarea{width:100%;font-family:var(--sans);font-size:13.5px;padding:8px;border-radius:5px;
+  background:var(--panel-2);color:var(--ink);border:1px solid var(--hair);resize:vertical}
+.btn{font-family:var(--sans);font-size:13.5px;font-weight:500;padding:8px 16px;border-radius:5px;
+  border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cases{margin-top:12px;font-size:13px;color:var(--ink-2);display:flex;flex-direction:column;gap:7px}
+.case{border-left:2px solid var(--hair);padding-left:10px}
+.case .m{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--hair);
+  font-size:12.5px;color:var(--muted);line-height:1.6}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* site chrome */
+.topbar{border-bottom:1px solid var(--hair);background:var(--panel)}
+.topbar .in{max-width:1220px;margin:0 auto;padding:11px 0;display:flex;align-items:baseline;
+  justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand b{font-family:var(--cond);font-size:19px;letter-spacing:.01em}
+.brand small{color:var(--muted);font-size:12.5px;margin-left:8px}
+.chips{display:flex;gap:8px}
+.chip{font-family:var(--sans);font-size:13px;padding:5px 12px;border-radius:99px;cursor:pointer;
+  background:var(--panel-2);color:var(--ink-2);border:1px solid var(--hair);text-decoration:none}
+.chip:hover{background:var(--accent-soft);color:var(--accent)}
+.prose{max-width:68ch}
+.prose h3{font-family:var(--cond);text-transform:uppercase;letter-spacing:.08em;font-size:13px;
+  color:var(--muted);margin:20px 0 6px}
+.prose p{margin:0 0 10px;font-size:13.5px;color:var(--ink-2);line-height:1.62}
+.prose li{font-size:13.5px;color:var(--ink-2);line-height:1.6;margin-bottom:5px}
+.prose ul{margin:0 0 10px;padding-left:20px}
+.prose b{color:var(--ink)}
+details{margin-top:12px}
+summary{cursor:pointer;font-size:13.5px;color:var(--accent);font-weight:500}
+.anchors{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+.anchors th{font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+.anchors td{padding:5px 8px}
+.anchors td.s{color:var(--muted);font-size:11.5px;line-height:1.45}
+</style>
+</head>
+<body>
+
+<div class="topbar"><div class="in" style="padding-left:16px;padding-right:16px">
+  <div class="brand"><b>Suitcordance Bench</b><small>device × vessel, across the arterial tree</small></div>
+  <div class="chips">
+    <a class="chip" href="https://lingsenyou.com/">Profile</a>
+    <a class="chip" href="https://lingsenyou.com/panvascular/">Radar</a>
+    <button class="chip" id="themeBtn" type="button" aria-pressed="false">Dark</button>
+  </div>
+</div></div>
+
+<div class="wrap">
+<header>
+  <h1>Device–vessel mismatch is one quantity on four axes.</h1>
+  <div class="sub">Describe a lesion and read Γ<sub>sc</sub>(t), its time constant τ<sub>sc</sub>, and the device
+    shortlist ranked by predicted 12-month event rate. Six arterial beds, one operator, calibrated against
+    published outcomes.</div>
+</header>
+<div class="warn">
+  <div><b>Research prototype. Not validated in patients.</b> The operator's free constants were fitted to
+    16 published 12-month event rates and nothing else; no patient-level data went into it. Every number on
+    this page is a model output and <b>must not be used for patient decisions</b>.</div>
+</div>
+
+<div class="grid">
+  <aside class="panel">
+    <div class="eyebrow" style="margin-bottom:8px">Arterial bed</div>
+    <div class="beds" id="beds"></div>
+
+    <div class="field"><label>Proximal reference diameter <span class="v" id="lp">—</span></label>
+      <input type="range" id="d_prox" min="1.5" max="11" step="0.05"></div>
+    <div class="field"><label>Distal reference diameter <span class="v" id="ld">—</span></label>
+      <input type="range" id="d_dist" min="1.5" max="11" step="0.05"></div>
+    <div class="field"><label>Lesion length <span class="v" id="ll">—</span></label>
+      <input type="range" id="length" min="5" max="260" step="1"></div>
+    <div class="field"><label>Calcium <span class="v" id="lc">—</span></label>
+      <input type="range" id="calcium" min="0" max="1" step="0.02"></div>
+    <div class="field"><label>Tortuosity <span class="v" id="lt">—</span></label>
+      <input type="range" id="tortuosity" min="0" max="1" step="0.02"></div>
+    <div class="field"><label>Inflammatory burden <span class="v" id="li">—</span></label>
+      <input type="range" id="inflammation" min="0" max="1" step="0.02"></div>
+    <div class="field" id="runoffField"><label>Distal runoff <span class="v" id="lr">—</span></label>
+      <input type="range" id="runoff" min="0" max="3" step="1"></div>
+
+    <div class="eyebrow" style="margin:14px 0 6px">Lesion features</div>
+    <div class="toggles" id="flags"></div>
+
+    <div class="eyebrow" style="margin:16px 0 6px">Procedure</div>
+    <div class="field"><label for="prep">Lesion preparation</label><select id="prep"></select></div>
+    <div class="toggles"><button id="postdil" aria-pressed="false">High-pressure post-dilatation</button></div>
+
+    <p class="hint" id="bednote"></p>
+  </aside>
+
+  <main class="stack">
+    <div class="tiles">
+      <div class="tile"><div class="k">Γsc at deployment</div><div class="n" id="t_g0">—</div>
+        <div class="d" id="t_g0d">weighted geometric mean of four axes</div></div>
+      <div class="tile"><div class="k">τsc time constant</div><div class="n" id="t_tau">—</div>
+        <div class="d" id="t_taud">characteristic time of the mismatch</div></div>
+      <div class="tile risk"><div class="k">12-month event rate</div><div class="n" id="t_risk">—</div>
+        <div class="d" id="t_riskd">—</div></div>
+    </div>
+
+    <section class="panel">
+      <h2 class="eyebrow">Four axes, at deployment</h2>
+      <div id="axes" style="margin-top:10px"></div>
+      <p class="hint" id="axhint"></p>
+    </section>
+
+    <section class="panel">
+      <h2 class="eyebrow">Γ(t) trajectory · 0–24 months</h2>
+      <div class="chartbox" id="chartbox" style="margin-top:8px">
+        <svg id="chart" viewBox="0 0 720 300" role="img" aria-label="Trajectory of the four axes and the overall match over two years"></svg>
+        <div class="tip" id="tip" hidden></div>
+      </div>
+      <div class="legend" id="legend"></div>
+    </section>
+
+    <section class="panel">
+      <h2 class="eyebrow">Device shortlist · ranked by predicted 12-month event rate</h2>
+      <div class="scroll"><table id="shortlist">
+        <thead><tr><th>Device</th><th>Size</th><th>Preparation</th><th>Γsc</th><th>τsc</th>
+          <th>Weakest axis</th><th style="width:158px">12-month event rate</th></tr></thead>
+        <tbody></tbody></table></div>
+      <p class="hint">Click any row to load that plan into the chart above. The blue rule marks the bed's
+        best-practice reference rate (λ₀).<br>
+        The operator carries <b>no term for cost, complication, procedure time or contrast load</b>, so it will
+        recommend maximal lesion preparation almost every time. That column is a gap in the model, not advice.</p>
+    </section>
+
+    <section class="panel prose">
+      <h2 class="eyebrow">How this page works</h2>
+      <p>Device–vessel failure is treated here as a property of the <b>agreement</b> between device and vessel
+        rather than of either alone, and the same operator is applied in six arterial beds with only the bed's own
+        parameters changed. Four axes, each mapped to [0,&nbsp;1]:</p>
+      <ul>
+        <li><b>Γ_G geometric</b> — sizing against the bed's band, edge coverage, conformability, taper.</li>
+        <li><b>Γ_M mechanical</b> — device/wall compliance mismatch, overstretch wall stress, cyclic fatigue.</li>
+        <li><b>Γ_H hemodynamic</b> — flow lumen restored, strut flow disturbance, side branches, runoff.</li>
+        <li><b>Γ_B biological</b> — antiproliferative supply against neointimal drive, healing window.</li>
+      </ul>
+      <p>They combine as a weighted geometric mean, Γ<sub>sc</sub> = Π Γ<sub>i</sub><sup>w<sub>i</sub></sup>,
+        with bed-specific weights. The geometric mean is the modelling commitment: a device fails along its
+        worst-matched axis, and a product cannot be rescued by a high score elsewhere the way a sum can.
+        Everything is a function of time, so two scalars come off the trajectory —
+        <b>τ<sub>sc</sub></b>, the time by which Γ<sub>sc</sub>(t) has accumulated 63.2% of its total variation,
+        and the time-averaged mismatch dose — and the hazard link is
+        λ(t) = λ₀ · exp(β·(Γ*−Γ<sub>sc</sub>(t))), anchored <b>per bed</b> at the match level that bed's own
+        reference device achieves.</p>
+
+      <h3>Calibration</h3>
+      <p>Eleven of the thirteen free constants were fitted against <b>16 published 12-month event rates</b> across
+        six beds, by least squares on log-odds with per-anchor trust weights — one shared parameter set, no
+        per-bed tuning. <b>Mean absolute error 3.5 percentage points</b>, worst anchor 17.4 points.</p>
+      <details>
+        <summary>The 16 anchors, and what the operator predicts for each</summary>
+        <div class="scroll"><table class="anchors"><thead><tr><th>Anchor</th><th>Bed</th><th>Observed</th><th>Predicted</th><th>Γsc</th><th>Trust</th></tr></thead><tbody>
+<tr><td>COR-DES-simple</td><td>Coronary</td><td class="num">4.5%</td><td class="num">4.5%</td><td class="num">0.789</td><td class="num">1.0</td></tr><tr><td class="s" colspan="6">Contemporary thin-strut DES, type A/B1 lesion. ABSORB III metallic arm 1-y TLF 6.1% all-comers; simple-lesion subsets 3-5%.</td></tr>
+<tr><td>COR-BRS-plla</td><td>Coronary</td><td class="num">7.8%</td><td class="num">6.0%</td><td class="num">0.708</td><td class="num">1.0</td></tr><tr><td class="s" colspan="6">ABSORB III, Absorb arm 1-y TLF 7.8% (NEJM 2015).</td></tr>
+<tr><td>COR-DES-complex</td><td>Coronary</td><td class="num">12.0%</td><td class="num">10.4%</td><td class="num">0.763</td><td class="num">0.7</td></tr><tr><td class="s" colspan="6">Long, calcified, diabetic DES: 1-y TLF clusters at 10-14%.</td></tr>
+<tr><td>COR-BMS</td><td>Coronary</td><td class="num">16.0%</td><td class="num">24.5%</td><td class="num">0.483</td><td class="num">0.7</td></tr><tr><td class="s" colspan="6">Bare-metal era 1-y TLR 15-20%.</td></tr>
+<tr><td>COR-POBA</td><td>Coronary</td><td class="num">32.0%</td><td class="num">29.3%</td><td class="num">0.595</td><td class="num">0.6</td></tr><tr><td class="s" colspan="6">Balloon-only era: 1-y restenosis 30-40%, TLR of that order.</td></tr>
+<tr><td>COR-DCB-small</td><td>Coronary</td><td class="num">8.0%</td><td class="num">11.0%</td><td class="num">0.913</td><td class="num">0.7</td></tr><tr><td class="s" colspan="6">Small-vessel DCB, non-inferior to DES in BASKET-SMALL 2; 1-y TLR ~8%.</td></tr>
+<tr><td>COR-undersized</td><td>Coronary</td><td class="num">20.0%</td><td class="num">20.1%</td><td class="num">0.537</td><td class="num">0.4</td></tr><tr><td class="s" colspan="6">Severe underexpansion/malapposition. No clean trial; IVUS series put small minimum stent area at 2-4x the TLR of adequately expanded stents.</td></tr>
+<tr><td>SFA-DCB</td><td>Femoropopliteal</td><td class="num">2.4%</td><td class="num">2.5%</td><td class="num">0.847</td><td class="num">1.0</td></tr><tr><td class="s" colspan="6">IN.PACT SFA 12-month CD-TLR 2.4% (Circulation 2015).</td></tr>
+<tr><td>SFA-POBA</td><td>Femoropopliteal</td><td class="num">20.6%</td><td class="num">14.8%</td><td class="num">0.489</td><td class="num">1.0</td></tr><tr><td class="s" colspan="6">IN.PACT SFA control arm 12-month CD-TLR 20.6%.</td></tr>
+<tr><td>SFA-nitinol</td><td>Femoropopliteal</td><td class="num">13.0%</td><td class="num">19.1%</td><td class="num">0.347</td><td class="num">0.7</td></tr><tr><td class="s" colspan="6">Bare nitinol stent trials in moderate-length SFA: 1-y TLR 10-15%.</td></tr>
+<tr><td>SFA-long-bare</td><td>Femoropopliteal</td><td class="num">35.0%</td><td class="num">17.6%</td><td class="num">0.364</td><td class="num">0.4</td></tr><tr><td class="s" colspan="6">Long bare nitinol across the flexion zone; fracture and restenosis both climb steeply with stented length.</td></tr>
+<tr><td>BTK-DCB</td><td>Below the knee</td><td class="num">12.0%</td><td class="num">15.0%</td><td class="num">0.711</td><td class="num">0.6</td></tr><tr><td class="s" colspan="6">Below-the-knee DCB in CLTI: 1-y CD-TLR around 10-15%.</td></tr>
+<tr><td>BTK-POBA</td><td>Below the knee</td><td class="num">25.0%</td><td class="num">30.1%</td><td class="num">0.344</td><td class="num">0.6</td></tr><tr><td class="s" colspan="6">Below-the-knee plain balloon: 1-y CD-TLR around 25%.</td></tr>
+<tr><td>CAR-stent</td><td>Carotid</td><td class="num">3.5%</td><td class="num">3.8%</td><td class="num">0.539</td><td class="num">0.8</td></tr><tr><td class="s" colspan="6">Carotid stenting: 1-y in-stent restenosis/TLR of a few percent.</td></tr>
+<tr><td>ILIAC-stent</td><td>Iliac</td><td class="num">4.5%</td><td class="num">4.9%</td><td class="num">0.532</td><td class="num">0.7</td></tr><tr><td class="s" colspan="6">Iliac stenting: 1-y patency loss around 5%.</td></tr>
+<tr><td>RENAL-stent</td><td>Renal</td><td class="num">14.0%</td><td class="num">14.1%</td><td class="num">0.444</td><td class="num">0.6</td></tr><tr><td class="s" colspan="6">Ostial renal stenting: 1-y restenosis 12-16%.</td></tr>
+</tbody></table></div>
+<p class="hint" style="margin-top:8px">Trust weight: 1.0 a randomised trial number quoted directly, 0.7 a consistent range across several trials, 0.4 an expert estimate with no single clean trial behind it. Endpoint throughout: 12-month clinically driven target lesion revascularisation or target lesion failure.</p>
+      </details>
+
+      <h3>What this cannot claim</h3>
+      <ul>
+        <li><b>Nothing here has seen a patient.</b> Sixteen anchors against eleven free constants is calibration,
+          not validation: it shows the operator <i>can</i> reproduce the published spread with one parameter set,
+          not that it is right.</li>
+        <li><b>The pan-vascular transfer claim is not supported.</b> In simulation, once the comparison is against
+          a linear model given the same continuous bed physiology, the operator's cross-bed advantage in
+          discrimination is −0.014 AUC (95% bootstrap −0.028 to +0.003). What survives is sample efficiency:
+          four physics-derived numbers reach at n = 100 what 55 raw features need roughly n = 400 to reach.</li>
+        <li><b>Across beds the operator transfers an ordering, not a level.</b> Absolute risk needs bed-level
+          recalibration before it means anything outside the bed it was fitted in.</li>
+        <li><b>Device entries are representative class parameters</b>, not specific commercial specifications,
+          and several — radial force, device compliance, fatigue resistance — are order-of-magnitude estimates.
+          Bed parameters are declared priors, not measurements.</li>
+        <li>Four of the fitted constants sit on their bounds, which says the drug and strut terms need
+          reformulating rather than refitting.</li>
+      </ul>
+
+      <h3>Next</h3>
+      <p>The operator is built to be refitted on real cohorts by maximum likelihood, and reported against a
+        logistic model on the same raw features as a floor. If the refitted operator does not beat that floor
+        out of sample, that is the finding.</p>
+    </section>
+  </main>
+</div>
+
+<footer>
+  Built by <a href="https://lingsenyou.com/" style="color:var(--accent)">Lingsen You</a>, Zhongshan Hospital,
+  Fudan University. The operator runs entirely in this page — nothing you enter is sent anywhere.
+  Device entries are representative class parameters, not commercial specifications.
+</footer>
+</div>
+
+<script>const MODEL = {"theta":{"s_under":0.1241174633783434,"s_over":0.11,"k_comp":2.004520358664538,"k_stress":0.05000000000000001,"k_fat":11.727596428322157,"drug_K":0.16073230776363256,"k_short":13.999999999999998,"need_scale":1.5364637767919531,"k_lumen":0.3275278902326173,"k_strut":1.9999999999999998,"nih_max_um":822.4122343888544,"beta":6.042386165197317,"gamma_star":0.9},"axisWeights":{"G":{"size":0.4,"coverage":0.24,"conform":0.18,"taper":0.18},"M":{"compliance":0.38,"stress":0.34,"fatigue":0.28},"H":{"lumen":0.5,"struts":0.32,"branch":0.18},"B":{"drug":0.58,"healing":0.42}},"tauNih":120.0,"tauDrive":210.0,"beds":{"coronary":{"key":"coronary","name_cn":"Coronary","d_ref":[2.25,4.0],"compliance":4.0,"wss0":15.0,"k_neointima":1.0,"cyclic_strain":0.55,"tau_endo":60.0,"tau_remodel":90.0,"lambda0":0.045,"oversize_band":[0.95,1.12],"w_axes":[0.3,0.22,0.2,0.28],"notes":"DES 12-mo TLF 4-6% in contemporary trials; cardiac-cycle bending only."},"sfa":{"key":"sfa","name_cn":"Femoropopliteal","d_ref":[4.5,7.0],"compliance":2.5,"wss0":8.0,"k_neointima":1.6,"cyclic_strain":1.0,"tau_endo":90.0,"tau_remodel":120.0,"lambda0":0.024,"oversize_band":[1.05,1.25],"w_axes":[0.24,0.36,0.16,0.24],"notes":"Worst mechanical environment: hip/knee flexion -> axial compression, torsion, bending. Stent fracture is a real failure mode, so the mechanical axis carries the largest weight here."},"btk":{"key":"btk","name_cn":"Below the knee","d_ref":[2.0,3.5],"compliance":2.0,"wss0":5.0,"k_neointima":1.8,"cyclic_strain":0.8,"tau_endo":120.0,"tau_remodel":150.0,"lambda0":0.12,"oversize_band":[0.95,1.1],"w_axes":[0.22,0.24,0.26,0.28],"notes":"Low flow, small calibre, diffuse disease, CLTI patients. Restenosis rates are the highest of any bed."},"carotid":{"key":"carotid","name_cn":"Carotid","d_ref":[4.5,9.0],"compliance":7.0,"wss0":12.0,"k_neointima":0.6,"cyclic_strain":0.15,"tau_endo":45.0,"tau_remodel":90.0,"lambda0":0.035,"oversize_band":[1.1,1.5],"w_axes":[0.34,0.18,0.24,0.24],"notes":"Deliberate large oversizing with self-expanding nitinol; dominant early risk is embolic, not restenotic."},"renal":{"key":"renal","name_cn":"Renal","d_ref":[4.0,7.0],"compliance":5.0,"wss0":12.0,"k_neointima":1.3,"cyclic_strain":0.4,"tau_endo":60.0,"tau_remodel":90.0,"lambda0":0.14,"oversize_band":[0.95,1.12],"w_axes":[0.32,0.22,0.2,0.26],"notes":"Ostial aorto-renal lesions; respiratory excursion drives cyclic strain."},"iliac":{"key":"iliac","name_cn":"Iliac","d_ref":[6.0,10.0],"compliance":3.0,"wss0":10.0,"k_neointima":0.8,"cyclic_strain":0.2,"tau_endo":60.0,"tau_remodel":90.0,"lambda0":0.045,"oversize_band":[0.98,1.18],"w_axes":[0.32,0.24,0.2,0.24],"notes":"Large calibre, high flow; failures are mostly mechanical/edge."}},"gammaStar":{"coronary":0.7665797036297145,"sfa":0.7550389525496015,"btk":0.3758228311664221,"carotid":0.7157470644959747,"renal":0.5021896870738674,"iliac":0.6962503667577401},"devices":[{"key":"des_ultrathin","name":"Ultrathin-strut DES (60 um, sirolimus)","family":"DES","expansion":"balloon","beds":["coronary"],"d_range":[2.25,4.0],"l_max":40,"strut_um":60,"radial_force":1.0,"compliance_dev":0.3,"conformability":0.8,"fatigue_resist":0.9,"drug":"sirolimus","dose_ug_mm2":1.4,"drug_tau_d":90,"degrade_tau_d":null,"recoil":0.03,"crossing_mm":1.05,"note":"Contemporary workhorse; thin struts minimise flow disturbance."},{"key":"des_thin","name":"Thin-strut DES (81 um, everolimus)","family":"DES","expansion":"balloon","beds":["coronary","renal","btk"],"d_range":[2.25,4.0],"l_max":48,"strut_um":81,"radial_force":1.0,"compliance_dev":0.3,"conformability":0.75,"fatigue_resist":0.88,"drug":"everolimus","dose_ug_mm2":1.0,"drug_tau_d":90,"degrade_tau_d":null,"recoil":0.03,"crossing_mm":1.1,"note":""},{"key":"brs_plla","name":"PLLA BRS, 150 um (XINSORB-class)","family":"BRS","expansion":"balloon","beds":["coronary"],"d_range":[2.5,3.5],"l_max":33,"strut_um":150,"radial_force":0.62,"compliance_dev":0.8,"conformability":0.55,"fatigue_resist":0.7,"drug":"sirolimus","dose_ug_mm2":1.4,"drug_tau_d":90,"degrade_tau_d":900,"recoil":0.06,"crossing_mm":1.45,"note":"Compliance converges to the wall as the scaffold resorbs; the price is a thick strut for the first year."},{"key":"brs_thin","name":"Next-generation thin BRS (100 um)","family":"BRS","expansion":"balloon","beds":["coronary"],"d_range":[2.5,4.0],"l_max":36,"strut_um":100,"radial_force":0.72,"compliance_dev":0.7,"conformability":0.62,"fatigue_resist":0.75,"drug":"sirolimus","dose_ug_mm2":1.4,"drug_tau_d":90,"degrade_tau_d":730,"recoil":0.05,"crossing_mm":1.25,"note":""},{"key":"dcb_ptx_cor","name":"Coronary DCB (paclitaxel 3.0 ug/mm2)","family":"DCB","expansion":"none","beds":["coronary","btk"],"d_range":[2.0,4.0],"l_max":40,"strut_um":0,"radial_force":0.0,"compliance_dev":null,"conformability":1.0,"fatigue_resist":1.0,"drug":"paclitaxel","dose_ug_mm2":3.0,"drug_tau_d":45,"degrade_tau_d":null,"recoil":0.28,"crossing_mm":0.85,"note":"Leaves nothing behind: no compliance mismatch, no scaffolding either."},{"key":"dcb_siro_cor","name":"Coronary sirolimus DCB","family":"DCB","expansion":"none","beds":["coronary","btk"],"d_range":[2.0,4.0],"l_max":40,"strut_um":0,"radial_force":0.0,"compliance_dev":null,"conformability":1.0,"fatigue_resist":1.0,"drug":"sirolimus","dose_ug_mm2":3.5,"drug_tau_d":30,"degrade_tau_d":null,"recoil":0.28,"crossing_mm":0.9,"note":""},{"key":"bms","name":"Bare-metal stent","family":"BMS","expansion":"balloon","beds":["coronary","renal","iliac"],"d_range":[2.5,5.0],"l_max":38,"strut_um":110,"radial_force":1.0,"compliance_dev":0.3,"conformability":0.7,"fatigue_resist":0.85,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.03,"crossing_mm":1.15,"note":"Comparator arm."},{"key":"se_nitinol","name":"Self-expanding nitinol stent","family":"SE","expansion":"self","beds":["sfa","iliac","renal"],"d_range":[5.0,10.0],"l_max":200,"strut_um":200,"radial_force":0.28,"compliance_dev":1.5,"conformability":0.85,"fatigue_resist":0.72,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.02,"crossing_mm":1.8,"note":""},{"key":"se_ptx","name":"Paclitaxel-eluting nitinol stent","family":"SE-DES","expansion":"self","beds":["sfa","iliac"],"d_range":[5.0,8.0],"l_max":200,"strut_um":200,"radial_force":0.3,"compliance_dev":1.5,"conformability":0.85,"fatigue_resist":0.74,"drug":"paclitaxel","dose_ug_mm2":3.0,"drug_tau_d":120,"degrade_tau_d":null,"recoil":0.02,"crossing_mm":1.85,"note":""},{"key":"se_interwoven","name":"Interwoven nitinol stent","family":"SE","expansion":"self","beds":["sfa"],"d_range":[4.5,7.5],"l_max":150,"strut_um":250,"radial_force":0.6,"compliance_dev":1.1,"conformability":0.7,"fatigue_resist":0.96,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":2.0,"crossing_mm":2.1,"note":"Built for the flexion zone: highest fatigue resistance in the catalogue."},{"key":"covered","name":"ePTFE covered stent-graft","family":"COVERED","expansion":"self","beds":["sfa","iliac"],"d_range":[5.0,13.0],"l_max":250,"strut_um":300,"radial_force":0.45,"compliance_dev":0.6,"conformability":0.65,"fatigue_resist":0.8,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.02,"crossing_mm":2.6,"note":"Excludes the wall from the lumen: no in-stent neointima, but edge hyperplasia and side-branch loss."},{"key":"dcb_periph","name":"Peripheral DCB (paclitaxel 3.5 ug/mm2)","family":"DCB","expansion":"none","beds":["sfa","btk","iliac"],"d_range":[2.0,7.0],"l_max":250,"strut_um":0,"radial_force":0.0,"compliance_dev":null,"conformability":1.0,"fatigue_resist":1.0,"drug":"paclitaxel","dose_ug_mm2":3.5,"drug_tau_d":90,"degrade_tau_d":null,"recoil":0.3,"crossing_mm":1.1,"note":""},{"key":"poba","name":"Plain balloon angioplasty","family":"POBA","expansion":"none","beds":["coronary","sfa","btk","iliac","renal"],"d_range":[1.5,12.0],"l_max":300,"strut_um":0,"radial_force":0.0,"compliance_dev":null,"conformability":1.0,"fatigue_resist":1.0,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.32,"crossing_mm":0.8,"note":""},{"key":"car_closed","name":"Closed-cell carotid nitinol stent","family":"SE","expansion":"self","beds":["carotid"],"d_range":[6.0,10.0],"l_max":40,"strut_um":180,"radial_force":0.32,"compliance_dev":1.4,"conformability":0.6,"fatigue_resist":0.9,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.02,"crossing_mm":1.7,"note":""},{"key":"car_dual","name":"Dual-layer micromesh carotid stent","family":"SE","expansion":"self","beds":["carotid"],"d_range":[6.0,10.0],"l_max":60,"strut_um":200,"radial_force":0.34,"compliance_dev":1.3,"conformability":0.7,"fatigue_resist":0.9,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.02,"crossing_mm":1.9,"note":"Micromesh traps plaque; denser mesh is a hemodynamic cost."}],"prep":{"none":{"ca_relief":0.0,"injury":0.0,"label":"None"},"noncomp":{"ca_relief":0.2,"injury":0.05,"label":"Non-compliant balloon"},"scoring":{"ca_relief":0.45,"injury":0.1,"label":"Scoring balloon"},"atherec":{"ca_relief":0.65,"injury":0.18,"label":"Atherectomy"},"ivl":{"ca_relief":0.75,"injury":0.04,"label":"Lithotripsy (IVL)"}}};</script>
+<script>
+"use strict";
+/* ---------------------------------------------------------------
+   suitcordance operator, ported 1:1 from panvas/suitcordance.py
+   --------------------------------------------------------------- */
+const TAU_NIH = MODEL.tauNih, TAU_DRIVE = MODEL.tauDrive, TH = MODEL.theta;
+const WG = MODEL.axisWeights.G, WM = MODEL.axisWeights.M,
+      WH = MODEL.axisWeights.H, WB = MODEL.axisWeights.B;
+const DEV = {}; MODEL.devices.forEach(d => DEV[d.key] = d);
+const POTENCY = {none:0, paclitaxel:1.0, sirolimus:1.25, everolimus:1.20};
+
+const dRef = l => 0.5 * (l.d_prox + l.d_dist);
+const taper = l => Math.max(0, (l.d_prox - l.d_dist) / Math.max(l.d_prox, 1e-6));
+const clamp = (x, a, b) => Math.min(Math.max(x, a), b);
+
+function caEff(les, plan){ return les.calcium * (1 - MODEL.prep[plan.prep].ca_relief); }
+
+function deployed(les, plan, t){
+  const dev = DEV[plan.device], bed = MODEL.beds[les.bed];
+  const dv = dRef(les), ca = caEff(les, plan);
+  const resist = 1 - 0.22 * Math.pow(ca, 1.5) * (plan.postdilate ? 0.55 : 1);
+  let d0, dInf, tau;
+  if (dev.expansion === "balloon"){
+    d0 = plan.nominal_d * resist * (1 - dev.recoil);
+    if (dev.degrade_tau_d){ dInf = d0 * 1.05; tau = dev.degrade_tau_d; }
+    else { dInf = d0 * 1.01; tau = bed.tau_remodel; }
+  } else if (dev.expansion === "self"){
+    const gap = Math.max(0, plan.nominal_d - dv);
+    d0 = dv + gap * 0.55 * (1 - 0.40 * ca);
+    dInf = dv + gap * 0.90; tau = 60;
+  } else {
+    const elastic = bed.compliance / 4;
+    const recoil = Math.min(0.55, dev.recoil * (0.75 + 0.45 * elastic) * (1 - 0.35 * ca));
+    d0 = plan.nominal_d * resist * (1 - recoil);
+    dInf = d0 * 0.96; tau = 90;
+  }
+  return t.map(x => dInf + (d0 - dInf) * Math.exp(-x / tau));
+}
+
+function injuryIndex(les, plan){
+  const dev = DEV[plan.device];
+  const strain = Math.max(0, (plan.nominal_d - dRef(les)) / dRef(les));
+  const ca = caEff(les, plan);
+  return clamp(strain * (1 + 1.2 * ca) * 2.2 + MODEL.prep[plan.prep].injury
+               + 0.10 * (plan.postdilate ? 1 : 0) + 0.25 * (dev.strut_um / 150), 0, 1.5);
+}
+
+function driveOf(les, injury){
+  const bed = MODEL.beds[les.bed];
+  return bed.k_neointima * (1 + 0.35 * (les.diabetes ? 1 : 0))
+       * (1 + 0.60 * injury) * (1 + 0.40 * les.inflammation);
+}
+
+function drugEffect(les, plan, t){
+  const dev = DEV[plan.device];
+  if (dev.drug === "none" || dev.dose_ug_mm2 <= 0) return t.map(() => 0);
+  const bed = MODEL.beds[les.bed];
+  const drive = bed.k_neointima * (1 + 0.35 * (les.diabetes ? 1 : 0));
+  const scale = (dev.family === "DCB" || dev.family === "POBA") ? 0.85 : 1;
+  return t.map(x => {
+    const conc = dev.dose_ug_mm2 * POTENCY[dev.drug] * Math.exp(-x / dev.drug_tau_d) * scale;
+    const a = Math.pow(conc / (TH.drug_K * drive), 1.2);
+    return a / (a + 1);
+  });
+}
+
+function gammaG(les, plan, dd){
+  const dev = DEV[plan.device], bed = MODEL.beds[les.bed], dv = dRef(les);
+  let lo = bed.oversize_band[0], hi = bed.oversize_band[1], ratio = null;
+  if (dev.expansion === "none"){ lo = 0.95; hi = 1.10; ratio = plan.nominal_d / dv; }
+  const margin = (plan.length * plan.n_devices - les.length) / 2;
+  const cov = margin < 0 ? Math.exp(-Math.pow(margin / 1.8, 2))
+            : margin > 5 ? Math.exp(-Math.pow((margin - 5) / 9, 2)) : 1;
+  const conf = Math.exp(-2.6 * Math.pow(les.tortuosity * (1 - dev.conformability), 2));
+  const tl = taper(les) * (1 - 0.45 * (dev.expansion === "self" ? 1 : 0))
+           * Math.min(1, plan.length / 40);
+  const tap = Math.exp(-5 * tl * tl);
+  const k = Math.pow(cov, WG.coverage) * Math.pow(conf, WG.conform) * Math.pow(tap, WG.taper);
+  return dd.map(d => {
+    const r = ratio === null ? d / dv : ratio;
+    const size = r < lo ? Math.exp(-Math.pow((lo - r) / TH.s_under, 2))
+               : r > hi ? Math.exp(-Math.pow((r - hi) / TH.s_over, 2)) : 1;
+    return Math.pow(size, WG.size) * k;
+  });
+}
+
+function gammaM(les, plan, t, dd){
+  const dev = DEV[plan.device], bed = MODEL.beds[les.bed];
+  const cWall = bed.compliance * (1 - 0.60 * caEff(les, plan));
+  const epsTol = 0.115 * Math.sqrt(Math.max(cWall, 0.4) / 4);
+  let fatLoad = 0;
+  if (dev.expansion !== "none")
+    fatLoad = bed.cyclic_strain * (1 - dev.fatigue_resist)
+            * (0.6 + 0.4 * Math.min(1, plan.length * plan.n_devices / 120));
+  return t.map((x, i) => {
+    let comp = 1;
+    if (dev.compliance_dev !== null){
+      let cDev = dev.compliance_dev;
+      if (dev.degrade_tau_d)
+        cDev += (cWall - dev.compliance_dev) * (1 - Math.exp(-x / dev.degrade_tau_d));
+      const mm = Math.abs(cDev - cWall) / (cDev + cWall);
+      comp = Math.exp(-TH.k_comp * mm * mm);
+    }
+    const eps = Math.max(0, (dd[i] - dRef(les)) / dRef(les));
+    const stress = Math.exp(-Math.pow(eps / epsTol, 2) * TH.k_stress);
+    const fat = dev.expansion === "none" ? 1
+      : Math.exp(-TH.k_fat * fatLoad * fatLoad * (1 - Math.exp(-x / 365)));
+    return Math.pow(comp, WM.compliance) * Math.pow(stress, WM.stress) * Math.pow(fat, WM.fatigue);
+  });
+}
+
+function gammaH(les, plan, t, dd, nih){
+  const dev = DEV[plan.device], bed = MODEL.beds[les.bed], dv = dRef(les);
+  const rawStrut = (dev.strut_um / 100) * Math.sqrt(3 / Math.max(dv, 1))
+                 * Math.sqrt(15 / bed.wss0);
+  const tauCov = bed.tau_endo * (1 + 0.9 * (dev.drug !== "none" ? 1 : 0));
+  let branch = 1;
+  if (les.side_branch && dev.family === "COVERED") branch = 0.35;
+  else if (les.bifurcation && dev.strut_um > 0) branch = 0.80 - 0.10 * (dev.strut_um > 120 ? 1 : 0);
+  if ((les.bed === "sfa" || les.bed === "btk") && les.runoff <= 1) branch *= 0.80;
+  const kBranch = Math.pow(branch, WH.branch);
+  return t.map((x, i) => {
+    const dl = Math.max(dd[i] - 2 * (dev.strut_um + nih[i]) / 1000, 0.25);
+    const resid = clamp(1 - dl / dv, 0, 1);
+    const lumen = Math.exp(-Math.pow(resid / TH.k_lumen, 2));
+    const struts = dev.strut_um <= 0 ? 1
+      : Math.exp(-TH.k_strut * rawStrut * (1 - 0.75 * (1 - Math.exp(-x / tauCov))));
+    return Math.pow(lumen, WH.lumen) * Math.pow(struts, WH.struts) * kBranch;
+  });
+}
+
+function gammaB(les, plan, t, injury, de){
+  const dev = DEV[plan.device], bed = MODEL.beds[les.bed];
+  const drive = driveOf(les, injury);
+  let healing = 1;
+  if (dev.strut_um > 0){
+    const w = bed.tau_endo * (1 + 0.90 * (dev.drug !== "none" ? 1 : 0))
+            * (1 + 0.55 * (dev.strut_um / 150));
+    healing = Math.exp(-Math.pow(w / 260, 2));
+    if (dev.degrade_tau_d)
+      healing *= Math.exp(-0.45 * Math.pow(Math.abs(Math.log(dev.degrade_tau_d / (6 * w))), 2));
+  }
+  const kh = Math.pow(healing, WB.healing);
+  return t.map((x, i) => {
+    const driveT = 0.30 * drive + 0.70 * drive * Math.exp(-x / TAU_DRIVE);
+    const need = Math.max(driveT / TH.need_scale, 0.02);
+    const sf = Math.max(need - de[i], 0) / (1 + need);
+    return Math.pow(Math.exp(-TH.k_short * sf * sf), WB.drug) * kh;
+  });
+}
+
+function evaluateCase(les, plan, dt, horizon){
+  dt = dt || 5; horizon = horizon || 730;
+  const n = Math.round(horizon / dt) + 1;
+  const t = Array.from({length:n}, (_, i) => i * dt);
+  const bed = MODEL.beds[les.bed];
+
+  const dd = deployed(les, plan, t);
+  const injury = injuryIndex(les, plan);
+  const de = drugEffect(les, plan, t);
+  const nSix = Math.max(1, Math.round(180 / dt));
+  const deMean = de.slice(0, nSix).reduce((a, b) => a + b, 0) / nSix;
+  const nihMax = TH.nih_max_um * driveOf(les, injury) * (1 - 0.68 * deMean);
+  const nih = t.map(x => nihMax * (1 - Math.exp(-x / TAU_NIH)));
+
+  const cl = a => a.map(v => clamp(v, 1e-4, 1));
+  const G = cl(gammaG(les, plan, dd)), M = cl(gammaM(les, plan, t, dd));
+  const H = cl(gammaH(les, plan, t, dd, nih)), B = cl(gammaB(les, plan, t, injury, de));
+
+  const ws = bed.w_axes.reduce((a, b) => a + b, 0);
+  const w = bed.w_axes.map(v => v / ws);
+  const gamma = t.map((_, i) => Math.pow(G[i], w[0]) * Math.pow(M[i], w[1])
+                              * Math.pow(H[i], w[2]) * Math.pow(B[i], w[3]));
+
+  let tv = 0; const tvc = [0];
+  for (let i = 1; i < n; i++){ tv += Math.abs(gamma[i] - gamma[i-1]); tvc.push(tv); }
+  let tau_sc = NaN;
+  if (tv > 1e-9){
+    const target = 0.632 * tv;
+    for (let i = 1; i < n; i++)
+      if (tvc[i] >= target){
+        const f = (target - tvc[i-1]) / Math.max(tvc[i] - tvc[i-1], 1e-12);
+        tau_sc = t[i-1] + f * dt; break;
+      }
+  }
+  let area = 0;
+  for (let i = 1; i < n; i++) area += 0.5 * ((1 - gamma[i]) + (1 - gamma[i-1])) * dt;
+  const deficit = area / (t[n-1] - t[0]);
+
+  const lam0 = -Math.log(Math.max(1e-6, 1 - bed.lambda0)) / 365;
+  const gStar = MODEL.gammaStar[les.bed];
+  const lam = gamma.map(g => lam0 * Math.exp(TH.beta * (gStar - g)));
+  const risk = [0]; let ch = 0;
+  for (let i = 1; i < n; i++){ ch += 0.5 * (lam[i] + lam[i-1]) * dt; risk.push(1 - Math.exp(-ch)); }
+  const i365 = Math.min(n - 1, Math.floor(365 / dt));
+  const f365 = (365 - t[i365]) / dt;
+  const risk12 = i365 + 1 < n ? risk[i365] + f365 * (risk[i365+1] - risk[i365]) : risk[n-1];
+
+  const mean = a => a.reduce((x, y) => x + y, 0) / a.length;
+  const worst = ["G","M","H","B"][[mean(G), mean(M), mean(H), mean(B)]
+    .reduce((bi, v, i, arr) => v < arr[bi] ? i : bi, 0)];
+
+  return {t, G, M, H, B, gamma, tau_sc, deficit, risk, risk12, worst, weights:w};
+}
+
+/* candidate devices for a bed and calibre, same rule as devices.py */
+function candidates(bed, dv){
+  return MODEL.devices.filter(d => d.beds.includes(bed)
+    && d.d_range[0] <= dv * 1.45 && d.d_range[1] >= dv * 0.95);
+}
+const snap = (x, dev) => clamp(Math.round(x * 4) / 4, dev.d_range[0], dev.d_range[1]);
+
+function shortlist(les){
+  const dv = dRef(les), bed = MODEL.beds[les.bed], out = [];
+  for (const dev of candidates(les.bed, dv)){
+    let best = null;
+    const mults = dev.expansion === "self"
+      ? [bed.oversize_band[0], (bed.oversize_band[0] + bed.oversize_band[1]) / 2, bed.oversize_band[1]]
+      : [0.95, 1.0, 1.05, 1.12];
+    for (const m of mults){
+      const nd = snap(dv * m, dev);
+      for (const margin of [0, 2, 4]){
+        const want = les.length + 2 * margin;
+        const nDev = want > dev.l_max ? Math.max(1, Math.round(want / dev.l_max)) : 1;
+        const L = Math.min(dev.l_max, want / nDev);
+        for (const prep of ["none", "scoring", "ivl"]){
+          for (const pd of [false, true]){
+            const plan = {device:dev.key, nominal_d:nd, length:L, prep, postdilate:pd, n_devices:nDev};
+            const r = evaluateCase(les, plan, 10, 380);
+            if (!best || r.risk12 < best.r.risk12) best = {plan, r};
+          }
+        }
+      }
+    }
+    if (best) out.push(best);
+  }
+  out.sort((a, b) => a.r.risk12 - b.r.risk12);
+  return out;
+}
+
+/* ---------------------------------------------------------------
+   state and UI
+   --------------------------------------------------------------- */
+const AXES = [
+  {k:"G", css:"--axis-g", cn:"geometric", en:"Γ_G", note:"sizing, coverage, conformability, taper"},
+  {k:"M", css:"--axis-m", cn:"mechanical", en:"Γ_M", note:"compliance mismatch, wall stress, fatigue"},
+  {k:"H", css:"--axis-h", cn:"hemodynamic", en:"Γ_H", note:"lumen restored, strut disturbance, branches"},
+  {k:"B", css:"--axis-b", cn:"biological", en:"Γ_B", note:"antiproliferative supply against drive, healing"}
+];
+const FLAGS = [["diabetes","Diabetes"],["bifurcation","Bifurcation"],
+               ["side_branch","Branch that matters"],["cto","CTO"]];
+const BEDNAME = {coronary:"Coronary", sfa:"Femoropopliteal", btk:"Below the knee",
+                 carotid:"Carotid", renal:"Renal", iliac:"Iliac"};
+const PREPNAME = {none:"None", noncomp:"Non-compliant balloon", scoring:"Scoring balloon",
+                  atherec:"Atherectomy", ivl:"Lithotripsy (IVL)"};
+const DEFAULTS = {
+  coronary:{d_prox:3.2,d_dist:2.95,length:22,calcium:0.30,tortuosity:0.20,inflammation:0.25,runoff:3},
+  sfa:{d_prox:5.8,d_dist:5.2,length:140,calcium:0.45,tortuosity:0.30,inflammation:0.25,runoff:2},
+  btk:{d_prox:2.9,d_dist:2.6,length:100,calcium:0.45,tortuosity:0.25,inflammation:0.35,runoff:1},
+  carotid:{d_prox:7.5,d_dist:5.0,length:20,calcium:0.30,tortuosity:0.20,inflammation:0.20,runoff:3},
+  renal:{d_prox:5.6,d_dist:5.2,length:15,calcium:0.30,tortuosity:0.15,inflammation:0.25,runoff:3},
+  iliac:{d_prox:8.2,d_dist:7.8,length:40,calcium:0.35,tortuosity:0.20,inflammation:0.20,runoff:3}
+};
+const les = Object.assign({bed:"coronary", stenosis:0.8, diabetes:true,
+  bifurcation:false, side_branch:false, cto:false}, DEFAULTS.coronary);
+let plan = null, list = [], picked = 0;
+
+const $ = id => document.getElementById(id);
+const pct = x => (100 * x).toFixed(1) + "%";
+
+$("beds").innerHTML = Object.values(MODEL.beds)
+  .map(b => `<button data-bed="${b.key}" aria-pressed="${b.key === les.bed}">${BEDNAME[b.key]}</button>`).join("");
+$("flags").innerHTML = FLAGS
+  .map(([k, t]) => `<button data-flag="${k}" aria-pressed="${!!les[k]}">${t}</button>`).join("");
+$("prep").innerHTML = Object.keys(MODEL.prep)
+  .map(k => `<option value="${k}">${PREPNAME[k]}</option>`).join("");
+$("legend").innerHTML = AXES.map(a =>
+  `<span><i class="swatch" style="background:var(${a.css})"></i>${a.en} ${a.cn}</span>`).join("")
+  + `<span><i class="swatch" style="background:var(--ink);height:4px"></i>Γ_sc overall</span>`
+  + `<span><i class="swatch" style="background:var(--muted);height:0;border-top:2px dashed var(--muted)"></i>τ_sc</span>`;
+
+$("beds").addEventListener("click", e => {
+  const b = e.target.closest("[data-bed]"); if (!b) return;
+  les.bed = b.dataset.bed;
+  Object.assign(les, DEFAULTS[les.bed]);
+  [...$("beds").children].forEach(x => x.setAttribute("aria-pressed", x.dataset.bed === les.bed));
+  syncInputs(); recompute(true);
+});
+$("flags").addEventListener("click", e => {
+  const b = e.target.closest("[data-flag]"); if (!b) return;
+  les[b.dataset.flag] = !les[b.dataset.flag];
+  b.setAttribute("aria-pressed", String(les[b.dataset.flag]));
+  recompute(true);
+});
+["d_prox","d_dist","length","calcium","tortuosity","inflammation","runoff"].forEach(k => {
+  $(k).addEventListener("input", () => { les[k] = +$(k).value; syncLabels(); recompute(true); });
+});
+$("prep").addEventListener("change", () => { if (plan){ plan.prep = $("prep").value; render(); } });
+$("postdil").addEventListener("click", () => {
+  const on = $("postdil").getAttribute("aria-pressed") !== "true";
+  $("postdil").setAttribute("aria-pressed", String(on));
+  if (plan){ plan.postdilate = on; render(); }
+});
+$("themeBtn").addEventListener("click", () => {
+  const dark = document.documentElement.getAttribute("data-theme") === "dark";
+  const next = dark ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  $("themeBtn").textContent = next === "dark" ? "Light" : "Dark";
+  $("themeBtn").setAttribute("aria-pressed", String(next === "dark"));
+  try { localStorage.setItem("pv:theme", next); } catch (e) {}
+  if (plan) render();
+});
+
+function syncInputs(){
+  ["d_prox","d_dist","length","calcium","tortuosity","inflammation","runoff"]
+    .forEach(k => $(k).value = les[k]);
+  [...$("flags").children].forEach(x => x.setAttribute("aria-pressed", String(!!les[x.dataset.flag])));
+  syncLabels();
+}
+function syncLabels(){
+  $("lp").textContent = les.d_prox.toFixed(2) + " mm";
+  $("ld").textContent = les.d_dist.toFixed(2) + " mm";
+  $("ll").textContent = les.length.toFixed(0) + " mm";
+  $("lc").textContent = les.calcium.toFixed(2);
+  $("lt").textContent = les.tortuosity.toFixed(2);
+  $("li").textContent = les.inflammation.toFixed(2);
+  $("lr").textContent = les.runoff + (les.runoff === 1 ? " vessel" : " vessels");
+  $("runoffField").hidden = !(les.bed === "sfa" || les.bed === "btk");
+  const b = MODEL.beds[les.bed];
+  $("bednote").textContent = `λ₀ ${pct(b.lambda0)} · wall compliance ${b.compliance} %/100 mmHg · `
+    + `neointimal drive ${b.k_neointima} · cyclic strain ${b.cyclic_strain} · target device:vessel `
+    + `${b.oversize_band[0]}–${b.oversize_band[1]}`;
+}
+
+function recompute(refresh){
+  if (refresh){ list = shortlist(les); picked = 0; plan = Object.assign({}, list[0].plan); }
+  $("prep").value = plan.prep;
+  $("postdil").setAttribute("aria-pressed", String(!!plan.postdilate));
+  render();
+}
+
+function render(){
+  const r = evaluateCase(les, plan, 5, 730);
+  const bed = MODEL.beds[les.bed];
+
+  $("t_g0").textContent = r.gamma[0].toFixed(3);
+  $("t_g0d").textContent = `${r.gamma[r.gamma.length-1].toFixed(3)} at 24 months · mismatch dose ${r.deficit.toFixed(3)}`;
+  $("t_tau").textContent = isNaN(r.tau_sc) ? "—" : Math.round(r.tau_sc);
+  $("t_taud").textContent = isNaN(r.tau_sc) ? "flat trajectory" : `days · about ${(r.tau_sc/30.4).toFixed(1)} months`;
+  const over = r.risk12 > bed.lambda0;
+  $("t_risk").textContent = pct(r.risk12);
+  $("t_risk").className = "n" + (over ? " over" : "");
+  $("t_riskd").textContent = `best practice in this bed: ${pct(bed.lambda0)}`;
+
+  $("axes").innerHTML = AXES.map((a, i) => {
+    const v = r[a.k][0];
+    return `<div class="axrow">
+      <div class="name"><b>${a.en}</b>${a.cn}<div class="wgt">weight ${r.weights[i].toFixed(2)}</div></div>
+      <div class="track"><div class="bar" style="width:${(100*v).toFixed(1)}%;background:var(${a.css})"></div></div>
+      <div class="val">${v.toFixed(3)}</div></div>`;
+  }).join("");
+  const wa = AXES.find(a => a.k === r.worst);
+  $("axhint").textContent = `Weakest axis: ${wa.en} ${wa.cn} (${wa.note}). `
+    + `Because the axes combine as a geometric mean, a collapse on any one of them cannot be compensated by the other three.`;
+
+  drawChart(r);
+  drawList();
+}
+
+function drawChart(r){
+  const W = 720, H = 300, m = {t:14, r:58, b:30, l:38};
+  const x = d => m.l + (d / 730) * (W - m.l - m.r);
+  const y = v => m.t + (1 - v) * (H - m.t - m.b);
+  const path = arr => arr.map((v, i) => (i ? "L" : "M") + x(r.t[i]).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  let s = "";
+  for (let v = 0; v <= 1.0001; v += 0.25)
+    s += `<line x1="${m.l}" y1="${y(v)}" x2="${W-m.r}" y2="${y(v)}" stroke="var(--hair)" stroke-width="1"/>
+          <text x="${m.l-7}" y="${y(v)+4}" text-anchor="end" font-size="11" font-family="var(--mono)" fill="var(--muted)">${v.toFixed(2)}</text>`;
+  for (const d of [0, 180, 365, 545, 730])
+    s += `<text x="${x(d)}" y="${H-m.b+18}" text-anchor="middle" font-size="11" font-family="var(--mono)" fill="var(--muted)">${d}</text>`;
+  s += `<text x="${(m.l+W-m.r)/2}" y="${H-2}" text-anchor="middle" font-size="11" fill="var(--muted)">days</text>`;
+  s += `<line x1="${x(365)}" y1="${m.t}" x2="${x(365)}" y2="${H-m.b}" stroke="var(--hair)" stroke-width="1"/>`;
+  if (!isNaN(r.tau_sc))
+    s += `<line x1="${x(r.tau_sc)}" y1="${m.t}" x2="${x(r.tau_sc)}" y2="${H-m.b}" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="${x(r.tau_sc)+5}" y="${m.t+11}" font-size="11" font-family="var(--mono)" fill="var(--muted)">τ ${Math.round(r.tau_sc)}d</text>`;
+  AXES.forEach(a => {
+    s += `<path d="${path(r[a.k])}" fill="none" stroke="var(${a.css})" stroke-width="2" stroke-linejoin="round"/>`;
+  });
+  s += `<path d="${path(r.gamma)}" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>`;
+
+  const last = a => a[a.length - 1];
+  const labels = AXES.map(a => ({txt:a.en, col:`var(${a.css})`, w:400, y:y(last(r[a.k]))}))
+    .concat([{txt:"Γsc", col:"var(--ink)", w:600, y:y(last(r.gamma))}])
+    .sort((p, q) => p.y - q.y);
+  for (let i = 1; i < labels.length; i++)
+    if (labels[i].y - labels[i-1].y < 13) labels[i].y = labels[i-1].y + 13;
+  const overflow = last(labels).y - (H - m.b);
+  if (overflow > 0) labels.forEach(l => l.y -= overflow);
+  labels.forEach(l => {
+    s += `<text x="${W-m.r+6}" y="${(l.y+4).toFixed(1)}" font-size="11" font-family="var(--mono)"`
+       + ` font-weight="${l.w}" fill="${l.col}">${l.txt}</text>`;
+  });
+  s += `<line id="cross" x1="0" y1="${m.t}" x2="0" y2="${H-m.b}" stroke="var(--accent)" stroke-width="1" opacity="0"/>`;
+  $("chart").innerHTML = s;
+
+  const tip = $("tip"), chart = $("chart");
+  chart.onmousemove = ev => {
+    const bb = chart.getBoundingClientRect();
+    const px = (ev.clientX - bb.left) / bb.width * W;
+    const day = clamp((px - m.l) / (W - m.l - m.r) * 730, 0, 730);
+    const i = clamp(Math.round(day / 5), 0, r.t.length - 1);
+    const cr = chart.querySelector("#cross");
+    cr.setAttribute("x1", x(r.t[i])); cr.setAttribute("x2", x(r.t[i])); cr.setAttribute("opacity", "1");
+    tip.hidden = false;
+    tip.innerHTML = `<div class="r"><span>day ${r.t[i]}</span></div>`
+      + AXES.map(a => `<div class="r"><span style="color:var(${a.css})">${a.en}</span><b>${r[a.k][i].toFixed(3)}</b></div>`).join("")
+      + `<div class="r" style="border-top:1px solid var(--hair);margin-top:3px;padding-top:3px"><span>Γsc</span><b>${r.gamma[i].toFixed(3)}</b></div>`
+      + `<div class="r"><span>cumulative events</span><b>${pct(r.risk[i])}</b></div>`;
+    tip.style.left = clamp(x(r.t[i]) / W * bb.width + 12, 0, bb.width - 160) + "px";
+    tip.style.top = "8px";
+  };
+  chart.onmouseleave = () => {
+    tip.hidden = true;
+    const cr = chart.querySelector("#cross"); if (cr) cr.setAttribute("opacity", "0");
+  };
+}
+
+function drawList(){
+  const bed = MODEL.beds[les.bed];
+  const max = Math.max(...list.map(o => o.r.risk12), bed.lambda0 * 1.4, 0.02);
+  $("shortlist").querySelector("tbody").innerHTML = list.map((o, i) => {
+    const d = DEV[o.plan.device], ax = AXES.find(a => a.k === o.r.worst);
+    const over = o.r.risk12 > bed.lambda0;
+    return `<tr data-i="${i}" class="${i === picked ? "pick" : ""}">
+      <td>${d.name}</td>
+      <td class="num">${o.plan.nominal_d.toFixed(2)}×${o.plan.length.toFixed(0)}${o.plan.n_devices > 1 ? " ×" + o.plan.n_devices : ""}</td>
+      <td>${PREPNAME[o.plan.prep]}${o.plan.postdilate ? " + post-dil" : ""}</td>
+      <td class="num">${o.r.gamma[0].toFixed(3)}</td>
+      <td class="num">${isNaN(o.r.tau_sc) ? "—" : Math.round(o.r.tau_sc)}</td>
+      <td><span class="chip" style="cursor:default"><i class="dot" style="background:var(${ax.css})"></i>${ax.en}</span></td>
+      <td><div style="display:flex;align-items:center;gap:8px">
+        <div class="rbar"><i class="${over ? "over" : ""}" style="width:${(100*o.r.risk12/max).toFixed(1)}%"></i>
+        <u style="left:${(100*bed.lambda0/max).toFixed(1)}%"></u></div>
+        <span class="num" style="font-size:12.5px">${pct(o.r.risk12)}</span></div></td></tr>`;
+  }).join("");
+  $("shortlist").querySelector("tbody").onclick = e => {
+    const tr = e.target.closest("tr[data-i]"); if (!tr) return;
+    picked = +tr.dataset.i; plan = Object.assign({}, list[picked].plan);
+    $("prep").value = plan.prep;
+    $("postdil").setAttribute("aria-pressed", String(!!plan.postdilate));
+    render();
+  };
+}
+
+try {
+  const dark = document.documentElement.getAttribute("data-theme") === "dark";
+  $("themeBtn").textContent = dark ? "Light" : "Dark";
+  $("themeBtn").setAttribute("aria-pressed", String(dark));
+} catch (e) {}
+syncInputs();
+recompute(true);
+</script>
+</body>
+</html>
