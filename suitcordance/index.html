@@ -796,7 +796,7 @@ function render(){
   $("t_g0").textContent = r.gamma[0].toFixed(3);
   $("t_g0d").textContent = `${r.gamma[r.gamma.length-1].toFixed(3)} at 24 months · mismatch dose ${r.deficit.toFixed(3)}`;
   $("t_tau").textContent = isNaN(r.tau_sc) ? "—" : Math.round(r.tau_sc);
-  $("t_taud").textContent = isNaN(r.tau_sc) ? "flat trajectory" : `days · about ${(r.tau_sc/30.4).toFixed(1)} months`;
+  $("t_taud").textContent = isNaN(r.tau_sc) ? "flat trajectory" : `days to 63.2% of total variation, T=730 · neither direction is better`;
   const over = r.risk12 > bed.lambda0;
   $("t_risk").textContent = pct(r.risk12);
   $("t_risk").className = "n" + (over ? " over" : "");
