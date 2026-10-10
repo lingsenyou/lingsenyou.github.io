@@ -47,19 +47,22 @@
         "about": { "@id": "https://lingsenyou.com/#person" },
         "isPartOf": { "@id": "https://lingsenyou.com/#website" },
         "datePublished": "2026-08-13",
-        "dateModified": "2026-10-08",
+        "dateModified": "2026-10-09",
         "mainEntity": {
           "@type": "ItemList",
-          "numberOfItems": 8,
+          "numberOfItems": 11,
           "itemListElement": [
-            { "@type": "ListItem", "position": 1, "item": { "@id": "https://doi.org/10.1186/s40364-026-00993-1" } },
-            { "@type": "ListItem", "position": 2, "item": { "@id": "https://doi.org/10.1038/s41377-026-02410-6" } },
-            { "@type": "ListItem", "position": 3, "item": { "@id": "https://doi.org/10.1038/s41528-026-00537-5" } },
-            { "@type": "ListItem", "position": 4, "item": { "@id": "https://doi.org/10.1360/csb-2026-0332" } },
-            { "@type": "ListItem", "position": 5, "item": { "@id": "https://doi.org/10.1093/eurheartj/ehaf418" } },
-            { "@type": "ListItem", "position": 6, "item": { "@id": "https://doi.org/10.1016/j.scib.2025.12.051" } },
-            { "@type": "ListItem", "position": 7, "item": { "@id": "https://doi.org/10.1007/s42765-025-00542-9" } },
-            { "@type": "ListItem", "position": 8, "item": { "@id": "https://doi.org/10.34133/research.0974" } }
+            { "@type": "ListItem", "position": 1, "item": { "@id": "https://doi.org/10.1093/eurheartj/ehag783" } },
+            { "@type": "ListItem", "position": 2, "item": { "@id": "https://arxiv.org/abs/2609.14709" } },
+            { "@type": "ListItem", "position": 3, "item": { "@id": "https://doi.org/10.1016/j.molmed.2026.09.007" } },
+            { "@type": "ListItem", "position": 4, "item": { "@id": "https://doi.org/10.1186/s40364-026-00993-1" } },
+            { "@type": "ListItem", "position": 5, "item": { "@id": "https://doi.org/10.1038/s41377-026-02410-6" } },
+            { "@type": "ListItem", "position": 6, "item": { "@id": "https://doi.org/10.1038/s41528-026-00537-5" } },
+            { "@type": "ListItem", "position": 7, "item": { "@id": "https://doi.org/10.1360/csb-2026-0332" } },
+            { "@type": "ListItem", "position": 8, "item": { "@id": "https://doi.org/10.1093/eurheartj/ehaf418" } },
+            { "@type": "ListItem", "position": 9, "item": { "@id": "https://doi.org/10.1016/j.scib.2025.12.051" } },
+            { "@type": "ListItem", "position": 10, "item": { "@id": "https://doi.org/10.1007/s42765-025-00542-9" } },
+            { "@type": "ListItem", "position": 11, "item": { "@id": "https://doi.org/10.34133/research.0974" } }
           ]
         }
       },
@@ -69,6 +72,18 @@
           { "@type": "ListItem", "position": 1, "name": "Lingsen You", "item": "https://lingsenyou.com/" },
           { "@type": "ListItem", "position": 2, "name": "Publications & Research", "item": "https://lingsenyou.com/publications/" }
         ]
+      },
+      {
+        "@type": "ScholarlyArticle",
+        "@id": "https://doi.org/10.1093/eurheartj/ehag783",
+        "url": "https://doi.org/10.1093/eurheartj/ehag783",
+        "headline": "From Shanghai to the world: the Oriental Congress of Cardiology 20 years in",
+        "datePublished": "2026-10-07",
+        "author": [{ "@id": "https://lingsenyou.com/#person" }, { "@type": "Person", "name": "Li Shen" }, { "@type": "Person", "name": "Junbo Ge" }],
+        "isPartOf": { "@type": "Periodical", "name": "European Heart Journal" },
+        "genre": "Events and Meetings (CardioPulse)",
+        "image": "https://lingsenyou.com/ehj-occ-20-years-cover.png",
+        "identifier": { "@type": "PropertyValue", "propertyID": "DOI", "value": "10.1093/eurheartj/ehag783" }
       },
       {
         "@type": "ScholarlyArticle",
@@ -178,6 +193,7 @@
     article.nofig { grid-template-columns:1fr; }
     .doi { display:inline-block; margin-top:8px; font-weight:700; font-size:.9rem; }
     article img.figure { object-fit:contain; background:#fff; }
+    article img.page-cover { height:auto; object-fit:contain; background:#fff; }
     footer { margin-top:50px; padding-top:24px; border-top:1px solid var(--line); color:var(--muted); font-size:.85rem; }
     @media(max-width:760px) { .themes{grid-template-columns:1fr}.hero{padding:45px 0}article{grid-template-columns:90px 1fr;padding:16px;gap:15px}article.nofig{grid-template-columns:1fr}article img{width:90px;height:110px}.wcj,.tier{white-space:normal;border-radius:6px;margin-left:0} }
   </style>
@@ -204,6 +220,10 @@
     <section aria-labelledby="selected-title">
       <h2 id="selected-title">Selected publications</h2>
       <div class="pub-list">
+        <article>
+          <a href="https://doi.org/10.1093/eurheartj/ehag783" target="_blank" rel="noopener" aria-label="Read the European Heart Journal CardioPulse article"><img class="page-cover" src="../ehj-occ-20-years-cover.png" alt="First page of the European Heart Journal article From Shanghai to the world: the Oriental Congress of Cardiology 20 years in" width="1323" height="1764" loading="lazy" decoding="async"></a>
+          <div><h3><a href="https://doi.org/10.1093/eurheartj/ehag783" target="_blank" rel="noopener">From Shanghai to the world: the Oriental Congress of Cardiology 20 years in</a></h3><p class="authors"><strong>Lingsen You</strong>, Li Shen, Junbo Ge</p><p class="venue"><cite>European Heart Journal</cite> &middot; CardioPulse: Events and Meetings &middot; Published online 7 October 2026</p><p class="summary">A meeting report tracing the Oriental Congress of Cardiology's growth from a Shanghai meeting into a global platform, and examining how its 20th anniversary brings scale, international collaboration and evidence standards into focus.</p><a class="doi" href="https://doi.org/10.1093/eurheartj/ehag783" target="_blank" rel="noopener">DOI: 10.1093/eurheartj/ehag783</a></div>
+        </article>
         <article>
           <img class="figure" src="../immune-world-model.png" alt="Architecture of an immune world model linking cellular state, tissue immune context and individual context through a governed AI Scientist workflow" width="150" height="150" loading="lazy">
           <div><h3><a href="https://arxiv.org/abs/2609.14709" target="_blank" rel="noopener">An immune world model for multiscale forecasting and therapeutic hypothesis generation</a></h3><p class="authors">Taoyong Cui, Xi Wang, Zonghang Li, Jinchao Ding, <strong>Lingsen You</strong>, Yuzhi Xu, Wanghan Xu, Fang Wu, Kejun Ying, Wanli Ouyang, Pheng Ann Heng, Ling Yang, Zhenfei Yin, Yingcheng Wu</p><p class="venue"><cite>arXiv</cite> &middot; submitted 13 September 2026</p><p class="summary">A governed evolutionary AI Scientist constructs an action-conditioned immune world model linking cellular programs, tissue ecology and individual immune context. The study nominates IL-36&gamma; plus SIRP&alpha; inhibition as a prospectively testable hypothesis, not a validated therapy.</p><a class="doi" href="https://arxiv.org/abs/2609.14709" target="_blank" rel="noopener">arXiv:2609.14709</a></div>
@@ -246,7 +266,7 @@
         </article>
       </div>
     </section>
-    <footer>Publication metadata checked against Crossref and arXiv. <strong>2025 World-Class Sci-Tech Journal</strong> marks journals included in the 2025 list of World-Class Sci-Tech Journals released by ISTIC (China) in September 2026. Last updated 8 October 2026. Return to the <a href="https://lingsenyou.com/">Lingsen You profile</a>.</footer>
+    <footer>Publication metadata checked against publisher records, Crossref and arXiv. <strong>2025 World-Class Sci-Tech Journal</strong> marks journals included in the 2025 list of World-Class Sci-Tech Journals released by ISTIC (China) in September 2026. Last updated 9 October 2026. Return to the <a href="https://lingsenyou.com/">Lingsen You profile</a>.</footer>
   </main>
 </body>
 </html>
