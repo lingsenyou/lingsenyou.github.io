@@ -190,6 +190,11 @@
     .summary { margin-top:11px; }
     .wcj { display:inline-block; margin-left:6px; padding:0 8px; border:1px solid #e8a9a3; border-radius:999px; background:#fdecea; color:#a50e0e; font-size:.8rem; font-weight:700; line-height:1.6; white-space:nowrap; vertical-align:1px; }
     .tier { display:inline-block; margin-left:6px; padding:0 8px; border:1px solid #9bb7d4; border-radius:999px; background:#eef4fa; color:#0b4f87; font-size:.8rem; font-weight:700; line-height:1.6; white-space:nowrap; vertical-align:1px; }
+    .journal-metrics { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0; }
+    .journal-metrics span { padding:2px 8px; border-radius:5px; background:#eef4fa; color:#0b4f87; font-size:.8rem; font-weight:700; }
+    .journal-metrics .metric-if { border:1px solid #1a0dab; background:#e8f0fe; color:#1a0dab; }
+    .journal-metrics .metric-publisher { background:#e6f4ea; color:#137333; }
+    .metrics-note { margin:8px 0; color:var(--muted); font-size:.8rem; }
     article.nofig { grid-template-columns:1fr; }
     .doi { display:inline-block; margin-top:8px; font-weight:700; font-size:.9rem; }
     article img.figure { object-fit:contain; background:#fff; }
@@ -222,7 +227,20 @@
       <div class="pub-list">
         <article>
           <a href="https://doi.org/10.1093/eurheartj/ehag783" target="_blank" rel="noopener" aria-label="Read the European Heart Journal CardioPulse article"><img class="page-cover" src="../ehj-occ-20-years-cover.png" alt="First page of the European Heart Journal article From Shanghai to the world: the Oriental Congress of Cardiology 20 years in" width="1323" height="1764" loading="lazy" decoding="async"></a>
-          <div><h3><a href="https://doi.org/10.1093/eurheartj/ehag783" target="_blank" rel="noopener">From Shanghai to the world: the Oriental Congress of Cardiology 20 years in</a></h3><p class="authors"><strong>Lingsen You</strong>, Li Shen, Junbo Ge</p><p class="venue"><cite>European Heart Journal</cite> &middot; CardioPulse: Events and Meetings &middot; Published online 7 October 2026</p><p class="summary">A meeting report tracing the Oriental Congress of Cardiology's growth from a Shanghai meeting into a global platform, and examining how its 20th anniversary brings scale, international collaboration and evidence standards into focus.</p><a class="doi" href="https://doi.org/10.1093/eurheartj/ehag783" target="_blank" rel="noopener">DOI: 10.1093/eurheartj/ehag783</a></div>
+          <div>
+            <h3><a href="https://doi.org/10.1093/eurheartj/ehag783" target="_blank" rel="noopener">From Shanghai to the world: the Oriental Congress of Cardiology 20 years in</a></h3>
+            <p class="authors"><strong>Lingsen You</strong>, Li Shen, Junbo Ge</p>
+            <p class="venue"><cite>European Heart Journal</cite> &middot; CardioPulse: Events and Meetings &middot; Published online 7 October 2026</p>
+            <div class="journal-metrics" aria-label="European Heart Journal information and 2025 citation metrics">
+              <span class="metric-publisher">Oxford University Press</span>
+              <span>ESC official journal</span>
+              <span class="metric-if">IF 45.6 (2025)</span>
+              <span>Cardiovascular rank 2/237</span>
+            </div>
+            <p class="metrics-note">2025 metrics: 5-year IF 42.2 &middot; JCI 7.96 &middot; CiteScore 35.9. Impact factor rank: Cardiac &amp; Cardiovascular Systems. <a href="https://academic.oup.com/eurheartj/pages/About" target="_blank" rel="noopener">Official OUP source</a>.</p>
+            <p class="summary">A meeting report tracing the Oriental Congress of Cardiology's growth from a Shanghai meeting into a global platform, and examining how its 20th anniversary brings scale, international collaboration and evidence standards into focus.</p>
+            <a class="doi" href="https://doi.org/10.1093/eurheartj/ehag783" target="_blank" rel="noopener">DOI: 10.1093/eurheartj/ehag783</a>
+          </div>
         </article>
         <article>
           <img class="figure" src="../immune-world-model.png" alt="Architecture of an immune world model linking cellular state, tissue immune context and individual context through a governed AI Scientist workflow" width="150" height="150" loading="lazy">
@@ -250,7 +268,7 @@
         </article>
         <article>
           <img src="../paper1.jpg" alt="European Heart Journal article on China's panvascular interventional science center" width="150" height="150" loading="lazy">
-          <div><h3><a href="https://doi.org/10.1093/eurheartj/ehaf418" rel="noopener">The foundation and development of China’s National Basic Science Center for panvascular interventional complex systems</a></h3><p class="authors"><strong>Lingsen You</strong>, Li Shen, Junbo Ge</p><p class="venue"><cite>European Heart Journal</cite> · 4 June 2025 <span class="wcj" title="Included in the 2025 list of World-Class Sci-Tech Journals released by the Institute of Scientific and Technical Information of China (ISTIC) on 12 September 2026">2025 World-Class Sci-Tech Journal</span></p><p class="summary">An account of the centre’s scientific foundations and its programme for pioneering device–vessel suitcordance research.</p><a class="doi" href="https://doi.org/10.1093/eurheartj/ehaf418" rel="noopener">DOI: 10.1093/eurheartj/ehaf418</a></div>
+          <div><h3><a href="https://doi.org/10.1093/eurheartj/ehaf418" rel="noopener">The foundation and development of China’s National Basic Science Center for panvascular interventional complex systems</a></h3><p class="authors"><strong>Lingsen You</strong>, Li Shen, Junbo Ge</p><p class="venue"><cite>European Heart Journal</cite> · 4 June 2025 <span class="wcj" title="Included in the 2025 list of World-Class Sci-Tech Journals released by the Institute of Scientific and Technical Information of China (ISTIC) on 12 September 2026">2025 World-Class Sci-Tech Journal</span></p><div class="journal-metrics" aria-label="European Heart Journal information and 2025 citation metrics"><span class="metric-publisher">Oxford University Press</span><span>ESC official journal</span><span class="metric-if">IF 45.6 (2025)</span><span>Cardiovascular rank 2/237</span></div><p class="metrics-note">2025 Journal Impact Factor and subject rank. <a href="https://academic.oup.com/eurheartj/pages/About" target="_blank" rel="noopener">Official OUP source</a>.</p><p class="summary">An account of the centre’s scientific foundations and its programme for pioneering device–vessel suitcordance research.</p><a class="doi" href="https://doi.org/10.1093/eurheartj/ehaf418" rel="noopener">DOI: 10.1093/eurheartj/ehaf418</a></div>
         </article>
         <article>
           <img src="../paper2.jpg" alt="FLOW Framework panvascular-on-a-chip research" width="150" height="150" loading="lazy">
