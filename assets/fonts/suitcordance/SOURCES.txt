@@ -1,0 +1,30 @@
+These are unmodified Latin WOFF2 subsets served by Google Fonts for the
+original Suitcordance Bench font selection. Downloaded 2026-10-28.
+All font files are covered by the accompanying OFL.txt.
+
+Original stylesheet:
+https://fonts.googleapis.com/css2?family=Barlow:wght@400;500;600&family=Barlow+Condensed:wght@500;600;700&family=IBM+Plex+Mono:wght@400;500;600&display=swap
+
+barlow-400-latin.woff2
+https://fonts.gstatic.com/s/barlow/v13/7cHpv4kjgoGqM7E_DMs5.woff2
+barlow-500-latin.woff2
+https://fonts.gstatic.com/s/barlow/v13/7cHqv4kjgoGqM7E3_-gs51os.woff2
+barlow-600-latin.woff2
+https://fonts.gstatic.com/s/barlow/v13/7cHqv4kjgoGqM7E30-8s51os.woff2
+barlow-condensed-500-latin.woff2
+https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4-Lwz3bWuQ.woff2
+barlow-condensed-600-latin.woff2
+https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B4873z3bWuQ.woff2
+barlow-condensed-700-latin.woff2
+https://fonts.gstatic.com/s/barlowcondensed/v13/HTxwL3I-JCGChYJ8VI-L6OO_au7B46r2z3bWuQ.woff2
+ibm-plex-mono-400-latin.woff2
+https://fonts.gstatic.com/s/ibmplexmono/v20/-F63fjptAgt5VM-kVkqdyU8n1i8q1w.woff2
+ibm-plex-mono-500-latin.woff2
+https://fonts.gstatic.com/s/ibmplexmono/v20/-F6qfjptAgt5VM-kVkqdyU8n3twJwlBFgg.woff2
+ibm-plex-mono-600-latin.woff2
+https://fonts.gstatic.com/s/ibmplexmono/v20/-F6qfjptAgt5VM-kVkqdyU8n3vAOwlBFgg.woff2
+
+Official license sources:
+https://raw.githubusercontent.com/google/fonts/main/ofl/barlow/OFL.txt
+https://raw.githubusercontent.com/google/fonts/main/ofl/barlowcondensed/OFL.txt
+https://raw.githubusercontent.com/google/fonts/main/ofl/ibmplexmono/OFL.txt
