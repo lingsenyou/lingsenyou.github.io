@@ -349,6 +349,28 @@
             margin-bottom: 20px;
         }
         .ui-icon { display: inline-block; width: 20px; color: #777; }
+
+        .clinic-hours {
+            margin: 20px 0;
+            padding: 14px 16px;
+            border-left: 3px solid var(--link-color);
+            border-radius: 0 5px 5px 0;
+            background: #f1f8ff;
+            text-align: left;
+        }
+        .clinic-hours h2 {
+            margin: 0 0 8px;
+            padding: 0;
+            border: 0;
+            font-size: 14px;
+            letter-spacing: 0;
+            text-transform: none;
+        }
+        .clinic-hours p { margin: 0; text-align: left; }
+        .clinic-hours .clinic-time { font-size: 15px; font-weight: 700; }
+        .clinic-hours .clinic-time-en { font-size: 13px; color: var(--secondary-text); }
+        .clinic-hours .clinic-note { margin-top: 10px; font-size: 13px; color: var(--secondary-text); }
+        .clinic-hours .clinic-note-en { margin-top: 6px; font-size: 12px; color: var(--secondary-text); }
         
         /* 按钮通用样式 */
         .action-btn {
@@ -604,6 +626,14 @@
             <strong>Zhongshan Hospital,<br>Fudan University</strong><br>
             <span style="font-size: 13px; color: #666; font-weight: normal;">(QS World Rank: 26)</span>
         </div>
+
+        <section class="clinic-hours" aria-labelledby="clinic-hours-heading">
+            <h2 id="clinic-hours-heading"><span lang="zh-CN">门诊时间</span> / Clinic Hours</h2>
+            <p class="clinic-time" lang="zh-CN">周三上午 8:00–12:00</p>
+            <p class="clinic-time-en">Wednesdays, 8:00 a.m.–12:00 noon</p>
+            <p class="clinic-note" lang="zh-CN">具体开展时间以心内科主任葛均波院士安排为准。</p>
+            <p class="clinic-note-en">Clinic availability is subject to arrangements by Prof. Junbo Ge, CAS Academician and Director of Cardiology.</p>
+        </section>
 
         <div class="contact-info">
             <div style="margin-bottom:8px;">
