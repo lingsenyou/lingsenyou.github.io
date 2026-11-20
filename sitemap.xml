@@ -1,16 +1,40 @@
 <?xml version="1.0" encoding="UTF-8"?>
-<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9" xmlns:xhtml="http://www.w3.org/1999/xhtml">
   <url>
     <loc>https://lingsenyou.com/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lingsenyou.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://lingsenyou.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lingsenyou.com/"/>
+  </url>
+  <url>
+    <loc>https://lingsenyou.com/zh/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>1.0</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lingsenyou.com/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://lingsenyou.com/zh/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lingsenyou.com/"/>
   </url>
   <url>
     <loc>https://lingsenyou.com/publications/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lingsenyou.com/publications/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://lingsenyou.com/zh/publications/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lingsenyou.com/publications/"/>
+  </url>
+  <url>
+    <loc>https://lingsenyou.com/zh/publications/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lingsenyou.com/publications/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://lingsenyou.com/zh/publications/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lingsenyou.com/publications/"/>
   </url>
   <url>
     <loc>https://lingsenyou.com/medeng/</loc>
@@ -20,20 +44,56 @@
   </url>
   <url>
     <loc>https://lingsenyou.com/panvascular/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lingsenyou.com/panvascular/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://lingsenyou.com/zh/panvascular/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lingsenyou.com/panvascular/"/>
+  </url>
+  <url>
+    <loc>https://lingsenyou.com/zh/panvascular/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lingsenyou.com/panvascular/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://lingsenyou.com/zh/panvascular/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lingsenyou.com/panvascular/"/>
   </url>
   <url>
     <loc>https://lingsenyou.com/scientific/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lingsenyou.com/scientific/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://lingsenyou.com/zh/scientific/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lingsenyou.com/scientific/"/>
+  </url>
+  <url>
+    <loc>https://lingsenyou.com/zh/scientific/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.9</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lingsenyou.com/scientific/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://lingsenyou.com/zh/scientific/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lingsenyou.com/scientific/"/>
   </url>
   <url>
     <loc>https://lingsenyou.com/suitcordance/</loc>
-    <lastmod>2026-11-06</lastmod>
+    <lastmod>2026-11-19</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lingsenyou.com/suitcordance/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://lingsenyou.com/zh/suitcordance/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lingsenyou.com/suitcordance/"/>
+  </url>
+  <url>
+    <loc>https://lingsenyou.com/zh/suitcordance/</loc>
+    <lastmod>2026-11-19</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+    <xhtml:link rel="alternate" hreflang="en" href="https://lingsenyou.com/suitcordance/"/>
+    <xhtml:link rel="alternate" hreflang="zh-Hans" href="https://lingsenyou.com/zh/suitcordance/"/>
+    <xhtml:link rel="alternate" hreflang="x-default" href="https://lingsenyou.com/suitcordance/"/>
   </url>
 </urlset>

@@ -1,0 +1,881 @@
+<!DOCTYPE html>
+
+<html lang="zh-CN">
+<head>
+<meta charset="utf-8"/>
+<meta content="width=device-width, initial-scale=1" name="viewport"/>
+<title>器械与血管适配工作台 | 游凌森</title>
+<meta content="泛血管介入器械与血管适配研究原型：在六个动脉区域中计算四维适配指标、时间常数及候选器械排序。仅用于研究与方法探索，未经患者数据验证，不可用于临床决策。" name="description"/>
+<meta content="index, follow" name="robots"/>
+<meta content="Lingsen You" name="author"/>
+<meta content="website" property="og:type"/>
+<meta content="器械与血管适配工作台 | 游凌森" property="og:title"/>
+<meta content="泛血管介入器械与血管适配研究原型：在六个动脉区域中计算四维适配指标、时间常数及候选器械排序。仅用于研究与方法探索，未经患者数据验证，不可用于临床决策。" property="og:description"/>
+<meta content="#f5f7f8" name="theme-color"/>
+<link href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'%3E%3Ctext y='.9em' font-size='88'%3E%F0%9F%A9%BA%3C/text%3E%3C/svg%3E" rel="icon"/>
+<script>
+  /* Theme is read before first paint, and shared with the radar page. */
+  try {
+    var t = localStorage.getItem("pv:theme");
+    if (t === "dark" || t === "light") document.documentElement.setAttribute("data-theme", t);
+  } catch (e) {}
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "WebApplication",
+  "name": "器械与血管适配工作台",
+  "url": "https://lingsenyou.com/zh/suitcordance/",
+  "applicationCategory": "EducationalApplication",
+  "operatingSystem": "Web",
+  "description": "泛血管介入器械与血管适配研究原型：在六个动脉区域中计算四维适配指标、时间常数及候选器械排序。仅用于研究与方法探索，未经患者数据验证，不可用于临床决策。",
+  "author": {
+    "@type": "Person",
+    "@id": "https://lingsenyou.com/#person",
+    "name": "Lingsen You",
+    "alternateName": [
+      "Lucas You",
+      "游凌森"
+    ],
+    "url": "https://lingsenyou.com/zh/",
+    "description": "Lingsen You is a physician and interventional cardiologist at Zhongshan Hospital, Fudan University.",
+    "jobTitle": [
+      "Physician",
+      "Interventional Cardiologist"
+    ],
+    "worksFor": {
+      "@type": "MedicalOrganization",
+      "name": "Zhongshan Hospital, Fudan University",
+      "alternateName": "复旦大学附属中山医院"
+    }
+  },
+  "isPartOf": {
+    "@id": "https://lingsenyou.com/zh/#website"
+  },
+  "publisher": {
+    "@id": "https://lingsenyou.com/#person"
+  },
+  "inLanguage": "zh-CN"
+}
+</script>
+<style>
+/* Original Google Fonts Latin subsets, self-hosted to avoid external font requests.
+   Licenses and source URLs: ../assets/fonts/suitcordance/OFL.txt and SOURCES.txt. */
+@font-face{font-family:"Barlow";font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/suitcordance/barlow-400-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow";font-style:normal;font-weight:500;font-display:swap;src:url("/assets/fonts/suitcordance/barlow-500-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow";font-style:normal;font-weight:600;font-display:swap;src:url("/assets/fonts/suitcordance/barlow-600-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:500;font-display:swap;src:url("/assets/fonts/suitcordance/barlow-condensed-500-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:600;font-display:swap;src:url("/assets/fonts/suitcordance/barlow-condensed-600-latin.woff2") format("woff2")}
+@font-face{font-family:"Barlow Condensed";font-style:normal;font-weight:700;font-display:swap;src:url("/assets/fonts/suitcordance/barlow-condensed-700-latin.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:400;font-display:swap;src:url("/assets/fonts/suitcordance/ibm-plex-mono-400-latin.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:500;font-display:swap;src:url("/assets/fonts/suitcordance/ibm-plex-mono-500-latin.woff2") format("woff2")}
+@font-face{font-family:"IBM Plex Mono";font-style:normal;font-weight:600;font-display:swap;src:url("/assets/fonts/suitcordance/ibm-plex-mono-600-latin.woff2") format("woff2")}
+html{color-scheme:light dark}
+body{margin:0}
+img{max-width:100%}
+[hidden]{display:none!important}
+:root{
+  --bg:#f5f7f8; --panel:#ffffff; --panel-2:#eef1f3;
+  --ink:#10151b; --ink-2:#414c58; --muted:#6c7884; --hair:#dbe1e6;
+  --accent:#0a6d9e; --accent-soft:#e4eef4;
+  --axis-g:#0a6d9e; --axis-m:#c2692a; --axis-h:#7a5ea8; --axis-b:#2f8f5b;
+  --alarm:#a8332a; --alarm-soft:#f6e4e1;
+  --shadow:0 1px 2px rgba(16,21,27,.06), 0 8px 24px rgba(16,21,27,.05);
+  --sans:"Barlow","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --cond:"Barlow Condensed","PingFang SC","Microsoft YaHei",system-ui,sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,SFMono-Regular,Menlo,monospace;
+}
+@media (prefers-color-scheme:dark){:root:not([data-theme="light"]){
+  --bg:#14181d; --panel:#1b2027; --panel-2:#222831;
+  --ink:#e7ebef; --ink-2:#b6c0ca; --muted:#8d98a5; --hair:#2b323b;
+  --accent:#2e93c4; --accent-soft:#1c2c38;
+  --axis-g:#2e93c4; --axis-m:#c87a35; --axis-h:#9179c4; --axis-b:#46a06b;
+  --alarm:#d9756a; --alarm-soft:#33211f;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+}}
+:root[data-theme="dark"]{
+  --bg:#14181d; --panel:#1b2027; --panel-2:#222831;
+  --ink:#e7ebef; --ink-2:#b6c0ca; --muted:#8d98a5; --hair:#2b323b;
+  --accent:#2e93c4; --accent-soft:#1c2c38;
+  --axis-g:#2e93c4; --axis-m:#c87a35; --axis-h:#9179c4; --axis-b:#46a06b;
+  --alarm:#d9756a; --alarm-soft:#33211f;
+  --shadow:0 1px 2px rgba(0,0,0,.4), 0 8px 24px rgba(0,0,0,.3);
+}
+*{box-sizing:border-box}
+body{background:var(--bg);color:var(--ink);font-family:var(--sans);font-size:15px;
+  line-height:1.5;-webkit-font-smoothing:antialiased;padding:0 16px;margin:0}
+.wrap{max-width:1220px;margin:0 auto;padding-block:20px 56px}
+h1,h2,h3{margin:0;text-wrap:balance}
+.eyebrow{font-family:var(--cond);text-transform:uppercase;letter-spacing:.10em;
+  font-size:12px;font-weight:600;color:var(--muted)}
+.num{font-family:var(--mono);font-variant-numeric:tabular-nums}
+
+/* header */
+header{display:flex;flex-wrap:wrap;align-items:baseline;gap:8px 16px;
+  padding-block:8px 14px;border-bottom:1px solid var(--hair)}
+header h1{font-family:var(--cond);font-size:clamp(26px,4.4vw,38px);font-weight:700;
+  letter-spacing:.01em;line-height:1.05}
+header .sub{color:var(--ink-2);font-size:14px;max-width:62ch}
+.warn{margin-top:14px;display:flex;gap:10px;align-items:flex-start;
+  background:var(--alarm-soft);border-left:3px solid var(--alarm);
+  padding:10px 14px;font-size:13.5px;color:var(--ink-2);border-radius:0 4px 4px 0}
+.warn b{color:var(--ink)}
+
+/* layout */
+.grid{display:grid;grid-template-columns:330px minmax(0,1fr);gap:20px;margin-top:20px}
+@media (max-width:900px){.grid{grid-template-columns:1fr}}
+.panel{background:var(--panel);border:1px solid var(--hair);border-radius:8px;
+  padding:16px;box-shadow:var(--shadow)}
+.stack{display:flex;flex-direction:column;gap:18px}
+
+/* form */
+.beds{display:grid;grid-template-columns:repeat(3,1fr);gap:6px;margin-bottom:16px}
+.beds button{font-family:var(--cond);font-size:14px;font-weight:600;letter-spacing:.02em;
+  padding:7px 4px;background:var(--panel-2);color:var(--ink-2);border:1px solid transparent;
+  border-radius:5px;cursor:pointer;transition:background .12s,color .12s}
+.beds button:hover{background:var(--accent-soft)}
+.beds button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+.field{margin-bottom:13px}
+.field label{display:flex;justify-content:space-between;align-items:baseline;
+  font-size:12.5px;color:var(--ink-2);margin-bottom:3px;gap:8px}
+.field label .v{font-family:var(--mono);font-size:12.5px;color:var(--ink);font-weight:500}
+input[type=range]{width:100%;accent-color:var(--accent);margin:0}
+.toggles{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.toggles button{font-size:12.5px;padding:5px 10px;border-radius:99px;cursor:pointer;
+  background:var(--panel-2);color:var(--ink-2);border:1px solid var(--hair);font-family:var(--sans)}
+.toggles button[aria-pressed="true"]{background:var(--accent);color:#fff;border-color:var(--accent)}
+select{width:100%;font-family:var(--sans);font-size:13.5px;padding:6px 8px;
+  background:var(--panel-2);color:var(--ink);border:1px solid var(--hair);border-radius:5px}
+.hint{font-size:12px;color:var(--muted);margin-top:10px;line-height:1.45}
+
+/* headline tiles */
+.tiles{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--hair);
+  border:1px solid var(--hair);border-radius:8px;overflow:hidden}
+@media (max-width:560px){.tiles{grid-template-columns:1fr}}
+.tile{background:var(--panel);padding:14px 16px}
+.tile .k{font-family:var(--cond);text-transform:uppercase;letter-spacing:.09em;
+  font-size:11.5px;font-weight:600;color:var(--muted)}
+.tile .n{font-family:var(--mono);font-size:30px;font-weight:600;line-height:1.15;
+  margin-top:3px;font-variant-numeric:tabular-nums}
+.tile .d{font-size:12px;color:var(--ink-2);margin-top:2px}
+.tile.risk .n.over{color:var(--alarm)}
+
+/* axis bars */
+.axrow{display:grid;grid-template-columns:118px minmax(0,1fr) 54px;align-items:center;
+  gap:10px;padding:5px 0}
+.axrow .name{font-size:13px;color:var(--ink-2)}
+.axrow .name b{color:var(--ink);font-family:var(--mono);font-size:12.5px;margin-right:5px}
+.track{height:12px;background:var(--panel-2);border-radius:3px;position:relative;overflow:hidden}
+.bar{height:100%;border-radius:0 3px 3px 0}
+.axrow .val{font-family:var(--mono);font-size:13px;text-align:right;font-variant-numeric:tabular-nums}
+.wgt{font-family:var(--mono);font-size:10.5px;color:var(--muted)}
+
+/* chart */
+.chartbox{position:relative}
+svg{display:block;width:100%;height:auto;overflow:visible}
+.legend{display:flex;flex-wrap:wrap;gap:4px 14px;margin-top:8px;font-size:12px;color:var(--ink-2)}
+.legend span{display:inline-flex;align-items:center;gap:5px}
+.swatch{width:14px;height:3px;border-radius:2px;display:inline-block}
+.tip{position:absolute;pointer-events:none;background:var(--panel);border:1px solid var(--hair);
+  border-radius:5px;padding:7px 9px;font-size:12px;box-shadow:var(--shadow);min-width:132px;z-index:5}
+.tip .r{display:flex;justify-content:space-between;gap:12px}
+.tip .r b{font-family:var(--mono);font-weight:500}
+
+/* table */
+table{width:100%;border-collapse:collapse;font-size:13.5px}
+th{font-family:var(--cond);text-transform:uppercase;letter-spacing:.07em;font-size:11.5px;
+  font-weight:600;color:var(--muted);text-align:left;padding:6px 8px;border-bottom:1px solid var(--hair);
+  white-space:nowrap}
+td{padding:7px 8px;border-bottom:1px solid var(--hair);vertical-align:middle}
+tbody tr.pick{background:var(--accent-soft)}
+tbody tr{cursor:pointer}
+tbody tr:hover{background:var(--panel-2)}
+.chip{display:inline-flex;align-items:center;gap:4px;font-size:11.5px;padding:2px 7px;
+  border-radius:99px;background:var(--panel-2);color:var(--ink-2);white-space:nowrap}
+.dot{width:7px;height:7px;border-radius:50%;flex:none}
+.rbar{height:9px;background:var(--panel-2);border-radius:2px;position:relative;min-width:60px}
+.rbar i{position:absolute;left:0;top:0;bottom:0;background:var(--ink-2);border-radius:0 2px 2px 0}
+.rbar i.over{background:var(--alarm)}
+.rbar u{position:absolute;top:-2px;bottom:-2px;width:2px;background:var(--accent);opacity:.75}
+.scroll{overflow-x:auto}
+
+/* feedback */
+.fbform{display:none;margin-top:12px;gap:10px;flex-direction:column}
+.fbform.on{display:flex}
+textarea{width:100%;font-family:var(--sans);font-size:13.5px;padding:8px;border-radius:5px;
+  background:var(--panel-2);color:var(--ink);border:1px solid var(--hair);resize:vertical}
+.btn{font-family:var(--sans);font-size:13.5px;font-weight:500;padding:8px 16px;border-radius:5px;
+  border:1px solid var(--accent);background:var(--accent);color:#fff;cursor:pointer}
+.btn.ghost{background:transparent;color:var(--accent)}
+.btn:disabled{opacity:.5;cursor:default}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.cases{margin-top:12px;font-size:13px;color:var(--ink-2);display:flex;flex-direction:column;gap:7px}
+.case{border-left:2px solid var(--hair);padding-left:10px}
+.case .m{font-family:var(--mono);font-size:11.5px;color:var(--muted)}
+footer{margin-top:28px;padding-top:16px;border-top:1px solid var(--hair);
+  font-size:12.5px;color:var(--muted);line-height:1.6}
+:focus-visible{outline:2px solid var(--accent);outline-offset:2px}
+@media (prefers-reduced-motion:reduce){*{transition:none!important;animation:none!important}}
+/* site chrome */
+.topbar{border-bottom:1px solid var(--hair);background:var(--panel)}
+.topbar .in{max-width:1220px;margin:0 auto;padding:11px 0;display:flex;align-items:baseline;
+  justify-content:space-between;gap:14px;flex-wrap:wrap}
+.brand b{font-family:var(--cond);font-size:19px;letter-spacing:.01em}
+.brand small{color:var(--muted);font-size:12.5px;margin-left:8px}
+.chips{display:flex;gap:8px}
+.chip{font-family:var(--sans);font-size:13px;padding:5px 12px;border-radius:99px;cursor:pointer;
+  background:var(--panel-2);color:var(--ink-2);border:1px solid var(--hair);text-decoration:none}
+.chip:hover{background:var(--accent-soft);color:var(--accent)}
+.prose{max-width:68ch}
+.prose h3{font-family:var(--cond);text-transform:uppercase;letter-spacing:.08em;font-size:13px;
+  color:var(--muted);margin:20px 0 6px}
+.prose p{margin:0 0 10px;font-size:13.5px;color:var(--ink-2);line-height:1.62}
+.prose li{font-size:13.5px;color:var(--ink-2);line-height:1.6;margin-bottom:5px}
+.prose ul{margin:0 0 10px;padding-left:20px}
+.prose b{color:var(--ink)}
+details{margin-top:12px}
+summary{cursor:pointer;font-size:13.5px;color:var(--accent);font-weight:500}
+.anchors{width:100%;border-collapse:collapse;font-size:12.5px;margin-top:10px}
+.anchors th{font-family:var(--cond);text-transform:uppercase;letter-spacing:.06em;font-size:11px}
+.anchors td{padding:5px 8px}
+.anchors td.s{color:var(--muted);font-size:11.5px;line-height:1.45}
+
+/* Chinese localisation: typography only, no computational changes. */
+:root{--sans:system-ui,-apple-system,"Segoe UI","Microsoft YaHei","PingFang SC",sans-serif;--cond:var(--sans)}
+body{font-size:16px;line-height:1.65}
+header h1{line-height:1.4;letter-spacing:0;max-width:24em}
+.brand small{font-size:14px;letter-spacing:0}
+.prose{max-width:76ch}.prose p,.prose li{font-size:16px;line-height:1.8}
+.field label,.field label .v,.toggles button,.hint,.tile .k,.tile .d,.eyebrow,.axrow .name,.axrow .val,.legend,.tip,th,.chip,summary,.anchors th,.anchors td.s{font-size:14px;line-height:1.65;letter-spacing:0}
+.prose h3{font-size:16px;letter-spacing:0}.warn{font-size:15px;line-height:1.8}
+.anchors{font-size:14px}.wgt{font-size:13px}table{font-size:14px}
+.beds{grid-template-columns:repeat(2,minmax(0,1fr))}.beds button{font-size:14px}
+.grid{grid-template-columns:320px minmax(0,1fr)}
+.axrow{grid-template-columns:145px minmax(0,1fr) 54px}
+@media(max-width:900px){.grid{grid-template-columns:1fr}}
+@media(max-width:560px){.axrow{grid-template-columns:130px minmax(0,1fr) 48px;gap:6px}.brand small{display:block}.topbar .in{gap:12px}.anchors{min-width:900px}}
+</style>
+<meta content="https://lingsenyou.com/zh/suitcordance/" property="og:url"/><meta content="zh_CN" property="og:locale"/><link href="https://lingsenyou.com/zh/suitcordance/" rel="canonical"/>
+<link href="https://lingsenyou.com/suitcordance/" hreflang="en" rel="alternate"/>
+<link href="https://lingsenyou.com/zh/suitcordance/" hreflang="zh-Hans" rel="alternate"/>
+<link href="https://lingsenyou.com/suitcordance/" hreflang="x-default" rel="alternate"/>
+</head>
+<body>
+<div class="topbar"><div class="in" style="padding-left:16px;padding-right:16px">
+<div class="brand"><b>适配工作台</b><small>器械 × 血管，覆盖多动脉区域</small></div>
+<div class="chips"><a class="chip" href="/suitcordance/" lang="en">English</a>
+<a class="chip" href="/zh/">个人主页</a>
+<a class="chip" href="/zh/panvascular/">文献雷达</a>
+<button aria-pressed="false" class="chip" id="themeBtn" type="button">深色模式</button>
+</div>
+</div></div>
+<div class="wrap">
+<header>
+<h1>用四个维度，描述器械与血管的不匹配。</h1>
+<div class="sub">输入病变特征，查看 Γ<sub>sc</sub>(t)、时间常数 τ<sub>sc</sub>，以及按模型预测的12个月事件率排列的候选器械。六个动脉区域共用同一算子，并以已发表结局数据进行校准。</div>
+</header>
+<div class="warn">
+<div><b>研究原型，尚未经过患者数据验证。</b> 算子的自由常数仅由12个已发表的12个月事件率拟合而来，未使用患者级数据。本页所有计算值均为模型输出，<b>不得用于患者诊疗决策</b>。<br/><b>2026年9月19日修订。</b> 对引用进行对抗性审计后发现，初版16个校准锚点中，有13个并非所引文献实际报告的数值。这些值均偏高，倍数为1.0至5.8，其中5个来自同一文献的其他终点。现已替换锚点、六个区域的基线事件率及拟合常数，下表逐项列明每个来源实际测量的内容。</div>
+</div>
+<div class="grid">
+<aside class="panel">
+<div class="eyebrow" style="margin-bottom:8px">动脉区域</div>
+<div class="beds" id="beds"></div>
+<div class="field"><label>近端参考直径 <span class="v" id="lp">—</span></label>
+<input id="d_prox" max="11" min="1.5" step="0.05" type="range"/></div>
+<div class="field"><label>远端参考直径 <span class="v" id="ld">—</span></label>
+<input id="d_dist" max="11" min="1.5" step="0.05" type="range"/></div>
+<div class="field"><label>病变长度 <span class="v" id="ll">—</span></label>
+<input id="length" max="260" min="5" step="1" type="range"/></div>
+<div class="field"><label>钙化程度 <span class="v" id="lc">—</span></label>
+<input id="calcium" max="1" min="0" step="0.02" type="range"/></div>
+<div class="field"><label>迂曲程度 <span class="v" id="lt">—</span></label>
+<input id="tortuosity" max="1" min="0" step="0.02" type="range"/></div>
+<div class="field"><label>炎症负荷 <span class="v" id="li">—</span></label>
+<input id="inflammation" max="1" min="0" step="0.02" type="range"/></div>
+<div class="field" id="runoffField"><label>远端流出道 <span class="v" id="lr">—</span></label>
+<input id="runoff" max="3" min="0" step="1" type="range"/></div>
+<div class="eyebrow" style="margin:14px 0 6px">病变特征</div>
+<div class="toggles" id="flags"></div>
+<div class="eyebrow" style="margin:16px 0 6px">操作设置</div>
+<div class="field"><label for="prep">病变预处理</label><select id="prep"></select></div>
+<div class="toggles"><button aria-pressed="false" id="postdil">高压后扩张</button></div>
+<p class="hint" id="bednote"></p>
+<p class="hint" style="margin-top:6px"><b>λ₀表示参照组的事件率，并不代表最佳临床实践。</b> 膝下动脉区域采用IN.PACT DEEP药物球囊组作为参照。该试验未达到主要终点，出现大截肢风险信号（8.8%对3.6%），所用器械已于2013年在全球撤市。选择这一参照是因为其提供了该区域中终点裁定较完善的12个月数据，而非因为它代表更好的治疗。</p>
+</aside>
+<main class="stack">
+<div class="tiles">
+<div class="tile"><div class="k">释放时 Γsc</div><div class="n" id="t_g0">—</div>
+<div class="d" id="t_g0d">四维指标的加权几何均值</div></div>
+<div class="tile"><div class="k">τsc 时间常数</div><div class="n" id="t_tau">—</div>
+<div class="d" id="t_taud">不匹配的特征时间</div></div>
+<div class="tile risk"><div class="k">12个月事件率</div><div class="n" id="t_risk">—</div>
+<div class="d" id="t_riskd">—</div></div>
+</div>
+<section class="panel">
+<h2 class="eyebrow">释放时的四维适配</h2>
+<div id="axes" style="margin-top:10px"></div>
+<p class="hint" id="axhint"></p>
+</section>
+<section class="panel">
+<h2 class="eyebrow">Γ(t) 变化轨迹 · 0至24个月</h2>
+<div class="chartbox" id="chartbox" style="margin-top:8px">
+<svg aria-label="四维适配与总体适配程度的两年变化轨迹" id="chart" role="img" viewbox="0 0 720 300"></svg>
+<div class="tip" hidden="" id="tip"></div>
+</div>
+<div class="legend" id="legend"></div>
+</section>
+<section class="panel">
+<h2 class="eyebrow">候选器械 · 按模型预测的12个月事件率排序</h2>
+<div class="scroll"><table id="shortlist">
+<thead><tr><th>器械</th><th>规格</th><th>预处理</th><th>Γsc</th><th>τsc</th>
+<th>最弱维度</th><th style="width:158px">12个月事件率</th></tr></thead>
+<tbody></tbody></table></div>
+<p class="hint">点击任一行，将该方案载入上方图表。蓝色标线表示该动脉区域参照组的事件率（λ₀）。<br/>模型<b>未纳入费用、并发症、操作时间或造影剂用量</b>，因此几乎每次都会选择更充分的病变预处理。这一列反映的是模型缺口，不是治疗建议。</p>
+</section>
+<section class="panel prose">
+<h2 class="eyebrow">方法说明</h2>
+<p>这里将器械与血管相关的失败视为二者<b>适配程度</b>的属性，而非器械或血管单独一方的属性。同一算子应用于六个动脉区域，仅替换各区域自身参数。四个维度均映射到[0, 1]：</p>
+<ul>
+<li><b>Γ_G 几何适配</b>：尺寸与该区域允许范围的匹配、边缘覆盖、贴合性及锥度。</li>
+<li><b>Γ_M 力学适配</b>：器械与血管壁的顺应性不匹配、过度扩张造成的壁应力及循环疲劳。</li>
+<li><b>Γ_H 血流动力学适配</b>：有效管腔恢复、支架梁对血流的扰动、分支及远端流出道。</li>
+<li><b>Γ_B 生物学适配</b>：抗增殖作用与新生内膜生长驱动力之间的匹配，以及愈合窗口。</li>
+</ul>
+<p>四个维度按区域特异权重组合为加权几何均值：Γ<sub>sc</sub> = Π Γ<sub>i</sub><sup>w<sub>i</sub></sup>。采用几何均值体现了一项建模假设：器械可能在适配最差的维度上失败，乘积中的低值不像加和那样可由其他维度的高分抵消。所有指标均随时间变化，从轨迹可提取两个标量：<b>τ<sub>sc</sub></b>，即Γ<sub>sc</sub>(t)累计变化达到总变化量63.2%时的时间，以及时间平均不匹配剂量。风险连接函数为λ(t) = λ₀ · exp(β·(Γ*−Γ<sub>sc</sub>(t)))，并在<b>每个区域</b>以该区域参照器械达到的适配水平为锚点。</p>
+<h3>校准及其证据审计</h3>
+<p>13个自由常数中的11个，使用六个区域的<b>12个经审计的12个月事件率</b>进行拟合。拟合采用以审计后证据质量加权的对数优势最小二乘法，全区域共用一套参数，不逐区域调参。<b>平均绝对误差为1.4个百分点。</b></p>
+<p>对首版锚点集进行了对抗性审计：先独立查找每个数值，再由两名检查者分别核查引用是否存在且支持该数值，以及终点、时间点和人群是否一致。<b>16个锚点中仅3个通过，其中2个还是同一试验的两组。</b> 其余13个偏高，倍数为1.0至5.8，其中5个可准确追溯到所引文献的<b>其他终点</b>，例如将通畅率丧失误作血运重建率、将置信界误作点估计、将复合安全性终点误作再狭窄。同一试验中的靶病变失败与临床驱动的靶病变血运重建（TLR）可能相差两至三倍，因此把终点写成“二者之一”并不能解决问题。</p>
+<p>本次修订确定一个优先结局定义，即12个月临床驱动的TLR；为每个锚点声明7项来源字段；排除4个锚点但仍保留展示；将可信度权重从作者信心改为经审计的证据质量；并下调全部六个区域的基线事件率。</p>
+<details>
+<summary>锚点集及每个来源实际测量的内容</summary>
+<div class="scroll"><table class="anchors"><thead><tr><th>锚点</th><th>区域</th><th>观测值</th><th>预测值</th><th>Γsc</th><th>终点定义</th><th>触发规则</th><th>分析单位</th><th>观察窗口</th><th>可信度权重</th></tr></thead><tbody>
+<tr><td>COR-DES-modern</td><td>冠状动脉</td><td class="num">2.0%</td><td class="num">2.2%</td><td class="num">0.783</td><td>CD-TLR</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">0.90</td></tr><tr><td class="s" colspan="10">Kandzari DE, Mauri L, Koolen JJ, et al; BIOFLOW V Investigators. Ultrathin, bioresorbable polymer sirolimus-eluting stents versus thin, durable polymer everolimus-eluting stents in patients undergoing coronary revascularisation (BIOFLOW V). Lancet 2017;390(10105):1843-1852.<br/>首版锚点为4.5%，但BIOFLOW V任何组、任何终点均未报告此值。该试验CD-TLR为2.0%，TLF为6.2%。还应注意，队列中74%为ACC/AHA B2/C病变、51%为ACS、35%合并糖尿病，因此它锚定的是当代全人群，而不是旧锚点所声称的简单病变亚组。上方病变设定已调整为与试验一致，而非反向修改试验信息。</td></tr>
+<tr><td>COR-BRS-plla</td><td>冠状动脉</td><td class="num">3.0%</td><td class="num">1.7%</td><td class="num">0.702</td><td>CD-TLR</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">0.90</td></tr><tr><td class="s" colspan="10">Ellis SG, Kereiakes DJ, Metzger DC, et al; ABSORB III Investigators. Everolimus-eluting bioresorbable scaffolds for coronary artery disease. N Engl J Med 2015;373(20):1905-1915.<br/>ABSORB III同时报告了1年TLF 7.8%和缺血驱动TLR 3.0%。旧锚点使用7.8%；按CD-TLR规则应为3.0%，因为该试验TLF主要由围术期靶血管心肌梗死（6.0%）构成，而非血运重建。所用器械为第一代Absorb（157 um），已于2017年撤市。这是1年结果，不能说明该试验后来发现的第1至3年额外风险。</td></tr>
+<tr><td>COR-BMS</td><td>冠状动脉</td><td class="num">9.8%</td><td class="num">9.6%</td><td class="num">0.471</td><td>CD-TLR</td><td>临床</td><td>患者</td><td class="num">390 d</td><td class="num">0.75</td></tr><tr><td class="s" colspan="10">Urban P, Meredith IT, Abizaid A, et al; LEADERS FREE Investigators. Polymer-free drug-coated coronary stents in patients at high bleeding risk. N Engl J Med 2015;373(21):2038-2047.<br/>旧锚点为16%，来自20世纪90年代要求常规造影随访的裸金属支架试验；由“眼见狭窄即干预”反射引起的TLR是不同结局，不能放入CD-TLR列。观察窗口为390天，而非365天。人群为高出血风险患者，平均年龄75.7岁，DAPT仅1个月，无方案规定的造影随访。因此该值更适合作为裸金属支架CD-TLR的下限，而非一般性数值。相似设计的LEADERS FREE III报告10.6%，支持约10%而非约16%。</td></tr>
+<tr><td>COR-POBA</td><td>冠状动脉</td><td class="num">17.0%</td><td class="num">22.9%</td><td class="num">0.433</td><td>症状驱动TLR</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">0.55</td></tr><tr><td class="s" colspan="10">George CJ, Baim DS, Brinker JA, et al. One-year follow-up of the Stent Restenosis (STRESS I) Study. Am J Cardiol 1998;81(7):860-865.<br/>旧锚点32%实际上是同一试验支架组6个月的造影再狭窄率，组别、终点和时间点均有误。球囊组1年症状驱动TLR为17%。试验于1991至1993年纳入血管直径≥3.0 mm的局限性病变。不做常规造影的“症状驱动”规则，可能使结果低于现代CEC裁定的CD-TLR，与下方监测驱动锚点的偏差方向相反。它与外周血管锚点之间还存在22年的时代差异，不能视作干净的跨区域比较。</td></tr>
+<tr><td>SFA-DCB</td><td>股腘动脉</td><td class="num">2.4%</td><td class="num">2.5%</td><td class="num">0.740</td><td>CD-TLR</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">1.00</td></tr><tr><td class="s" colspan="10">Tepe G, Laird J, Schneider P, et al; IN.PACT SFA Trial Investigators. Drug-coated balloon versus standard percutaneous transluminal angioplasty for the treatment of superficial femoral and popliteal peripheral artery disease: 12-month results from the IN.PACT SFA randomized trial. Circulation 2015;131(5):495-502.<br/>通过审计，数值未变。与下方SFA-POBA共享同一试验、研究中心、CEC和CD-TLR触发定义；它们是两组，而非两个独立锚点。</td></tr>
+<tr><td>SFA-POBA</td><td>股腘动脉</td><td class="num">20.6%</td><td class="num">16.7%</td><td class="num">0.402</td><td>CD-TLR</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">1.00</td></tr><tr><td class="s" colspan="10">Tepe G, Laird J, Schneider P, et al; IN.PACT SFA Trial Investigators. Circulation 2015;131(5):495-502.<br/>通过审计，数值未变。同组的主要通畅率丧失为47.6%；若在此替换终点，就会错误得到这一数值。</td></tr>
+<tr><td>SFA-nitinol</td><td>股腘动脉</td><td class="num">12.7%</td><td class="num">12.8%</td><td class="num">0.333</td><td>TLR</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">0.70</td></tr><tr><td class="s" colspan="10">Laird JR, Katzen BT, Scheinert D, et al; RESILIENT Investigators. Nitinol stent implantation versus balloon angioplasty for lesions in the superficial femoral and proximal popliteal arteries of patients with claudication. Circ Cardiovasc Interv 2010;3(3):267-276.<br/>12个月免于TLR率为87.3%，即TLR为12.7%。论文未使用“临床驱动”一词，因此这是全因TLR，是CD-TLR的上界，并非相同结局。</td></tr>
+<tr><td>BTK-DCB</td><td>膝下动脉</td><td class="num">9.2%</td><td class="num">11.0%</td><td class="num">0.498</td><td>CD-TLR</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">0.70</td></tr><tr><td class="s" colspan="10">Zeller T, Baumgartner I, Scheinert D, et al; IN.PACT DEEP Trial Investigators. Drug-eluting balloon versus standard balloon angioplasty for infrapopliteal arterial revascularization in critical limb ischemia: 12-month results from the IN.PACT DEEP randomized trial. J Am Coll Cardiol 2014;64(15):1568-1576.<br/>旧锚点12%是该试验两组数值（9.2和13.1）的中点。两组取平均不能作为锚点。IN.PACT DEEP为阴性试验：未达主要有效性终点，与普通球囊相比无获益，出现大截肢风险信号（8.8%对3.6%，p = 0.080），IN.PACT Amphirion于2013年11月全球撤市。使用该组是因为其为该区域终点裁定较完善的12个月CD-TLR数据，而非最佳治疗，lambda0(btk)也继承这一局限。人群为Rutherford 4至6级CLI，死亡和大截肢与血运重建构成竞争事件，可能因与器械血管适配无关的原因拉低CD-TLR。</td></tr>
+<tr><td>BTK-POBA</td><td>膝下动脉</td><td class="num">13.1%</td><td class="num">17.5%</td><td class="num">0.233</td><td>CD-TLR</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">0.70</td></tr><tr><td class="s" colspan="10">Zeller T, Baumgartner I, Scheinert D, et al; IN.PACT DEEP Trial Investigators. J Am Coll Cardiol 2014;64(15):1568-1576.<br/>旧锚点25%，实际值为13.1%（14/107）。与BTK-DCB来自同一试验。</td></tr>
+<tr><td>CAR-stent</td><td>颈动脉</td><td class="num">0.6%</td><td class="num">0.6%</td><td class="num">0.547</td><td>CD-TLR</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">0.60</td></tr><tr><td class="s" colspan="10">Rosenfield K, Matsumura JS, Chaturvedi S, et al; ACT I Investigators. Randomized trial of stent versus surgery for asymptomatic carotid stenosis. N Engl J Med 2016;374(11):1011-1020.<br/>旧锚点3.5%是ACT I的主要复合安全性终点（30天死亡/卒中/心肌梗死加1年同侧卒中）。该论文没有出现“再狭窄”一词。真正的CD-TLR为0.6%。如此低的数值与零难以区分，几乎不提供信息；颈动脉可能无法在CD-TLR尺度上进行有效校准，因为其有信息量的终点是超声再狭窄。因此降低了权重，该区域的拟合具有平凡性。</td></tr>
+<tr><td>ILIAC-stent</td><td>髂动脉</td><td class="num">2.8%</td><td class="num">2.9%</td><td class="num">0.513</td><td>CD-TLR</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">0.70</td></tr><tr><td class="s" colspan="10">Krankenberg H, Zeller T, Ingwersen M, et al. Self-expanding versus balloon-expandable stents for iliac artery occlusive disease: the randomized ICE trial. JACC Cardiovasc Interv 2017;10(16):1694-1704.<br/>旧锚点4.5%是CD-TLR（2.8%）和超声再狭窄（6.1%）的中点。这是该区域唯一锚点，因此拟合具有平凡性。</td></tr>
+<tr><td>RENAL-stent</td><td>肾动脉</td><td class="num">5.9%</td><td class="num">5.9%</td><td class="num">0.466</td><td>CD-TLR</td><td>临床</td><td>病变</td><td class="num">312 d</td><td class="num">0.45</td></tr><tr><td class="s" colspan="10">US FDA Center for Devices and Radiological Health. Summary of Safety and Effectiveness Data, PMA P110001, RX Herculink Elite Renal Stent System (HERCULES trial). 2011. SSED Table 14.<br/>旧锚点14%实际上是9个月二分类再狭窄率的单侧95%置信上限（点估计10.5%）。截至312天，临床指征驱动TLR为5.9%（95% CI 2.6至9.2）。此资料完全没有12个月血运重建终点；12个月随访收集的是血压、药物、不良事件和肌酐。分析按病变（241处病变、202名受试者），并非按患者；SSED和IFU也是同一数据集，而非两个来源。权重较低，该区域拟合具有平凡性。</td></tr>
+<tr style="opacity:.55"><td>COR-undersized <em>（已排除）</em></td><td>冠状动脉</td><td class="num">3.9%</td><td class="num">(4.5%)</td><td class="num">0.584</td><td>TVF</td><td>临床</td><td>血管</td><td class="num">365 d</td><td class="num">0.00</td></tr><tr style="opacity:.55"><td class="s" colspan="10">Lee SH, Jin X, Lee YJ, et al. Validation of intravascular ultrasound-defined optimal stent expansion criteria for favorable 1-year clinical outcomes. JACC Cardiovasc Interv 2025;18(18):2197-2205.<br/>已排除。旧锚点20%为作者估计。现有最佳来源存在三重不一致：终点是血管级TVF（含非靶病变TVR）；研究对象是绝对MSA 5.5 mm²阈值下的支架扩张不足，而非直径选择偏小，且绝对阈值混淆了尺寸误差与小血管；器械为混合第二代DES，而非超薄梁类别。仅保留为未经正式征询的作者先验。</td></tr>
+<tr style="opacity:.55"><td>SFA-long-bare <em>（已排除）</em></td><td>股腘动脉</td><td class="num">31.8%</td><td class="num">(60.4%)</td><td class="num">0.038</td><td>TLR</td><td>方案规定的随访监测</td><td>患者</td><td class="num">365 d</td><td class="num">0.00</td></tr><tr style="opacity:.55"><td class="s" colspan="10">Bosiers M, Deloose K, Callaert J, et al. Results of the Protege EverFlex 200-mm-long nitinol stent (ev3) in TASC C and D femoropopliteal lesions (DURABILITY-200). J Vasc Surg 2011;54(4):1042-1050.<br/>已从拟合中排除。旧锚点0.350 = 100 − 64.8，来源是主要通畅率丧失，而非TLR。可用的TLR（31.8%）由方案规定的超声随访（PSVR &gt; 2.4）触发，无独立裁定，因此通过与其他锚点不同的机制形成CD-TLR上界。平均病变长度242 mm，27%累及腘动脉，29%为CLI，单组、两中心。</td></tr>
+<tr style="opacity:.55"><td>COR-DES-complex <em>（已排除）</em></td><td>冠状动脉</td><td class="num">5.7%</td><td class="num">(1.9%)</td><td class="num">0.806</td><td>TLF</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">0.00</td></tr><tr style="opacity:.55"><td class="s" colspan="10">Park SH, Han JK, Yang S, et al. Biodegradable polymer versus polymer-free ultrathin sirolimus-eluting stents in complex PCI (HOST-IDEA post hoc). J Am Heart Assoc 2026;15(5):e043441.<br/>已从拟合中排除。旧锚点12%为作者估计。真实数值为TLF复合终点（5.7%），而非CD-TLR，来自336名复杂PCI患者、19个事件的事后倾向匹配亚组，风险比置信上限达11.26。保留用于敏感性分析，不用于主要拟合。</td></tr>
+<tr style="opacity:.55"><td>COR-DCB-small <em>（已排除）</em></td><td>冠状动脉</td><td class="num">4.4%</td><td class="num">(6.1%)</td><td class="num">0.779</td><td>TLF</td><td>临床</td><td>患者</td><td class="num">365 d</td><td class="num">0.00</td></tr><tr style="opacity:.55"><td class="s" colspan="10">Tang Y, Qiao S, Su X, et al; RESTORE SVD China Investigators. Drug-coated balloon versus drug-eluting stent for small-vessel disease: the RESTORE SVD China randomized trial. JACC Cardiovasc Interv 2018;11(23):2381-2392.<br/>已从拟合中排除。旧锚点8%为作者估计。真实数值为4.4% TLF，约为116名患者中5个事件，属于一项以9个月节段内直径狭窄百分比为主要效能依据的试验的次要终点，病变还经过成功预扩张筛选。保留用于敏感性分析。</td></tr>
+</tbody></table></div>
+<p class="hint" style="margin-top:8px">每个锚点均标注原文实际报告的终点。早期版本未这样做，导致16个数值中13个有误。优先采用的结局定义是12个月<b>临床驱动的靶病变血运重建</b>；报告全因或症状驱动TLR的锚点均单独标明并降低权重。另有4个锚点未纳入拟合，但保留在表中，以公开呈现排除内容。可信度权重表示审计后的证据质量，而非作者信心。</p>
+</details>
+<h3>本模型不能作出的结论</h3>
+<ul>
+<li><b>本模型尚未接触任何患者级数据。</b> 以12个锚点拟合11个自由常数属于校准，而不是验证。这只能表明同一参数集<b>能够</b>复现文献数值的分布，并不证明模型正确。</li>
+<li><b>校准实际依赖六个有信息量的比较，表面误差中有一半来自恒等关系。</b> 12个锚点中有6个本身就是各区域的参照病例，按构造即能复现该区域基线事件率。真正具有信息量的6个锚点，其误差为2.3个百分点，而非1.4。颈动脉、髂动脉及肾动脉各仅贡献一个锚点，同时也就是该区域的基线，因此这些区域的拟合具有平凡性。另有4个锚点分别来自两项试验的两个组，共享研究中心、裁定委员会和终点触发标准，不能视作四个独立残差。</li>
+<li>保留的锚点中仍混合了<b>三种血运重建结局定义</b>。不做常规造影随访的症状驱动TLR可能偏低，随访监测触发的TLR可能偏高。这里仅做了标注和加权，并未将它们统一为同一结局。</li>
+<li><b>跨泛血管区域迁移的优势主张未获支持，反而被结果否定。</b> 在仿真中，与使用相同连续区域生理参数的线性模型相比，算子的跨区域区分度优势为−0.024 AUC（95% bootstrap区间为−0.041至−0.010），区间不包含零。仍然成立的是样本效率：在n = 100例操作时，四个源于物理机制的数值达到AUC 0.790，而44个原始特征在n = 800时仍未达到这一水平。对于操作例数受限的单中心队列，这就是使用该算子的全部依据。</li>
+<li><b>跨区域传递的是排序，而不是风险刻度，仅调整偏置也不能解决问题。</b> 原始跨区域Brier评分为0.249，单纯预测基线事件率的评分为0.135。仅调整截距后仍比基线预测更差（0.151）。需要同时重新拟合斜率，所需斜率为0.26，表明算子跨区域的对数优势斜率约陡了四倍。因此，新区域需要依据真实事件进行双参数再校准，而不是查到某个常数即可使用。</li>
+<li><b>器械条目使用的是类别代表性参数</b>，不是具体商业产品规格。径向力、器械顺应性和抗疲劳能力等参数仅为数量级估计；动脉区域参数也只是明确声明的先验，而非实测数据。</li>
+<li>有4个拟合常数落在其边界上，提示药物和支架梁项需要重新构建，而不仅是再次拟合。</li>
+</ul>
+<h3>下一步</h3>
+<p>该算子设计为可在真实队列上通过最大似然法重新拟合，并与使用相同原始特征的逻辑回归基线模型比较。如果重拟合后在样本外仍无法优于这一基线，这本身就是研究结果。</p>
+</section>
+</main>
+</div>
+<footer>由复旦大学附属中山医院医师<a href="/zh/" style="color:var(--accent)">游凌森</a>构建。全部运算在本页浏览器中完成，您输入的内容不会发送到其他地方。器械条目是类别代表性参数，而非商业产品规格。</footer>
+</div>
+<script>const MODEL = {"theta":{"s_under":0.24999999999999997,"s_over":0.11,"k_comp":0.05000000000000001,"k_stress":1.217590899372163,"k_fat":11.999999310598529,"drug_K":0.10000000000000002,"k_short":13.999999999999998,"need_scale":1.7672203099905732,"k_lumen":0.1481197551583594,"k_strut":1.9999999999999998,"nih_max_um":299.99999198414577,"beta":6.14905607326079,"gamma_star":0.9},"axisWeights":{"G":{"size":0.4,"coverage":0.24,"conform":0.18,"taper":0.18},"M":{"compliance":0.38,"stress":0.34,"fatigue":0.28},"H":{"lumen":0.5,"struts":0.32,"branch":0.18},"B":{"drug":0.58,"healing":0.42}},"tauNih":120.0,"nihRadiusFrac":0.6,"tauDrive":210.0,"beds":{"coronary":{"key":"coronary","name_cn":"Coronary","d_ref":[2.25,4.0],"compliance":4.0,"wss0":15.0,"k_neointima":1.0,"cyclic_strain":0.55,"tau_endo":60.0,"tau_remodel":90.0,"lambda0":0.02,"oversize_band":[0.95,1.12],"w_axes":[0.3,0.22,0.2,0.28],"notes":"DES 12-mo TLF 4-6% in contemporary trials; cardiac-cycle bending only."},"sfa":{"key":"sfa","name_cn":"Femoropopliteal","d_ref":[4.5,7.0],"compliance":2.5,"wss0":8.0,"k_neointima":1.6,"cyclic_strain":1.0,"tau_endo":90.0,"tau_remodel":120.0,"lambda0":0.024,"oversize_band":[1.05,1.25],"w_axes":[0.24,0.36,0.16,0.24],"notes":"Worst mechanical environment: hip/knee flexion -> axial compression, torsion, bending. Stent fracture is a real failure mode, so the mechanical axis carries the largest weight here."},"btk":{"key":"btk","name_cn":"Below the knee","d_ref":[2.0,3.5],"compliance":2.0,"wss0":5.0,"k_neointima":1.8,"cyclic_strain":0.8,"tau_endo":120.0,"tau_remodel":150.0,"lambda0":0.092,"oversize_band":[0.95,1.1],"w_axes":[0.22,0.24,0.26,0.28],"notes":"Low flow, small calibre, diffuse disease, CLTI patients. Restenosis rates are the highest of any bed."},"carotid":{"key":"carotid","name_cn":"Carotid","d_ref":[4.5,9.0],"compliance":7.0,"wss0":12.0,"k_neointima":0.6,"cyclic_strain":0.15,"tau_endo":45.0,"tau_remodel":90.0,"lambda0":0.006,"oversize_band":[1.1,1.5],"w_axes":[0.34,0.18,0.24,0.24],"notes":"Deliberate large oversizing with self-expanding nitinol; dominant early risk is embolic, not restenotic."},"renal":{"key":"renal","name_cn":"Renal","d_ref":[4.0,7.0],"compliance":5.0,"wss0":12.0,"k_neointima":1.3,"cyclic_strain":0.4,"tau_endo":60.0,"tau_remodel":90.0,"lambda0":0.059,"oversize_band":[0.95,1.12],"w_axes":[0.32,0.22,0.2,0.26],"notes":"Ostial aorto-renal lesions; respiratory excursion drives cyclic strain."},"iliac":{"key":"iliac","name_cn":"Iliac","d_ref":[6.0,10.0],"compliance":3.0,"wss0":10.0,"k_neointima":0.8,"cyclic_strain":0.2,"tau_endo":60.0,"tau_remodel":90.0,"lambda0":0.028,"oversize_band":[0.98,1.18],"w_axes":[0.32,0.24,0.2,0.24],"notes":"Large calibre, high flow; failures are mostly mechanical/edge."}},"gammaStar":{"coronary":0.6476949099259832,"sfa":0.6305955161439233,"btk":0.18595522048109023,"carotid":0.625399917944982,"renal":0.5078077869553647,"iliac":0.6213529667646196},"devices":[{"key":"des_ultrathin","name":"Ultrathin-strut DES (60 um, sirolimus)","family":"DES","expansion":"balloon","beds":["coronary"],"d_range":[2.25,4.0],"l_max":40,"strut_um":60,"radial_force":1.0,"compliance_dev":0.3,"conformability":0.8,"fatigue_resist":0.9,"drug":"sirolimus","dose_ug_mm2":1.4,"drug_tau_d":90,"degrade_tau_d":null,"recoil":0.03,"crossing_mm":1.05,"note":"Contemporary workhorse; thin struts minimise flow disturbance."},{"key":"des_thin","name":"Thin-strut DES (81 um, everolimus)","family":"DES","expansion":"balloon","beds":["coronary","renal","btk"],"d_range":[2.25,4.0],"l_max":48,"strut_um":81,"radial_force":1.0,"compliance_dev":0.3,"conformability":0.75,"fatigue_resist":0.88,"drug":"everolimus","dose_ug_mm2":1.0,"drug_tau_d":90,"degrade_tau_d":null,"recoil":0.03,"crossing_mm":1.1,"note":""},{"key":"brs_plla","name":"PLLA BRS, 150 um (XINSORB-class)","family":"BRS","expansion":"balloon","beds":["coronary"],"d_range":[2.5,3.5],"l_max":33,"strut_um":150,"radial_force":0.62,"compliance_dev":0.8,"conformability":0.55,"fatigue_resist":0.7,"drug":"sirolimus","dose_ug_mm2":1.4,"drug_tau_d":90,"degrade_tau_d":900,"recoil":0.06,"crossing_mm":1.45,"note":"Compliance converges to the wall as the scaffold resorbs; the price is a thick strut for the first year."},{"key":"brs_thin","name":"Next-generation thin BRS (100 um)","family":"BRS","expansion":"balloon","beds":["coronary"],"d_range":[2.5,4.0],"l_max":36,"strut_um":100,"radial_force":0.72,"compliance_dev":0.7,"conformability":0.62,"fatigue_resist":0.75,"drug":"sirolimus","dose_ug_mm2":1.4,"drug_tau_d":90,"degrade_tau_d":730,"recoil":0.05,"crossing_mm":1.25,"note":""},{"key":"dcb_ptx_cor","name":"Coronary DCB (paclitaxel 3.0 ug/mm2)","family":"DCB","expansion":"none","beds":["coronary","btk"],"d_range":[2.0,4.0],"l_max":40,"strut_um":0,"radial_force":0.0,"compliance_dev":null,"conformability":1.0,"fatigue_resist":1.0,"drug":"paclitaxel","dose_ug_mm2":3.0,"drug_tau_d":45,"degrade_tau_d":null,"recoil":0.28,"crossing_mm":0.85,"note":"Leaves nothing behind: no compliance mismatch, no scaffolding either."},{"key":"dcb_siro_cor","name":"Coronary sirolimus DCB","family":"DCB","expansion":"none","beds":["coronary","btk"],"d_range":[2.0,4.0],"l_max":40,"strut_um":0,"radial_force":0.0,"compliance_dev":null,"conformability":1.0,"fatigue_resist":1.0,"drug":"sirolimus","dose_ug_mm2":1.3,"drug_tau_d":60,"degrade_tau_d":null,"recoil":0.28,"crossing_mm":0.9,"note":"Marketed sirolimus DCBs carry roughly 1.0-1.4 ug/mm2, and their design rationale is LONGER tissue retention than paclitaxel. This entry read 3.5 ug/mm2 with a 30-day constant until 2026-09-19: about threefold high, with the retention ordering against paclitaxel reversed."},{"key":"bms","name":"Bare-metal stent","family":"BMS","expansion":"balloon","beds":["coronary","renal","iliac"],"d_range":[2.5,7.0],"l_max":38,"strut_um":110,"radial_force":1.0,"compliance_dev":0.3,"conformability":0.7,"fatigue_resist":0.85,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.03,"crossing_mm":1.15,"note":"Comparator arm, and the renal reference device. The top of the range read 5.0 mm until 2026-09-19 while the renal reference case used 5.5 mm, so that bed's entire calibration ran on a device sized outside its own catalogue. Nothing checked; check_plan() now does."},{"key":"se_nitinol","name":"Self-expanding nitinol stent","family":"SE","expansion":"self","beds":["sfa","iliac","renal"],"d_range":[5.0,10.0],"l_max":200,"strut_um":200,"radial_force":0.28,"compliance_dev":1.5,"conformability":0.85,"fatigue_resist":0.72,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.02,"crossing_mm":1.8,"note":""},{"key":"se_ptx","name":"Paclitaxel-eluting nitinol stent","family":"SE-DES","expansion":"self","beds":["sfa","iliac"],"d_range":[5.0,8.0],"l_max":200,"strut_um":200,"radial_force":0.3,"compliance_dev":1.5,"conformability":0.85,"fatigue_resist":0.74,"drug":"paclitaxel","dose_ug_mm2":3.0,"drug_tau_d":120,"degrade_tau_d":null,"recoil":0.02,"crossing_mm":1.85,"note":""},{"key":"se_interwoven","name":"Interwoven nitinol stent","family":"SE","expansion":"self","beds":["sfa"],"d_range":[4.5,7.5],"l_max":150,"strut_um":250,"radial_force":0.6,"compliance_dev":1.1,"conformability":0.7,"fatigue_resist":0.96,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.02,"crossing_mm":2.1,"note":"Built for the flexion zone: highest fatigue resistance in the catalogue. The recoil field read 2.00 until 2026-09-19 -- a hundredfold typo in a fraction, inert because the self-expanding branch of deployed_diameter never reads recoil, but it shipped in out/model.json to the browser."},{"key":"covered","name":"ePTFE covered stent-graft","family":"COVERED","expansion":"self","beds":["sfa","iliac"],"d_range":[5.0,13.0],"l_max":250,"strut_um":300,"radial_force":0.45,"compliance_dev":0.6,"conformability":0.65,"fatigue_resist":0.8,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.02,"crossing_mm":2.6,"note":"Excludes the wall from the lumen: no in-stent neointima, but edge hyperplasia and side-branch loss."},{"key":"dcb_periph","name":"Peripheral DCB (paclitaxel 3.5 ug/mm2)","family":"DCB","expansion":"none","beds":["sfa","btk","iliac"],"d_range":[2.0,7.0],"l_max":250,"strut_um":0,"radial_force":0.0,"compliance_dev":null,"conformability":1.0,"fatigue_resist":1.0,"drug":"paclitaxel","dose_ug_mm2":3.5,"drug_tau_d":90,"degrade_tau_d":null,"recoil":0.3,"crossing_mm":1.1,"note":""},{"key":"poba","name":"Plain balloon angioplasty","family":"POBA","expansion":"none","beds":["coronary","sfa","btk","iliac","renal"],"d_range":[1.5,12.0],"l_max":300,"strut_um":0,"radial_force":0.0,"compliance_dev":null,"conformability":1.0,"fatigue_resist":1.0,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.32,"crossing_mm":0.8,"note":""},{"key":"car_closed","name":"Closed-cell carotid nitinol stent","family":"SE","expansion":"self","beds":["carotid"],"d_range":[6.0,10.0],"l_max":40,"strut_um":180,"radial_force":0.32,"compliance_dev":1.4,"conformability":0.6,"fatigue_resist":0.9,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.02,"crossing_mm":1.7,"note":""},{"key":"car_dual","name":"Dual-layer micromesh carotid stent","family":"SE","expansion":"self","beds":["carotid"],"d_range":[6.0,10.0],"l_max":60,"strut_um":200,"radial_force":0.34,"compliance_dev":1.3,"conformability":0.7,"fatigue_resist":0.9,"drug":"none","dose_ug_mm2":0.0,"drug_tau_d":1,"degrade_tau_d":null,"recoil":0.02,"crossing_mm":1.9,"note":"Micromesh traps plaque; denser mesh is a hemodynamic cost."}],"prep":{"none":{"ca_relief":0.0,"injury":0.0,"label":"None"},"noncomp":{"ca_relief":0.2,"injury":0.05,"label":"Non-compliant balloon"},"scoring":{"ca_relief":0.45,"injury":0.1,"label":"Scoring balloon"},"atherec":{"ca_relief":0.65,"injury":0.18,"label":"Atherectomy"},"ivl":{"ca_relief":0.75,"injury":0.04,"label":"Lithotripsy (IVL)"}}};</script>
+<script>
+"use strict";
+/* ---------------------------------------------------------------
+   suitcordance operator, ported 1:1 from panvas/suitcordance.py
+   --------------------------------------------------------------- */
+const TAU_NIH = MODEL.tauNih, TAU_DRIVE = MODEL.tauDrive, TH = MODEL.theta;
+const NIH_RADIUS_FRAC = MODEL.nihRadiusFrac;
+const WG = MODEL.axisWeights.G, WM = MODEL.axisWeights.M,
+      WH = MODEL.axisWeights.H, WB = MODEL.axisWeights.B;
+const DEV = {}; MODEL.devices.forEach(d => DEV[d.key] = d);
+const POTENCY = {none:0, paclitaxel:1.0, sirolimus:1.25, everolimus:1.20};
+
+const dRef = l => 0.5 * (l.d_prox + l.d_dist);
+const taper = l => Math.max(0, (l.d_prox - l.d_dist) / Math.max(l.d_prox, 1e-6));
+const clamp = (x, a, b) => Math.min(Math.max(x, a), b);
+
+function caEff(les, plan){ return les.calcium * (1 - MODEL.prep[plan.prep].ca_relief); }
+
+/* Minimum lumen diameter before the procedure. Until 2026-09-19 the operator
+   declared les.stenosis and never read it, so recoil was applied to the balloon's
+   diameter rather than to the acute gain, and a 1:1 balloon delivered no injury. */
+function mldPre(les){
+  return Math.max(0.15, dRef(les) * (1 - clamp(les.stenosis, 0, 0.95)));
+}
+
+function inflatedDiameter(les, plan){
+  const dev = DEV[plan.device], ca = caEff(les, plan);
+  const resist = 1 - 0.22 * Math.pow(ca, 1.5) * (plan.postdilate ? 0.55 : 1);
+  if (dev.expansion === "self"){
+    const gap = Math.max(0, plan.nominal_d - dRef(les));
+    return dRef(les) + gap * 0.55 * (1 - 0.40 * ca);
+  }
+  return plan.nominal_d * resist;
+}
+
+function deployed(les, plan, t){
+  const dev = DEV[plan.device], bed = MODEL.beds[les.bed];
+  const dv = dRef(les), ca = caEff(les, plan);
+  const dInflate = inflatedDiameter(les, plan), m0 = mldPre(les);
+  let d0, dInf, tau;
+  if (dev.expansion === "balloon"){
+    d0 = m0 + (dInflate - m0) * (1 - dev.recoil);
+    if (dev.degrade_tau_d){ dInf = d0 * 1.05; tau = dev.degrade_tau_d; }
+    else { dInf = d0 * 1.01; tau = bed.tau_remodel; }
+  } else if (dev.expansion === "self"){
+    const gap = Math.max(0, plan.nominal_d - dv);
+    d0 = dInflate;
+    dInf = dv + gap * 0.90; tau = 60;
+  } else {
+    /* elastic recoil takes back a fraction of the ACUTE GAIN, not of the balloon */
+    const elastic = bed.compliance / 4;
+    const recoil = Math.min(0.60, dev.recoil * (0.75 + 0.45 * elastic) * (1 - 0.35 * ca));
+    d0 = m0 + (dInflate - m0) * (1 - recoil);
+    dInf = m0 + (d0 - m0) * 0.94; tau = 90;
+  }
+  return t.map(x => dInf + (d0 - dInf) * Math.exp(-x / tau));
+}
+
+function injuryIndex(les, plan){
+  const dev = DEV[plan.device], ca = caEff(les, plan);
+  const inflate = inflatedDiameter(les, plan), m0 = mldPre(les);
+  const gain = Math.max(0, (inflate - m0) / dRef(les));
+  const over = Math.max(0, (inflate - dRef(les)) / dRef(les));
+  return clamp((0.55 * gain + 1.65 * over) * (1 + 1.2 * ca)
+               + MODEL.prep[plan.prep].injury
+               + 0.10 * (plan.postdilate ? 1 : 0) + 0.25 * (dev.strut_um / 150), 0, 1.5);
+}
+
+function driveOf(les, injury){
+  const bed = MODEL.beds[les.bed];
+  return bed.k_neointima * (1 + 0.35 * (les.diabetes ? 1 : 0))
+       * (1 + 0.60 * injury) * (1 + 0.40 * les.inflammation);
+}
+
+function drugEffect(les, plan, t){
+  const dev = DEV[plan.device];
+  if (dev.drug === "none" || dev.dose_ug_mm2 <= 0) return t.map(() => 0);
+  const bed = MODEL.beds[les.bed];
+  const drive = bed.k_neointima * (1 + 0.35 * (les.diabetes ? 1 : 0));
+  const scale = (dev.family === "DCB" || dev.family === "POBA") ? 0.85 : 1;
+  return t.map(x => {
+    const conc = dev.dose_ug_mm2 * POTENCY[dev.drug] * Math.exp(-x / dev.drug_tau_d) * scale;
+    const a = Math.pow(conc / (TH.drug_K * drive), 1.2);
+    return a / (a + 1);
+  });
+}
+
+function gammaG(les, plan, dd){
+  const dev = DEV[plan.device], bed = MODEL.beds[les.bed], dv = dRef(les);
+  let lo = bed.oversize_band[0], hi = bed.oversize_band[1], ratio = null;
+  if (dev.expansion === "none"){ lo = 0.95; hi = 1.10; ratio = plan.nominal_d / dv; }
+  const margin = (plan.length * plan.n_devices - les.length) / 2;
+  const cov = margin < 0 ? Math.exp(-Math.pow(margin / 1.8, 2))
+            : margin > 5 ? Math.exp(-Math.pow((margin - 5) / 9, 2)) : 1;
+  const conf = Math.exp(-2.6 * Math.pow(les.tortuosity * (1 - dev.conformability), 2));
+  const tl = taper(les) * (1 - 0.45 * (dev.expansion === "self" ? 1 : 0))
+           * Math.min(1, plan.length / 40);
+  const tap = Math.exp(-5 * tl * tl);
+  const k = Math.pow(cov, WG.coverage) * Math.pow(conf, WG.conform) * Math.pow(tap, WG.taper);
+  return dd.map(d => {
+    const r = ratio === null ? d / dv : ratio;
+    const size = r < lo ? Math.exp(-Math.pow((lo - r) / TH.s_under, 2))
+               : r > hi ? Math.exp(-Math.pow((r - hi) / TH.s_over, 2)) : 1;
+    return Math.pow(size, WG.size) * k;
+  });
+}
+
+function gammaM(les, plan, t, dd){
+  const dev = DEV[plan.device], bed = MODEL.beds[les.bed];
+  const cWall = bed.compliance * (1 - 0.60 * caEff(les, plan));
+  const epsTol = 0.115 * Math.sqrt(Math.max(cWall, 0.4) / 4);
+  let fatLoad = 0;
+  if (dev.expansion !== "none")
+    fatLoad = bed.cyclic_strain * (1 - dev.fatigue_resist)
+            * (0.6 + 0.4 * Math.min(1, plan.length * plan.n_devices / 120));
+  return t.map((x, i) => {
+    let comp = 1;
+    if (dev.compliance_dev !== null){
+      let cDev = dev.compliance_dev;
+      if (dev.degrade_tau_d)
+        cDev += (cWall - dev.compliance_dev) * (1 - Math.exp(-x / dev.degrade_tau_d));
+      const mm = Math.abs(cDev - cWall) / (cDev + cWall);
+      comp = Math.exp(-TH.k_comp * mm * mm);
+    }
+    /* strain the wall actually saw: AT INFLATION for a device that leaves nothing
+       behind, otherwise Gamma_M is identically 1 for every balloon at every sizing */
+    const eps = dev.expansion === "none"
+      ? Math.max(0, (inflatedDiameter(les, plan) - dRef(les)) / dRef(les))
+      : Math.max(0, (dd[i] - dRef(les)) / dRef(les));
+    const stress = Math.exp(-Math.pow(eps / epsTol, 2) * TH.k_stress);
+    const fat = dev.expansion === "none" ? 1
+      : Math.exp(-TH.k_fat * fatLoad * fatLoad * (1 - Math.exp(-x / 365)));
+    return Math.pow(comp, WM.compliance) * Math.pow(stress, WM.stress) * Math.pow(fat, WM.fatigue);
+  });
+}
+
+function gammaH(les, plan, t, dd, nih){
+  const dev = DEV[plan.device], bed = MODEL.beds[les.bed], dv = dRef(les);
+  const rawStrut = (dev.strut_um / 100) * Math.sqrt(3 / Math.max(dv, 1))
+                 * Math.sqrt(15 / bed.wss0);
+  const tauCov = bed.tau_endo * (1 + 0.9 * (dev.drug !== "none" ? 1 : 0));
+  let branch = 1;
+  if (les.side_branch && dev.family === "COVERED") branch = 0.35;
+  else if (les.bifurcation && dev.strut_um > 0) branch = 0.80 - 0.10 * (dev.strut_um > 120 ? 1 : 0);
+  if ((les.bed === "sfa" || les.bed === "btk") && les.runoff <= 1) branch *= 0.80;
+  const kBranch = Math.pow(branch, WH.branch);
+  return t.map((x, i) => {
+    const dl = Math.max(dd[i] - 2 * (dev.strut_um + nih[i]) / 1000, 0.25);
+    const resid = clamp(1 - dl / dv, 0, 1);
+    const lumen = Math.exp(-Math.pow(resid / TH.k_lumen, 2));
+    const struts = dev.strut_um <= 0 ? 1
+      : Math.exp(-TH.k_strut * rawStrut * (1 - 0.75 * (1 - Math.exp(-x / tauCov))));
+    return Math.pow(lumen, WH.lumen) * Math.pow(struts, WH.struts) * kBranch;
+  });
+}
+
+function gammaB(les, plan, t, injury, de){
+  const dev = DEV[plan.device], bed = MODEL.beds[les.bed];
+  const drive = driveOf(les, injury);
+  let healing = 1;
+  if (dev.strut_um > 0){
+    const w = bed.tau_endo * (1 + 0.90 * (dev.drug !== "none" ? 1 : 0))
+            * (1 + 0.55 * (dev.strut_um / 150));
+    healing = Math.exp(-Math.pow(w / 260, 2));
+    if (dev.degrade_tau_d)
+      healing *= Math.exp(-0.45 * Math.pow(Math.abs(Math.log(dev.degrade_tau_d / (6 * w))), 2));
+  }
+  const kh = Math.pow(healing, WB.healing);
+  return t.map((x, i) => {
+    const driveT = 0.30 * drive + 0.70 * drive * Math.exp(-x / TAU_DRIVE);
+    const need = Math.max(driveT / TH.need_scale, 0.02);
+    const sf = Math.max(need - de[i], 0) / (1 + need);
+    return Math.pow(Math.exp(-TH.k_short * sf * sf), WB.drug) * kh;
+  });
+}
+
+function evaluateCase(les, plan, dt, horizon){
+  dt = dt || 5; horizon = horizon || 730;
+  const n = Math.round(horizon / dt) + 1;
+  const t = Array.from({length:n}, (_, i) => i * dt);
+  const bed = MODEL.beds[les.bed];
+
+  const dd = deployed(les, plan, t);
+  const injury = injuryIndex(les, plan);
+  const de = drugEffect(les, plan, t);
+  const nSix = Math.max(1, Math.round(180 / dt));
+  const deMean = de.slice(0, nSix).reduce((a, b) => a + b, 0) / nSix;
+  const ddMean = dd.reduce((a, b) => a + b, 0) / dd.length;
+  const nihMax = Math.min(TH.nih_max_um * driveOf(les, injury) * (1 - 0.68 * deMean),
+                          NIH_RADIUS_FRAC * (ddMean / 2) * 1000);
+  const nih = t.map(x => nihMax * (1 - Math.exp(-x / TAU_NIH)));
+
+  const cl = a => a.map(v => clamp(v, 1e-4, 1));
+  const G = cl(gammaG(les, plan, dd)), M = cl(gammaM(les, plan, t, dd));
+  const H = cl(gammaH(les, plan, t, dd, nih)), B = cl(gammaB(les, plan, t, injury, de));
+
+  const ws = bed.w_axes.reduce((a, b) => a + b, 0);
+  const w = bed.w_axes.map(v => v / ws);
+  const gamma = t.map((_, i) => Math.pow(G[i], w[0]) * Math.pow(M[i], w[1])
+                              * Math.pow(H[i], w[2]) * Math.pow(B[i], w[3]));
+
+  let tv = 0; const tvc = [0];
+  for (let i = 1; i < n; i++){ tv += Math.abs(gamma[i] - gamma[i-1]); tvc.push(tv); }
+  let tau_sc = NaN;
+  if (tv > 1e-9){
+    const target = 0.632 * tv;
+    for (let i = 1; i < n; i++)
+      if (tvc[i] >= target){
+        const f = (target - tvc[i-1]) / Math.max(tvc[i] - tvc[i-1], 1e-12);
+        tau_sc = t[i-1] + f * dt; break;
+      }
+  }
+  let area = 0;
+  for (let i = 1; i < n; i++) area += 0.5 * ((1 - gamma[i]) + (1 - gamma[i-1])) * dt;
+  const deficit = area / (t[n-1] - t[0]);
+
+  const lam0 = -Math.log(Math.max(1e-6, 1 - bed.lambda0)) / 365;
+  const gStar = MODEL.gammaStar[les.bed];
+  const lam = gamma.map(g => lam0 * Math.exp(TH.beta * (gStar - g)));
+  const risk = [0]; let ch = 0;
+  for (let i = 1; i < n; i++){ ch += 0.5 * (lam[i] + lam[i-1]) * dt; risk.push(1 - Math.exp(-ch)); }
+  const i365 = Math.min(n - 1, Math.floor(365 / dt));
+  const f365 = (365 - t[i365]) / dt;
+  const risk12 = i365 + 1 < n ? risk[i365] + f365 * (risk[i365+1] - risk[i365]) : risk[n-1];
+
+  const mean = a => a.reduce((x, y) => x + y, 0) / a.length;
+  const worst = ["G","M","H","B"][[mean(G), mean(M), mean(H), mean(B)]
+    .reduce((bi, v, i, arr) => v < arr[bi] ? i : bi, 0)];
+
+  return {t, G, M, H, B, gamma, tau_sc, deficit, risk, risk12, worst, weights:w};
+}
+
+/* candidate devices for a bed and calibre, same rule as devices.py */
+function candidates(bed, dv){
+  return MODEL.devices.filter(d => d.beds.includes(bed)
+    && d.d_range[0] <= dv * 1.45 && d.d_range[1] >= dv * 0.95);
+}
+const snap = (x, dev) => clamp(Math.round(x * 4) / 4, dev.d_range[0], dev.d_range[1]);
+
+function shortlist(les){
+  const dv = dRef(les), bed = MODEL.beds[les.bed], out = [];
+  for (const dev of candidates(les.bed, dv)){
+    let best = null;
+    const mults = dev.expansion === "self"
+      ? [bed.oversize_band[0], (bed.oversize_band[0] + bed.oversize_band[1]) / 2, bed.oversize_band[1]]
+      : [0.95, 1.0, 1.05, 1.12];
+    for (const m of mults){
+      const nd = snap(dv * m, dev);
+      for (const margin of [0, 2, 4]){
+        const want = les.length + 2 * margin;
+        const nDev = want > dev.l_max ? Math.max(1, Math.round(want / dev.l_max)) : 1;
+        const L = Math.min(dev.l_max, want / nDev);
+        for (const prep of ["none", "scoring", "ivl"]){
+          for (const pd of [false, true]){
+            const plan = {device:dev.key, nominal_d:nd, length:L, prep, postdilate:pd, n_devices:nDev};
+            const r = evaluateCase(les, plan, 10, 380);
+            if (!best || r.risk12 < best.r.risk12) best = {plan, r};
+          }
+        }
+      }
+    }
+    if (best) out.push(best);
+  }
+  out.sort((a, b) => a.r.risk12 - b.r.risk12);
+  return out;
+}
+
+/* ---------------------------------------------------------------
+   state and UI
+   --------------------------------------------------------------- */
+const DEVICE_NAMES = {"des_ultrathin": "超薄梁药物洗脱支架（60 μm，西罗莫司）", "des_thin": "薄梁药物洗脱支架（81 μm，依维莫司）", "brs_plla": "PLLA全降解支架，150 μm（XINSORB类）", "brs_thin": "新一代薄梁全降解支架（100 μm）", "dcb_ptx_cor": "冠脉药物球囊（紫杉醇3.0 μg/mm²）", "dcb_siro_cor": "冠脉西罗莫司药物球囊", "bms": "裸金属支架", "se_nitinol": "自膨式镍钛支架", "se_ptx": "紫杉醇洗脱镍钛支架", "se_interwoven": "编织镍钛支架", "covered": "ePTFE覆膜支架", "dcb_periph": "外周药物球囊（紫杉醇3.5 μg/mm²）", "poba": "普通球囊成形术", "car_closed": "闭环式颈动脉镍钛支架", "car_dual": "双层微网颈动脉支架"};
+const AXES = [
+  {k:"G", css:"--axis-g", cn:"几何适配", en:"Γ_G", note:"尺寸、覆盖、贴合性、锥度"},
+  {k:"M", css:"--axis-m", cn:"力学适配", en:"Γ_M", note:"顺应性不匹配、壁应力、疲劳"},
+  {k:"H", css:"--axis-h", cn:"血流动力学", en:"Γ_H", note:"管腔恢复、支架梁扰动、分支"},
+  {k:"B", css:"--axis-b", cn:"生物学适配", en:"Γ_B", note:"抗增殖作用与生长驱动力匹配、愈合"}
+];
+const FLAGS = [["diabetes","糖尿病"],["bifurcation","分叉病变"],
+               ["side_branch","重要分支"],["cto","慢性完全闭塞"]];
+const BEDNAME = {coronary:"冠状动脉", sfa:"股腘动脉", btk:"膝下动脉",
+                 carotid:"颈动脉", renal:"肾动脉", iliac:"髂动脉"};
+const PREPNAME = {none:"无", noncomp:"非顺应性球囊", scoring:"刻痕球囊",
+                  atherec:"斑块切除", ivl:"血管内碎石（IVL）"};
+const DEFAULTS = {
+  coronary:{d_prox:3.2,d_dist:2.95,length:22,calcium:0.30,tortuosity:0.20,inflammation:0.25,runoff:3},
+  sfa:{d_prox:5.8,d_dist:5.2,length:140,calcium:0.45,tortuosity:0.30,inflammation:0.25,runoff:2},
+  btk:{d_prox:2.9,d_dist:2.6,length:100,calcium:0.45,tortuosity:0.25,inflammation:0.35,runoff:1},
+  carotid:{d_prox:7.5,d_dist:5.0,length:20,calcium:0.30,tortuosity:0.20,inflammation:0.20,runoff:3},
+  renal:{d_prox:5.6,d_dist:5.2,length:15,calcium:0.30,tortuosity:0.15,inflammation:0.25,runoff:3},
+  iliac:{d_prox:8.2,d_dist:7.8,length:40,calcium:0.35,tortuosity:0.20,inflammation:0.20,runoff:3}
+};
+const les = Object.assign({bed:"coronary", stenosis:0.8, diabetes:true,
+  bifurcation:false, side_branch:false, cto:false}, DEFAULTS.coronary);
+let plan = null, list = [], picked = 0;
+
+const $ = id => document.getElementById(id);
+const pct = x => (100 * x).toFixed(1) + "%";
+
+$("beds").innerHTML = Object.values(MODEL.beds)
+  .map(b => `<button data-bed="${b.key}" aria-pressed="${b.key === les.bed}">${BEDNAME[b.key]}</button>`).join("");
+$("flags").innerHTML = FLAGS
+  .map(([k, t]) => `<button data-flag="${k}" aria-pressed="${!!les[k]}">${t}</button>`).join("");
+$("prep").innerHTML = Object.keys(MODEL.prep)
+  .map(k => `<option value="${k}">${PREPNAME[k]}</option>`).join("");
+$("legend").innerHTML = AXES.map(a =>
+  `<span><i class="swatch" style="background:var(${a.css})"></i>${a.en} ${a.cn}</span>`).join("")
+  + `<span><i class="swatch" style="background:var(--ink);height:4px"></i>Γ_sc 总体</span>`
+  + `<span><i class="swatch" style="background:var(--muted);height:0;border-top:2px dashed var(--muted)"></i>τ_sc</span>`;
+
+$("beds").addEventListener("click", e => {
+  const b = e.target.closest("[data-bed]"); if (!b) return;
+  les.bed = b.dataset.bed;
+  Object.assign(les, DEFAULTS[les.bed]);
+  [...$("beds").children].forEach(x => x.setAttribute("aria-pressed", x.dataset.bed === les.bed));
+  syncInputs(); recompute(true);
+});
+$("flags").addEventListener("click", e => {
+  const b = e.target.closest("[data-flag]"); if (!b) return;
+  les[b.dataset.flag] = !les[b.dataset.flag];
+  b.setAttribute("aria-pressed", String(les[b.dataset.flag]));
+  recompute(true);
+});
+["d_prox","d_dist","length","calcium","tortuosity","inflammation","runoff"].forEach(k => {
+  $(k).addEventListener("input", () => { les[k] = +$(k).value; syncLabels(); recompute(true); });
+});
+$("prep").addEventListener("change", () => { if (plan){ plan.prep = $("prep").value; render(); } });
+$("postdil").addEventListener("click", () => {
+  const on = $("postdil").getAttribute("aria-pressed") !== "true";
+  $("postdil").setAttribute("aria-pressed", String(on));
+  if (plan){ plan.postdilate = on; render(); }
+});
+$("themeBtn").addEventListener("click", () => {
+  const dark = document.documentElement.getAttribute("data-theme") === "dark";
+  const next = dark ? "light" : "dark";
+  document.documentElement.setAttribute("data-theme", next);
+  $("themeBtn").textContent = next === "dark" ? "浅色模式" : "深色模式";
+  $("themeBtn").setAttribute("aria-pressed", String(next === "dark"));
+  try { localStorage.setItem("pv:theme", next); } catch (e) {}
+  if (plan) render();
+});
+
+function syncInputs(){
+  ["d_prox","d_dist","length","calcium","tortuosity","inflammation","runoff"]
+    .forEach(k => $(k).value = les[k]);
+  [...$("flags").children].forEach(x => x.setAttribute("aria-pressed", String(!!les[x.dataset.flag])));
+  syncLabels();
+}
+function syncLabels(){
+  $("lp").textContent = les.d_prox.toFixed(2) + " mm";
+  $("ld").textContent = les.d_dist.toFixed(2) + " mm";
+  $("ll").textContent = les.length.toFixed(0) + " mm";
+  $("lc").textContent = les.calcium.toFixed(2);
+  $("lt").textContent = les.tortuosity.toFixed(2);
+  $("li").textContent = les.inflammation.toFixed(2);
+  $("lr").textContent = les.runoff + (les.runoff === 1 ? " 支血管" : " 支血管");
+  $("runoffField").hidden = !(les.bed === "sfa" || les.bed === "btk");
+  const b = MODEL.beds[les.bed];
+  $("bednote").textContent = `λ₀ ${pct(b.lambda0)} · 血管壁顺应性 ${b.compliance} %/100 mmHg · `
+    + `新生内膜生长驱动力 ${b.k_neointima} · 循环应变 ${b.cyclic_strain} · 目标器械/血管直径比 `
+    + `${b.oversize_band[0]}–${b.oversize_band[1]}`;
+}
+
+function recompute(refresh){
+  if (refresh){ list = shortlist(les); picked = 0; plan = Object.assign({}, list[0].plan); }
+  $("prep").value = plan.prep;
+  $("postdil").setAttribute("aria-pressed", String(!!plan.postdilate));
+  render();
+}
+
+function render(){
+  const r = evaluateCase(les, plan, 5, 730);
+  const bed = MODEL.beds[les.bed];
+
+  $("t_g0").textContent = r.gamma[0].toFixed(3);
+  $("t_g0d").textContent = `${r.gamma[r.gamma.length-1].toFixed(3)}（24个月）· 不匹配剂量 ${r.deficit.toFixed(3)}`;
+  $("t_tau").textContent = isNaN(r.tau_sc) ? "—" : Math.round(r.tau_sc);
+  $("t_taud").textContent = isNaN(r.tau_sc) ? "轨迹无变化" : `累计变化达到63.2%所需天数，T=730 · 数值大小不代表优劣`;
+  const over = r.risk12 > bed.lambda0;
+  $("t_risk").textContent = pct(r.risk12);
+  $("t_risk").className = "n" + (over ? " over" : "");
+  $("t_riskd").textContent = `本区域参照组：${pct(bed.lambda0)}`;
+
+  $("axes").innerHTML = AXES.map((a, i) => {
+    const v = r[a.k][0];
+    return `<div class="axrow">
+      <div class="name"><b>${a.en}</b>${a.cn}<div class="wgt">权重 ${r.weights[i].toFixed(2)}</div></div>
+      <div class="track"><div class="bar" style="width:${(100*v).toFixed(1)}%;background:var(${a.css})"></div></div>
+      <div class="val">${v.toFixed(3)}</div></div>`;
+  }).join("");
+  const wa = AXES.find(a => a.k === r.worst);
+  $("axhint").textContent = `最弱维度：${wa.en} ${wa.cn} (${wa.note}). `
+    + `由于采用几何均值，任一维度的崩塌都不能由其余三个维度抵消。`;
+
+  drawChart(r);
+  drawList();
+}
+
+function drawChart(r){
+  const W = 720, H = 300, m = {t:14, r:58, b:30, l:38};
+  const x = d => m.l + (d / 730) * (W - m.l - m.r);
+  const y = v => m.t + (1 - v) * (H - m.t - m.b);
+  const path = arr => arr.map((v, i) => (i ? "L" : "M") + x(r.t[i]).toFixed(1) + " " + y(v).toFixed(1)).join("");
+  let s = "";
+  for (let v = 0; v <= 1.0001; v += 0.25)
+    s += `<line x1="${m.l}" y1="${y(v)}" x2="${W-m.r}" y2="${y(v)}" stroke="var(--hair)" stroke-width="1"/>
+          <text x="${m.l-7}" y="${y(v)+4}" text-anchor="end" font-size="11" font-family="var(--mono)" fill="var(--muted)">${v.toFixed(2)}</text>`;
+  for (const d of [0, 180, 365, 545, 730])
+    s += `<text x="${x(d)}" y="${H-m.b+18}" text-anchor="middle" font-size="11" font-family="var(--mono)" fill="var(--muted)">${d}</text>`;
+  s += `<text x="${(m.l+W-m.r)/2}" y="${H-2}" text-anchor="middle" font-size="11" fill="var(--muted)">天</text>`;
+  s += `<line x1="${x(365)}" y1="${m.t}" x2="${x(365)}" y2="${H-m.b}" stroke="var(--hair)" stroke-width="1"/>`;
+  if (!isNaN(r.tau_sc))
+    s += `<line x1="${x(r.tau_sc)}" y1="${m.t}" x2="${x(r.tau_sc)}" y2="${H-m.b}" stroke="var(--muted)" stroke-width="1.5" stroke-dasharray="4 3"/>
+          <text x="${x(r.tau_sc)+5}" y="${m.t+11}" font-size="11" font-family="var(--mono)" fill="var(--muted)">τ ${Math.round(r.tau_sc)}天</text>`;
+  AXES.forEach(a => {
+    s += `<path d="${path(r[a.k])}" fill="none" stroke="var(${a.css})" stroke-width="2" stroke-linejoin="round"/>`;
+  });
+  s += `<path d="${path(r.gamma)}" fill="none" stroke="var(--ink)" stroke-width="3" stroke-linejoin="round"/>`;
+
+  const last = a => a[a.length - 1];
+  const labels = AXES.map(a => ({txt:a.en, col:`var(${a.css})`, w:400, y:y(last(r[a.k]))}))
+    .concat([{txt:"Γsc", col:"var(--ink)", w:600, y:y(last(r.gamma))}])
+    .sort((p, q) => p.y - q.y);
+  for (let i = 1; i < labels.length; i++)
+    if (labels[i].y - labels[i-1].y < 13) labels[i].y = labels[i-1].y + 13;
+  const overflow = last(labels).y - (H - m.b);
+  if (overflow > 0) labels.forEach(l => l.y -= overflow);
+  labels.forEach(l => {
+    s += `<text x="${W-m.r+6}" y="${(l.y+4).toFixed(1)}" font-size="11" font-family="var(--mono)"`
+       + ` font-weight="${l.w}" fill="${l.col}">${l.txt}</text>`;
+  });
+  s += `<line id="cross" x1="0" y1="${m.t}" x2="0" y2="${H-m.b}" stroke="var(--accent)" stroke-width="1" opacity="0"/>`;
+  $("chart").innerHTML = s;
+
+  const tip = $("tip"), chart = $("chart");
+  chart.onmousemove = ev => {
+    const bb = chart.getBoundingClientRect();
+    const px = (ev.clientX - bb.left) / bb.width * W;
+    const day = clamp((px - m.l) / (W - m.l - m.r) * 730, 0, 730);
+    const i = clamp(Math.round(day / 5), 0, r.t.length - 1);
+    const cr = chart.querySelector("#cross");
+    cr.setAttribute("x1", x(r.t[i])); cr.setAttribute("x2", x(r.t[i])); cr.setAttribute("opacity", "1");
+    tip.hidden = false;
+    tip.innerHTML = `<div class="r"><span>第 ${r.t[i]} 天</span></div>`
+      + AXES.map(a => `<div class="r"><span style="color:var(${a.css})">${a.en}</span><b>${r[a.k][i].toFixed(3)}</b></div>`).join("")
+      + `<div class="r" style="border-top:1px solid var(--hair);margin-top:3px;padding-top:3px"><span>Γsc</span><b>${r.gamma[i].toFixed(3)}</b></div>`
+      + `<div class="r"><span>累计事件率</span><b>${pct(r.risk[i])}</b></div>`;
+    tip.style.left = clamp(x(r.t[i]) / W * bb.width + 12, 0, bb.width - 160) + "px";
+    tip.style.top = "8px";
+  };
+  chart.onmouseleave = () => {
+    tip.hidden = true;
+    const cr = chart.querySelector("#cross"); if (cr) cr.setAttribute("opacity", "0");
+  };
+}
+
+function drawList(){
+  const bed = MODEL.beds[les.bed];
+  const max = Math.max(...list.map(o => o.r.risk12), bed.lambda0 * 1.4, 0.02);
+  $("shortlist").querySelector("tbody").innerHTML = list.map((o, i) => {
+    const d = DEV[o.plan.device], ax = AXES.find(a => a.k === o.r.worst);
+    const over = o.r.risk12 > bed.lambda0;
+    return `<tr data-i="${i}" class="${i === picked ? "pick" : ""}">
+      <td>${DEVICE_NAMES[d.key] || d.name}</td>
+      <td class="num">${o.plan.nominal_d.toFixed(2)}×${o.plan.length.toFixed(0)}${o.plan.n_devices > 1 ? " ×" + o.plan.n_devices : ""}</td>
+      <td>${PREPNAME[o.plan.prep]}${o.plan.postdilate ? " + 后扩张" : ""}</td>
+      <td class="num">${o.r.gamma[0].toFixed(3)}</td>
+      <td class="num">${isNaN(o.r.tau_sc) ? "—" : Math.round(o.r.tau_sc)}</td>
+      <td><span class="chip" style="cursor:default"><i class="dot" style="background:var(${ax.css})"></i>${ax.en}</span></td>
+      <td><div style="display:flex;align-items:center;gap:8px">
+        <div class="rbar"><i class="${over ? "over" : ""}" style="width:${(100*o.r.risk12/max).toFixed(1)}%"></i>
+        <u style="left:${(100*bed.lambda0/max).toFixed(1)}%"></u></div>
+        <span class="num" style="font-size:12.5px">${pct(o.r.risk12)}</span></div></td></tr>`;
+  }).join("");
+  $("shortlist").querySelector("tbody").onclick = e => {
+    const tr = e.target.closest("tr[data-i]"); if (!tr) return;
+    picked = +tr.dataset.i; plan = Object.assign({}, list[picked].plan);
+    $("prep").value = plan.prep;
+    $("postdil").setAttribute("aria-pressed", String(!!plan.postdilate));
+    render();
+  };
+}
+
+try {
+  const dark = document.documentElement.getAttribute("data-theme") === "dark";
+  $("themeBtn").textContent = dark ? "浅色模式" : "深色模式";
+  $("themeBtn").setAttribute("aria-pressed", String(dark));
+} catch (e) {}
+syncInputs();
+recompute(true);
+</script>
+</body>
+</html>

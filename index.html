@@ -5,6 +5,9 @@
     <meta name="google-site-verification" content="UQCzJQF3jM0o6qL18zeOuxMkmx2nVUGTPDQ_XhH2dC4">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="canonical" href="https://lingsenyou.com/">
+    <link rel="alternate" hreflang="en" href="https://lingsenyou.com/">
+    <link rel="alternate" hreflang="zh-Hans" href="https://lingsenyou.com/zh/">
+    <link rel="alternate" hreflang="x-default" href="https://lingsenyou.com/">
     <link rel="icon" type="image/png" sizes="32x32" href="assets/optimized/favicon-32.png">
     
     <meta name="description" content="Lingsen You (游凌森, also Lucas You), M.D., Ph.D. — physician, interventional cardiologist and researcher at Zhongshan Hospital, Fudan University, and Scientific Secretary of the National Basic Science Center for Panvascular Interventional Complex Systems. Publications, CV and contact.">
@@ -338,6 +341,27 @@
             color: var(--secondary-text);
             margin-top: 4px;
         }
+        .language-switch {
+            display: flex;
+            flex-wrap: wrap;
+            align-items: center;
+            gap: 8px;
+            margin: 12px 0 18px;
+            font-size: 14px;
+        }
+        .language-switch a,
+        .language-switch span {
+            display: inline-flex;
+            align-items: center;
+            min-height: 40px;
+            padding: 5px 13px;
+            border: 1px solid #d9e2ef;
+            border-radius: 6px;
+        }
+        .language-switch span { color: #536273; background: #f4f7fb; }
+        .language-switch a { color: #1a0dab; background: #fff; font-weight: 700; text-decoration: none; }
+        .language-switch a:hover { background: #eef4ff; border-color: #1a0dab; }
+        .language-switch a:focus-visible { outline: 3px solid #1a0dab; outline-offset: 3px; }
         
         .my-title {
             font-size: 14px;
@@ -596,6 +620,7 @@
         @media (max-width: 768px) {
             .container { flex-direction: column; gap: 30px; }
             .sidebar { width: 100%; text-align: center; }
+            .language-switch { justify-content: center; }
             .profile-img { margin: 0 auto 20px; }
             .social-icons { justify-content: center; }
             .pub-item { flex-direction: column; gap: 15px; }
@@ -616,6 +641,10 @@
         </picture>
         
         <h1 class="my-name">Lingsen You<span class="name-alt">Lingsen (Lucas) You<span lang="zh-CN"> · 游凌森</span></span></h1>
+        <nav class="language-switch" aria-label="Language">
+            <span lang="en" aria-current="page">English</span>
+            <a href="/zh/" lang="zh-Hans" hreflang="zh-Hans" aria-label="查看简体中文版">简体中文</a>
+        </nav>
         <div class="my-title">
             M.D., Ph.D.<br><br>
             <strong>Physician at<br>Zhongshan Hospital, Fudan University</strong><br><br>
