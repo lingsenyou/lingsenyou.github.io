@@ -78,7 +78,20 @@ def page(path, live):
                 if card.get("data-status") == "accepted":
                     assert "已接收" in card.get_text() and not card.select_one(".pdf-link"), path
                     assert card["id"] == source["id"], path
-                    assert card.select_one(".pub-authors" if home else ".authors").get_text() == source.select_one(".pub-authors" if home else ".authors").get_text(), path
+                    if card["id"] == "paper-gpnmb-restenosis":
+                        selector = ".pub-authors" if home else ".byline-brief"
+                        assert card.select_one(selector).get_text() == "游凌森，…，葛均波", path
+                        assert source.select_one(selector).get_text() == "L. You, …, J.B. Ge", path
+                        if not home:
+                            assert card.select_one("details:not([open]) .authors").get_text() == source.select_one("details:not([open]) .authors").get_text(), path
+                        graph_en = json.loads(english.select_one('script[type="application/ld+json"]').get_text())["@graph"]
+                        article_id = ORIGIN + "/publications/#" + card["id"]
+                        record_zh = next(n for n in scripts[0]["@graph"] if n.get("@id") == article_id)
+                        record_en = next(n for n in graph_en if n.get("@id") == article_id)
+                        assert record_zh["author"] == record_en["author"] and record_zh["creditText"] == record_en["creditText"], path
+                    else:
+                        selector = ".pub-authors" if home else ".authors"
+                        assert card.select_one(selector).get_text() == source.select_one(selector).get_text(), path
             assert "https://lingsenyou.com/#person" in json.dumps(scripts), path
     return path
 

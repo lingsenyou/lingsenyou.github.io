@@ -58,6 +58,17 @@ def main():
             assert not card.select_one(".doi, .pdf-link, img") and not reference.select_one(".pdf-link, img")
             assert text(reference.select_one(".badge-if")) == text(card.select_one(".metric-if"))
             assert "Accepted" in text(reference.select_one(".badge-status")) and "Accepted" in text(card.select_one(".venue"))
+            if card["id"] == "paper-gpnmb-restenosis":
+                assert card.select_one(".byline-brief").get_text() == reference.select_one(".pub-authors").get_text() == "L. You, …, J.B. Ge"
+                details = card.select_one("details.author-credit:not([open])")
+                assert details and details.summary and details.select_one(".authors")
+                graph_names = [p.get("name") or next(n["name"] for n in data["@graph"] if n["@id"] == p["@id"]) for p in node["author"]]
+                marked_names = details.select_one(".authors").get_text().split(", ")
+                assert [n.rstrip("#*") for n in marked_names] == graph_names and len(marked_names) == 13
+                assert [n[:-1] for n in marked_names if n.endswith("#")] == ["Lingsen You", "Hanxiao Du", "Wentong Wang"]
+                assert [n[:-1] for n in marked_names if n.endswith("*")] == ["Ning Jiang", "Li Shen", "Junbo Ge"]
+                assert node["creditText"] == "Lingsen You, Hanxiao Du and Wentong Wang contributed equally. Ning Jiang, Li Shen and Junbo Ge are corresponding authors."
+                assert card.select_one(".journal-label strong").get_text() == reference.select_one(".journal-label strong").get_text() == "Genes & Diseases"
             continue
         img = card.img
         source = card.source
