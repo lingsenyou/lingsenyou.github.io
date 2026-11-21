@@ -99,6 +99,20 @@ def main():
             # Chinese record already carried the full date; all four should now agree.
             if record.get("@id") == "https://doi.org/10.34133/research.0974" and record.get("datePublished") == "2025-01":
                 record["datePublished"] = "2025-10-29"
+            # The homepages now cite their biographical sources separately from
+            # publication cards. Keep these intentional changes narrow and visible.
+            if route == home and record.get("@id") == BASE + home + "#webpage":
+                record["dateModified"] = "2026-11-21"
+                record["citation"] = [
+                    "https://doi.org/10.1093/eurheartj/ehag783",
+                    "https://shmc.fudan.edu.cn/news/2026/0529/c1893a149384/page.htm",
+                ]
+                intro = required(page, "#physician-profile", route)
+                if intro.name != "section":
+                    intro = intro.find_parent("section")
+                assert intro and set(record["citation"]) <= links(intro, route), route
+            if route == "/zh/" and record.get("@id") == BASE + "/#person":
+                record["jobTitle"] = ["心内科医师" if t == "Physician" else t for t in record["jobTitle"]]
         assert before_graph == new_graph, (route, "unrelated JSON-LD changes")
         nodes = {n["@id"]: n for n in new_graph if "@id" in n}
         counters = {"local": 0, "official": 0, "accepted": 0}
