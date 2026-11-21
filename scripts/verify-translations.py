@@ -64,7 +64,21 @@ def page(path, live):
                 assert (ROOT/rel).exists(), (path, url)
         if en in ("/","/publications/"):
             assert "0000-0003-0794-5907" in str(soup), path
-            assert len(soup.select(".pub-title-en[lang=en]")) == len(soup.select(".pdf-link")) == 11, path
+            home = en == "/"
+            selector = ".pub-item" if home else ".pub-list > article"
+            cards = soup.select(selector)
+            english = BeautifulSoup(load(en, live).decode("utf-8"), "html.parser")
+            en_cards = english.select(selector)
+            assert len(cards) == len(en_cards) > 0, path
+            for card, source in zip(cards, en_cards):
+                title = card.select_one(".pub-title-en[lang=en]")
+                assert title and title.get_text(strip=True) == source.select_one(".pub-title" if home else "h3").get_text(strip=True), path
+                assert card.get("data-status") == source.get("data-status"), path
+                assert bool(card.select_one(".pdf-link")) == bool(source.select_one(".pdf-link")), path
+                if card.get("data-status") == "accepted":
+                    assert "已接收" in card.get_text() and not card.select_one(".pdf-link"), path
+                    assert card["id"] == source["id"], path
+                    assert card.select_one(".pub-authors" if home else ".authors").get_text() == source.select_one(".pub-authors" if home else ".authors").get_text(), path
             assert "https://lingsenyou.com/#person" in json.dumps(scripts), path
     return path
 

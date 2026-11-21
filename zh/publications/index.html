@@ -82,84 +82,85 @@
         "@id": "https://lingsenyou.com/zh/#website"
       },
       "datePublished": "2026-08-13",
-      "dateModified": "2026-11-19",
+      "dateModified": "2026-11-20",
       "mainEntity": {
         "@type": "ItemList",
-        "numberOfItems": 11,
+        "numberOfItems": 12,
         "itemListElement": [
+          { "@type": "ListItem", "position": 1, "item": { "@id": "https://lingsenyou.com/publications/#paper-gpnmb-restenosis" } },
           {
             "@type": "ListItem",
-            "position": 1,
+            "position": 2,
             "item": {
               "@id": "https://doi.org/10.1093/eurheartj/ehag783"
             }
           },
           {
             "@type": "ListItem",
-            "position": 2,
+            "position": 3,
             "item": {
               "@id": "https://doi.org/10.1016/j.molmed.2026.09.007"
             }
           },
           {
             "@type": "ListItem",
-            "position": 3,
+            "position": 4,
             "item": {
               "@id": "https://doi.org/10.1186/s40364-026-00993-1"
             }
           },
           {
             "@type": "ListItem",
-            "position": 4,
+            "position": 5,
             "item": {
               "@id": "https://doi.org/10.1038/s41377-026-02410-6"
             }
           },
           {
             "@type": "ListItem",
-            "position": 5,
+            "position": 6,
             "item": {
               "@id": "https://doi.org/10.1038/s41528-026-00537-5"
             }
           },
           {
             "@type": "ListItem",
-            "position": 6,
+            "position": 7,
             "item": {
               "@id": "https://doi.org/10.1360/csb-2026-0332"
             }
           },
           {
             "@type": "ListItem",
-            "position": 7,
+            "position": 8,
             "item": {
               "@id": "https://doi.org/10.1093/eurheartj/ehaf418"
             }
           },
           {
             "@type": "ListItem",
-            "position": 8,
+            "position": 9,
             "item": {
               "@id": "https://doi.org/10.1016/j.scib.2025.12.051"
             }
           },
           {
             "@type": "ListItem",
-            "position": 9,
+            "position": 10,
             "item": {
               "@id": "https://doi.org/10.1007/s42765-025-00542-9"
             }
           },
           {
             "@type": "ListItem",
-            "position": 10,
+            "position": 11,
             "item": {
               "@id": "https://doi.org/10.34133/research.0974"
             }
           },
           {
             "@type": "ListItem",
-            "position": 11,
+            "position": 12,
             "item": {
               "@id": "https://arxiv.org/abs/2609.14709"
             }
@@ -185,6 +186,16 @@
           "item": "https://lingsenyou.com/zh/publications/"
         }
       ]
+    },
+    {
+      "@type": "ScholarlyArticle",
+      "@id": "https://lingsenyou.com/publications/#paper-gpnmb-restenosis",
+      "headline": "Time-resolved single-cell atlas identifies a GPNMB-associated macrophage–smooth muscle remodeling program in late in-stent restenosis",
+      "inLanguage": "en",
+      "genre": "Original Article",
+      "creativeWorkStatus": "Accepted",
+      "author": [{ "@id": "https://lingsenyou.com/#person" }, { "@type": "Person", "name": "Hanxiao Du" }, { "@type": "Person", "name": "Wentong Wang" }, { "@type": "Person", "name": "Yujun Guo" }, { "@type": "Person", "name": "Guanzhao Zhang" }, { "@type": "Person", "name": "Zisu Peng" }, { "@type": "Person", "name": "Xinran Deng" }, { "@type": "Person", "name": "Xiaoyu You" }, { "@type": "Person", "name": "Xingyu Yu" }, { "@type": "Person", "name": "Runrong Li" }, { "@type": "Person", "name": "Ning Jiang" }, { "@type": "Person", "name": "Li Shen" }, { "@type": "Person", "name": "Junbo Ge" }],
+      "isPartOf": { "@type": "Periodical", "name": "Genes & Diseases" }
     },
     {
       "@type": "ScholarlyArticle",
@@ -715,7 +726,7 @@
     .wcj { display:inline-block; margin-left:6px; padding:0 8px; border:1px solid #e8a9a3; border-radius:999px; background:#fdecea; color:#a50e0e; font-size:.8rem; font-weight:700; line-height:1.6; white-space:nowrap; vertical-align:1px; }
     .tier { display:inline-block; margin-left:6px; padding:0 8px; border:1px solid #9bb7d4; border-radius:999px; background:#eef4fa; color:#0b4f87; font-size:.8rem; font-weight:700; line-height:1.6; white-space:nowrap; vertical-align:1px; }
     .journal-metrics { display:flex; flex-wrap:wrap; gap:6px; margin:10px 0; }
-    .journal-metrics span { padding:2px 8px; border-radius:5px; background:#eef4fa; color:#0b4f87; font-size:.8rem; font-weight:700; }
+    .journal-metrics span, .journal-metrics a.metric-if { padding:2px 8px; border-radius:5px; background:#eef4fa; color:#0b4f87; font-size:.8rem; font-weight:700; }
     .journal-metrics .metric-if { border:1px solid #1a0dab; background:#e8f0fe; color:#1a0dab; }
     .journal-metrics .metric-publisher { background:#e6f4ea; color:#137333; }
     .metrics-note { margin:8px 0; color:var(--muted); font-size:.8rem; }
@@ -743,8 +754,8 @@
     article h3 { font-size:1.2rem; line-height:1.6; }
     .authors,.venue,.summary,.theme p { font-size:1rem; overflow-wrap:anywhere; }
     .pub-title-en { margin:0 0 10px; color:var(--muted); font-size:.875rem; line-height:1.6; overflow-wrap:anywhere; }
-    .wcj,.tier,.journal-metrics span,.pdf-link,.doi { font-size:.875rem; }
-    .journal-metrics span { padding:3px 9px; }
+    .wcj,.tier,.journal-metrics span,.journal-metrics a.metric-if,.pdf-link,.doi { font-size:.875rem; }
+    .journal-metrics span, .journal-metrics a.metric-if { padding:3px 9px; }
     .metrics-note { font-size:.8125rem; }
     footer { font-size:.875rem; line-height:1.8; }
     a:focus-visible { outline:3px solid #007ca6; outline-offset:3px; border-radius:3px; }
@@ -767,6 +778,17 @@
 <section aria-labelledby="selected-title">
 <h2 id="selected-title">代表性论文</h2>
 <div class="pub-list">
+<article class="nofig" id="paper-gpnmb-restenosis" data-status="accepted">
+<div>
+<h3>时间分辨单细胞图谱揭示晚期支架内再狭窄中与 GPNMB 相关的巨噬细胞和平滑肌细胞重塑程序</h3>
+<p class="pub-title-en" lang="en">Time-resolved single-cell atlas identifies a GPNMB-associated macrophage–smooth muscle remodeling program in late in-stent restenosis</p>
+<p class="authors"><strong>Lingsen You</strong><sup>#</sup>, Hanxiao Du<sup>#</sup>, Wentong Wang<sup>#</sup>, Yujun Guo, Guanzhao Zhang, Zisu Peng, Xinran Deng, Xiaoyu You, Xingyu Yu, Runrong Li, Ning Jiang<sup>*</sup>, Li Shen<sup>*</sup>, Junbo Ge<sup>*</sup></p>
+<p class="metrics-note"># 共同第一作者；* 通讯作者。</p>
+<p class="venue"><cite>Genes &amp; Diseases</cite> · 原创研究 · 2026年11月已接收</p>
+<div class="journal-metrics"><a class="metric-if" href="https://www.keaipublishing.com/en/journals/genes-and-diseases/" title="期刊影响因子，来源：科爱期刊官网">IF 14.6</a></div>
+<p class="summary">研究在裸金属支架植入后第1个月和第5个月对兔颈动脉取样，利用103,410个血管壁细胞构建单细胞图谱。</p>
+</div>
+</article>
 <article id="paper-ehag783">
 <a aria-label="阅读European Heart Journal的CardioPulse文章" href="https://doi.org/10.1093/eurheartj/ehag783" rel="noopener" target="_blank"><picture><source sizes="(max-width: 560px) 180px, (max-width: 760px) 90px, 150px" srcset="/assets/optimized/ehj-occ-20-years-cover-320.webp 320w, /assets/optimized/ehj-occ-20-years-cover-640.webp 640w" type="image/webp"/><img alt="European Heart Journal东方心脏病学会议二十年文章的首页页眉、题名及作者" class="ehj-preview" decoding="async" height="414" loading="lazy" src="/ehj-occ-20-years-cover.png" width="640"/></picture></a>
 <div>
@@ -834,7 +856,7 @@
 <div class="theme"><h3>泛血管研究平台</h3><p>利用柔性电子、智能纤维与器官芯片系统，连接不同血管区域的感知、干预和纵向评价。</p></div>
 </div>
 </section>
-<footer>论文元数据依据出版社记录、Crossref和arXiv核对。<strong>2025世界一流科技期刊</strong>表示期刊入选中国科学技术信息研究所（ISTIC）于2026年9月发布的相应名单。期刊指标与英文主页保持一致。PDF按钮下载本站可用的开放获取版本或作者提供版本，其他按钮打开出版社官方PDF或PDF页面。英文源内容更新于2026年11月6日，中文版整理于2026年11月19日，并校正Research论文的在线发表日期。中文题名为阅读译文，正式引用请以英文原题及DOI为准。返回<a href="/zh/">游凌森个人主页</a>。</footer>
+<footer>已发表论文与预印本的信息依据出版社记录、Crossref和arXiv核对；已接收稿件单独标注。<strong>2025世界一流科技期刊</strong>表示期刊入选中国科学技术信息研究所（ISTIC）于2026年9月发布的相应名单。期刊指标与英文主页保持一致。PDF按钮下载本站可用的开放获取版本或作者提供版本，其他按钮打开出版社官方PDF或PDF页面。更新于2026年11月20日。中文题名为阅读译文，正式引用请以英文原题为准，如有DOI请一并列出。返回<a href="/zh/">游凌森个人主页</a>。</footer>
 </main>
 </body>
 </html>

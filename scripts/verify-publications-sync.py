@@ -17,8 +17,8 @@ ROOT = Path(__file__).resolve().parents[1]
 BASE = "https://lingsenyou.com/"
 
 
-def image_key(card):
-    return Path(urlsplit(card.img["src"]).path).name
+def card_key(card):
+    return Path(urlsplit(card.img["src"]).path).name if card.img else card["id"]
 
 
 def text(node):
@@ -33,12 +33,32 @@ def main():
     page = BeautifulSoup((ROOT / "publications/index.html").read_text(encoding="utf-8"), "html.parser")
     cards = page.select(".pub-list > article")
     home_cards = home.select(".pub-item")
-    assert len(cards) == len(home_cards) == 11
-    assert [image_key(c) for c in cards] == [image_key(c) for c in home_cards]
+    card_order = [card_key(c) for c in cards]
+    assert card_order and len(set(card_order)) == len(card_order)
+    assert card_order == [card_key(c) for c in home_cards]
     assert [h["id"] for h in page.select("main > section > h2")] == ["selected-title", "themes-title"]
-    assert len(page.select(".pdf-link")) == 11
+    data = json.loads(page.select_one('script[type="application/ld+json"]').string)
+    articles = {n["@id"]: n for n in data["@graph"] if n["@type"] == "ScholarlyArticle"}
+    home_data = json.loads(home.select_one('script[type="application/ld+json"]').string)
+    home_articles = {n.get("@id"): n for n in home_data["@graph"] if n["@type"] == "ScholarlyArticle"}
+    accepted = page.select('.pub-list > article[data-status="accepted"]')
+    assert len(page.select(".pdf-link")) == len(cards) - len(accepted)
     small_bytes = retina_bytes = original_bytes = local_pdfs = 0
     for card, reference in zip(cards, home_cards):
+        is_accepted = card.get("data-status") == "accepted"
+        assert is_accepted == (reference.get("data-status") == "accepted")
+        if is_accepted:
+            item_id = urljoin(BASE, "publications/#" + card["id"])
+            node = articles[item_id]
+            assert node == home_articles[item_id]
+            assert node["creativeWorkStatus"] == "Accepted"
+            assert node["headline"] == text(card.h3) == text(reference.select_one(".pub-title"))
+            assert urljoin(BASE, reference.select_one(".pub-title")["href"]) == item_id
+            assert not any(field in node for field in ("datePublished", "identifier", "volumeNumber", "issueNumber"))
+            assert not card.select_one(".doi, .pdf-link, img") and not reference.select_one(".pdf-link, img")
+            assert text(reference.select_one(".badge-if")) == text(card.select_one(".metric-if"))
+            assert "Accepted" in text(reference.select_one(".badge-status")) and "Accepted" in text(card.select_one(".venue"))
+            continue
         img = card.img
         source = card.source
         assert img.get("alt") and img.get("loading") == "lazy" and img.get("decoding") == "async"
@@ -77,24 +97,26 @@ def main():
             assert card.select_one(".wcj")
         for badge in reference.select(".badge-publisher, .badge-highlight"):
             assert text(badge) in text(card)
-    data = json.loads(page.select_one('script[type="application/ld+json"]').string)
     collection = next(n for n in data["@graph"] if n["@type"] == "CollectionPage")
     items = collection["mainEntity"]["itemListElement"]
     assert collection["mainEntity"]["numberOfItems"] == len(cards)
-    assert [i["position"] for i in items] == list(range(1, 12))
-    assert [i["item"]["@id"] for i in items] == [c.h3.a["href"] for c in cards]
+    assert [i["position"] for i in items] == list(range(1, len(cards) + 1))
+    assert [i["item"]["@id"] for i in items] == [c.h3.a["href"] if c.h3.a else urljoin(BASE, "publications/#" + c["id"]) for c in cards]
     if args.baseline_ref:
         original = subprocess.check_output(["git", "show", f"{args.baseline_ref}:publications/index.html"], cwd=ROOT).decode("utf-8")
         baseline = BeautifulSoup(original, "html.parser")
-        old_cards = {image_key(c): c for c in baseline.select(".pub-list > article")}
-        for card in cards:
-            old = old_cards[image_key(card)]
+        new_cards = {card_key(c): c for c in cards}
+        old_cards = {card_key(c): c for c in baseline.select(".pub-list > article")}
+        assert old_cards.keys() <= new_cards.keys()
+        assert list(old_cards) == [key for key in card_order if key in old_cards]
+        for key, old in old_cards.items():
+            card = new_cards[key]
             for selector in ("h3", ".authors", ".summary"):
-                assert text(card.select_one(selector)) == text(old.select_one(selector)), (image_key(card), selector)
+                assert text(card.select_one(selector)) == text(old.select_one(selector)), (key, selector)
             assert {a["href"] for a in old.select("a[href]")} <= {a["href"] for a in card.select("a[href]")}
-        print("PASS: all 11 titles, full author lists, summaries and existing article links preserved")
-    print("PASS: homepage order, all 11 responsive images, journal labels, PDF targets and structured order")
-    print(f"PDF buttons: {local_pdfs} local downloads, {len(cards)-local_pdfs} official publisher destinations")
+        print(f"PASS: {len(old_cards)} existing titles, full author lists, summaries and article links preserved")
+    print(f"PASS: {len(cards)} entries match homepage/structured order; {len(accepted)} accepted without a public paper link")
+    print(f"PDF buttons: {local_pdfs} local downloads, {len(cards)-len(accepted)-local_pdfs} official publisher destinations")
     print(f"Image payload: original={original_bytes:,} B; small={small_bytes:,} B; retina={retina_bytes:,} B")
     print(f"Savings: small={1-small_bytes/original_bytes:.1%}; retina={1-retina_bytes/original_bytes:.1%}")
 
