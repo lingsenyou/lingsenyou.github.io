@@ -64,34 +64,33 @@ def page(path, live):
                 assert (ROOT/rel).exists(), (path, url)
         if en in ("/","/publications/"):
             assert "0000-0003-0794-5907" in str(soup), path
-            home = en == "/"
-            selector = ".pub-item" if home else ".pub-list > article"
+            selector = ".pub-list.pc-list > article.pub-card.pub-item"
             cards = soup.select(selector)
             english = BeautifulSoup(load(en, live).decode("utf-8"), "html.parser")
             en_cards = english.select(selector)
-            assert len(cards) == len(en_cards) > 0, path
+            assert len(cards) == len(en_cards) == 12, path
             for card, source in zip(cards, en_cards):
-                title = card.select_one(".pub-title-en[lang=en]")
-                assert title and title.get_text(strip=True) == source.select_one(".pub-title" if home else "h3").get_text(strip=True), path
+                title = card.select_one(".pc-subtitle[lang=en]")
+                assert title and title.get_text(strip=True) == source.select_one("h3.pc-title").get_text(strip=True), path
+                assert card["id"] == source["id"], path
                 assert card.get("data-status") == source.get("data-status"), path
-                assert bool(card.select_one(".pdf-link")) == bool(source.select_one(".pdf-link")), path
+                assert (card.select_one("details.pc-details .authors").get_text() ==
+                        source.select_one("details.pc-details .authors").get_text()), (path, card["id"])
+                pdf, en_pdf = card.select_one(".pc-actions .pc-pdf"), source.select_one(".pc-actions .pc-pdf")
+                assert bool(pdf) == bool(en_pdf), path
+                if pdf:
+                    assert absolute(path,pdf["href"]) == absolute(en,en_pdf["href"]), (path, card["id"])
                 if card.get("data-status") == "accepted":
                     assert "已接收" in card.get_text() and not card.select_one(".pdf-link"), path
                     assert card["id"] == source["id"], path
                     if card["id"] == "paper-gpnmb-restenosis":
-                        selector = ".pub-authors" if home else ".byline-brief"
-                        assert card.select_one(selector).get_text() == "游凌森，…，葛均波", path
-                        assert source.select_one(selector).get_text() == "L. You, …, J.B. Ge", path
-                        if not home:
-                            assert card.select_one("details:not([open]) .authors").get_text() == source.select_one("details:not([open]) .authors").get_text(), path
+                        assert card.select_one(".pc-authors").get_text() == "游凌森，…，葛均波", path
+                        assert source.select_one(".pc-authors").get_text() == "L. You, …, J.B. Ge", path
                         graph_en = json.loads(english.select_one('script[type="application/ld+json"]').get_text())["@graph"]
                         article_id = ORIGIN + "/publications/#" + card["id"]
                         record_zh = next(n for n in scripts[0]["@graph"] if n.get("@id") == article_id)
                         record_en = next(n for n in graph_en if n.get("@id") == article_id)
                         assert record_zh["author"] == record_en["author"] and record_zh["creditText"] == record_en["creditText"], path
-                    else:
-                        selector = ".pub-authors" if home else ".authors"
-                        assert card.select_one(selector).get_text() == source.select_one(selector).get_text(), path
             assert "https://lingsenyou.com/#person" in json.dumps(scripts), path
     return path
 

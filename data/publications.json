@@ -1,0 +1,949 @@
+[
+  {
+    "id": "paper-gpnmb-restenosis",
+    "status": "accepted",
+    "title": "Time-resolved single-cell atlas identifies a GPNMB-associated macrophage–smooth muscle remodeling program in late in-stent restenosis",
+    "authors": [
+      "Lingsen You#",
+      "Hanxiao Du#",
+      "Wentong Wang#",
+      "Yujun Guo",
+      "Guanzhao Zhang",
+      "Zisu Peng",
+      "Xinran Deng",
+      "Xiaoyu You",
+      "Xingyu Yu",
+      "Runrong Li",
+      "Ning Jiang*",
+      "Li Shen*",
+      "Junbo Ge*"
+    ],
+    "articleType": {
+      "en": "Original Article",
+      "zh": "原创研究"
+    },
+    "en": {
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Genes & Diseases"
+        },
+        {
+          "kind": "if",
+          "label": "IF 14.6",
+          "title": "Journal Impact Factor, reported by KeAi",
+          "href": "https://www.keaipublishing.com/en/journals/genes-and-diseases/"
+        },
+        {
+          "kind": "status",
+          "label": "Accepted 2026"
+        }
+      ],
+      "summaryHtml": "The single-cell atlas profiles 103,410 vascular wall cells from rabbit carotid arteries sampled one and five months after bare-metal stent implantation.",
+      "notesHtml": [
+        "# Equal contribution; * corresponding authors.",
+        "Accepted in November 2026."
+      ]
+    },
+    "zh": {
+      "title": "时间分辨单细胞图谱揭示晚期支架内再狭窄中与 GPNMB 相关的巨噬细胞和平滑肌细胞重塑程序",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Genes & Diseases"
+        },
+        {
+          "kind": "if",
+          "label": "IF 14.6",
+          "title": "期刊影响因子，来源：科爱期刊官网",
+          "href": "https://www.keaipublishing.com/en/journals/genes-and-diseases/"
+        },
+        {
+          "kind": "status",
+          "label": "2026年已接收"
+        }
+      ],
+      "summaryHtml": "研究在裸金属支架植入后第1个月和第5个月对兔颈动脉取样，利用103,410个血管壁细胞构建单细胞图谱。",
+      "notesHtml": [
+        "# 共同第一作者；* 通讯作者。",
+        "2026年11月已接收。"
+      ]
+    }
+  },
+  {
+    "id": "paper-ehag783",
+    "status": "published",
+    "title": "From Shanghai to the world: the Oriental Congress of Cardiology 20 years in",
+    "authors": [
+      "Lingsen You",
+      "Li Shen",
+      "Junbo Ge"
+    ],
+    "image": {
+      "src": "/ehj-occ-20-years-cover.png",
+      "srcset": "/assets/optimized/ehj-occ-20-years-cover-320.webp 320w, /assets/optimized/ehj-occ-20-years-cover-640.webp 640w",
+      "width": 640,
+      "height": 414
+    },
+    "url": "https://doi.org/10.1093/eurheartj/ehag783",
+    "pdf": "/pdfs/ehj-occ-2026.pdf",
+    "download": "ehj-occ-2026.pdf",
+    "en": {
+      "alt": "First-page header, title and authors of the European Heart Journal article From Shanghai to the world: the Oriental Congress of Cardiology 20 years in",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "European Heart Journal"
+        },
+        {
+          "kind": "if",
+          "label": "IF 45.6",
+          "title": "2025 Journal Impact Factor. Official ESC journal published by Oxford University Press. Cardiac & Cardiovascular Systems rank: 2/237. Source: academic.oup.com/eurheartj/pages/About"
+        },
+        {
+          "kind": "status",
+          "label": "Published 2026"
+        },
+        {
+          "kind": "honor",
+          "label": "2025 World-Class Sci-Tech Journal",
+          "title": "2025 World-Class Sci-Tech Journal designation, consistent with the existing EHJ entry."
+        }
+      ],
+      "summaryHtml": "A meeting report tracing the Oriental Congress of Cardiology's growth from a Shanghai meeting into a global platform, and examining how its 20th anniversary brings scale, international collaboration and evidence standards into focus.",
+      "citation": "European Heart Journal · CardioPulse: Events and Meetings · Published online 7 October 2026",
+      "notesHtml": [
+        "Oxford University Press · ESC official journal · <a href=\"https://academic.oup.com/eurheartj/pages/About\" rel=\"noopener\" target=\"_blank\" title=\"2025 Journal Impact Factor rank in Cardiac &amp; Cardiovascular Systems\">Cardiovascular rank 2/237</a>",
+        "2025 metrics: 5-year IF 42.2 · JCI 7.96 · CiteScore 35.9. Impact factor rank: Cardiac &amp; Cardiovascular Systems. <a href=\"https://academic.oup.com/eurheartj/pages/About\" rel=\"noopener\" target=\"_blank\">Official OUP source</a>."
+      ],
+      "identifierText": "DOI: 10.1093/eurheartj/ehag783"
+    },
+    "zh": {
+      "title": "从上海走向世界：东方心脏病学会议二十年",
+      "alt": "European Heart Journal文章《从上海走向世界：东方心脏病学会议二十年》的首页页眉、题名与作者",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "European Heart Journal"
+        },
+        {
+          "kind": "if",
+          "label": "IF 45.6",
+          "title": "2025年期刊影响因子。牛津大学出版社出版，ESC官方期刊。心脏与心血管系统学科排名：2/237。来源：OUP期刊官方网站。"
+        },
+        {
+          "kind": "status",
+          "label": "2026年发表"
+        },
+        {
+          "kind": "honor",
+          "label": "2025世界一流科技期刊",
+          "title": "2025世界一流科技期刊标记，与现有EHJ条目保持一致。"
+        }
+      ],
+      "summaryHtml": "回顾东方心脏病学会议从上海的学术会议发展为全球交流平台的历程，并探讨其二十周年之际所关注的会议规模、国际合作与证据标准。",
+      "citation": "European Heart Journal · CardioPulse：活动与会议 · 2026年10月7日在线发表",
+      "notesHtml": [
+        "牛津大学出版社 · 欧洲心脏病学会（ESC）官方期刊 · <a href=\"https://academic.oup.com/eurheartj/pages/About\" rel=\"noopener\" target=\"_blank\" title=\"2025年心脏与心血管系统学科影响因子排名\">心血管学科排名 2/237</a>",
+        "2025年指标：5年影响因子42.2 · JCI 7.96 · CiteScore 35.9。影响因子学科排名：心脏与心血管系统。<a href=\"https://academic.oup.com/eurheartj/pages/About\" rel=\"noopener\" target=\"_blank\">牛津大学出版社官方来源</a>。"
+      ],
+      "identifierText": "DOI: 10.1093/eurheartj/ehag783"
+    }
+  },
+  {
+    "id": "paper-j-molmed-2026-09-007",
+    "status": "published",
+    "title": "Vascular-device suit concordance: a tri-ecological framework for eco-rebalancing",
+    "authors": [
+      "Lingsen You",
+      "Yaxuan Li",
+      "Yuchen Luo",
+      "Qiang Cheng",
+      "Liuliu Feng",
+      "Li Shen",
+      "Junbo Ge"
+    ],
+    "image": {
+      "src": "/trends-molecular-medicine-suitcordance.jpg",
+      "srcset": "/assets/optimized/trends-molecular-medicine-suitcordance-320.webp 320w, /assets/optimized/trends-molecular-medicine-suitcordance-640.webp 640w",
+      "width": 1000,
+      "height": 1000
+    },
+    "url": "https://doi.org/10.1016/j.molmed.2026.09.007",
+    "pdf": "https://www.sciencedirect.com/science/article/pii/S1471491426002236/pdfft",
+    "en": {
+      "alt": "A river in balance, annotated with the three ecological balances of vascular-device suitcordance: mechanical, cellular and physicochemical-immune",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Trends in Molecular Medicine"
+        },
+        {
+          "kind": "publisher",
+          "label": "Cell Press"
+        },
+        {
+          "kind": "if",
+          "label": "IF 18.1"
+        },
+        {
+          "kind": "status",
+          "label": "Published 2026"
+        },
+        {
+          "kind": "honor",
+          "label": "2025 World-Class Sci-Tech Journal",
+          "title": "Included in the 2025 list of World-Class Sci-Tech Journals released by the Institute of Scientific and Technical Information of China (ISTIC) on 12 September 2026"
+        }
+      ],
+      "summaryHtml": "An ecological reading of device–vessel suitcordance: three balances that an implanted device perturbs and has to restore. DOI: <a href=\"https://doi.org/10.1016/j.molmed.2026.09.007\" rel=\"noopener\" target=\"_blank\">10.1016/j.molmed.2026.09.007</a>. <a href=\"https://pubmed.ncbi.nlm.nih.gov/42827069/\" rel=\"noopener\" target=\"_blank\">PubMed</a>.",
+      "citation": "Trends in Molecular Medicine · Cell Press · published online 2 October 2026"
+    },
+    "zh": {
+      "title": "血管与器械适配：促进生态再平衡的三重生态框架",
+      "alt": "以河流生态平衡示意血管与器械适配的三重平衡：力学、细胞、理化与免疫",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Trends in Molecular Medicine"
+        },
+        {
+          "kind": "publisher",
+          "label": "Cell Press"
+        },
+        {
+          "kind": "if",
+          "label": "IF 18.1"
+        },
+        {
+          "kind": "status",
+          "label": "2026年发表"
+        },
+        {
+          "kind": "honor",
+          "label": "2025世界一流科技期刊",
+          "title": "入选中国科学技术信息研究所（ISTIC）于2026年9月12日发布的2025年世界一流科技期刊目录"
+        }
+      ],
+      "summaryHtml": "从生态学视角理解器械与血管适配：植入器械会扰动三类平衡，也需要促进这些平衡的恢复。 DOI：<a href=\"https://doi.org/10.1016/j.molmed.2026.09.007\" rel=\"noopener\" target=\"_blank\">10.1016/j.molmed.2026.09.007</a>。 <a href=\"https://pubmed.ncbi.nlm.nih.gov/42827069/\" rel=\"noopener\" target=\"_blank\">PubMed</a>。",
+      "citation": "Trends in Molecular Medicine · Cell Press · 2026年10月2日在线发表"
+    }
+  },
+  {
+    "id": "paper-s40364-026-00993-1",
+    "status": "published",
+    "title": "Intra-aortic balloon pump use and in-hospital mortality in acute myocardial infarction with Killip class III or IV: a nationwide cohort study",
+    "authors": [
+      "Lingsen You",
+      "Hao Li",
+      "Zhenzhen Lu",
+      "Yu Wang",
+      "Shanyuan Hong",
+      "Mengyao Wang",
+      "Tongtong Zang",
+      "Lihong Huang",
+      "Li Shen",
+      "Junbo Ge"
+    ],
+    "image": {
+      "src": "/paper7.jpg",
+      "srcset": "/assets/optimized/paper7-320.webp 320w, /assets/optimized/paper7-640.webp 640w",
+      "width": 843,
+      "height": 535
+    },
+    "url": "https://doi.org/10.1186/s40364-026-00993-1",
+    "pdf": "/pdfs/iabp-biomarker-research-2026.pdf",
+    "download": "iabp-biomarker-research-2026.pdf",
+    "en": {
+      "alt": "Kaplan-Meier curves of in-hospital all-cause mortality with and without intra-aortic balloon pump support in the sIPTW-weighted cohort",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Biomarker Research"
+        },
+        {
+          "kind": "publisher",
+          "label": "Springer Nature"
+        },
+        {
+          "kind": "if",
+          "label": "IF 15.0"
+        },
+        {
+          "kind": "status",
+          "label": "Published 2026"
+        },
+        {
+          "kind": "honor",
+          "label": "2025 World-Class Sci-Tech Journal",
+          "title": "Included in the 2025 list of World-Class Sci-Tech Journals released by the Institute of Scientific and Technical Information of China (ISTIC) on 12 September 2026"
+        }
+      ],
+      "summaryHtml": "A nationwide cohort of 37,477 patients undergoing PCI for acute myocardial infarction with Killip class III or IV, drawn from the China Chest Pain Center Database (4,089 hospitals, 2019–2023). Using target-trial emulation with BART-based stabilised inverse probability weighting, intra-aortic balloon pump use during hospitalisation was associated with higher in-hospital all-cause mortality (28.1% vs. 19.1%; HR 1.48, 95% CI 1.37–1.61).",
+      "citation": "Biomarker Research · August 2026 · 14:97",
+      "notesHtml": [
+        "Open access."
+      ],
+      "identifierText": "DOI: 10.1186/s40364-026-00993-1"
+    },
+    "zh": {
+      "title": "主动脉内球囊反搏与Killip III或IV级急性心肌梗死患者院内死亡率：一项全国性队列研究",
+      "alt": "sIPTW加权队列中使用与未使用主动脉内球囊反搏患者院内全因死亡率的Kaplan-Meier曲线",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Biomarker Research"
+        },
+        {
+          "kind": "publisher",
+          "label": "Springer Nature"
+        },
+        {
+          "kind": "if",
+          "label": "IF 15.0"
+        },
+        {
+          "kind": "status",
+          "label": "2026年发表"
+        },
+        {
+          "kind": "honor",
+          "label": "2025世界一流科技期刊",
+          "title": "入选中国科学技术信息研究所（ISTIC）于2026年9月12日发布的2025年世界一流科技期刊目录"
+        }
+      ],
+      "summaryHtml": "纳入中国胸痛中心数据库中37,477例接受PCI的Killip分级III或IV级急性心肌梗死患者，数据来自4,089家医院（2019至2023年）。研究采用目标试验模拟及基于BART的稳定化逆概率加权，发现住院期间使用主动脉内球囊反搏与更高的院内全因死亡率相关（28.1% vs. 19.1%；HR 1.48，95% CI 1.37至1.61）。这是一项观察性研究，不能据此认定球囊反搏导致死亡率升高。",
+      "citation": "Biomarker Research · 2026年8月 · 14:97",
+      "notesHtml": [
+        "论文开放获取。"
+      ],
+      "identifierText": "DOI: 10.1186/s40364-026-00993-1"
+    }
+  },
+  {
+    "id": "paper-s41377-026-02410-6",
+    "status": "published",
+    "title": "From intravascular imaging to adaptive vascular care: intelligent photonics and digital twins in panvascular disease",
+    "authors": [
+      "Lingsen You",
+      "Jiaxin Yao",
+      "Yaoqing Qiu",
+      "Yu Wang",
+      "Yunlu Sun",
+      "Rongjun Zhang",
+      "Li Shen",
+      "Junbo Ge"
+    ],
+    "image": {
+      "src": "/paper6.jpg",
+      "srcset": "/assets/optimized/paper6-320.webp 320w, /assets/optimized/paper6-640.webp 640w",
+      "width": 640,
+      "height": 640
+    },
+    "url": "https://doi.org/10.1038/s41377-026-02410-6",
+    "pdf": "/pdfs/light-intelligent-photonics-2026.pdf",
+    "download": "light-intelligent-photonics-2026.pdf",
+    "en": {
+      "alt": "Light: Science & Applications — Intelligent Photonics and Digital Twins in Panvascular Disease",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Light: Science & Applications"
+        },
+        {
+          "kind": "publisher",
+          "label": "Nature Portfolio"
+        },
+        {
+          "kind": "if",
+          "label": "IF 24.0"
+        },
+        {
+          "kind": "status",
+          "label": "Published 2026"
+        },
+        {
+          "kind": "honor",
+          "label": "2025 World-Class Sci-Tech Journal",
+          "title": "Included in the 2025 list of World-Class Sci-Tech Journals released by the Institute of Scientific and Technical Information of China (ISTIC) on 12 September 2026"
+        }
+      ],
+      "summaryHtml": "A roadmap connecting intravascular imaging and intelligent photonics with computational vascular representations for more adaptive panvascular care.",
+      "citation": "Light: Science & Applications · 4 August 2026",
+      "identifierText": "DOI: 10.1038/s41377-026-02410-6",
+      "extraLinks": [
+        {
+          "href": "https://www.nature.com/articles/s41377-026-02410-6",
+          "label": "Publisher article page"
+        }
+      ]
+    },
+    "zh": {
+      "title": "从血管内成像到自适应血管诊疗：泛血管疾病中的智能光子学与数字孪生",
+      "alt": "Light: Science & Applications文章配图：泛血管疾病中的智能光子学与数字孪生",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Light: Science & Applications"
+        },
+        {
+          "kind": "publisher",
+          "label": "Nature Portfolio"
+        },
+        {
+          "kind": "if",
+          "label": "IF 24.0"
+        },
+        {
+          "kind": "status",
+          "label": "2026年发表"
+        },
+        {
+          "kind": "honor",
+          "label": "2025世界一流科技期刊",
+          "title": "入选中国科学技术信息研究所（ISTIC）于2026年9月12日发布的2025年世界一流科技期刊目录"
+        }
+      ],
+      "summaryHtml": "提出一条研究路线，将血管内成像和智能光子学与计算性血管表征相连接，以支持更具适应性的泛血管诊疗。",
+      "citation": "Light: Science & Applications · 2026年8月4日",
+      "identifierText": "DOI: 10.1038/s41377-026-02410-6",
+      "extraLinks": [
+        {
+          "href": "https://www.nature.com/articles/s41377-026-02410-6",
+          "label": "出版社文章页面"
+        }
+      ]
+    }
+  },
+  {
+    "id": "paper-s41528-026-00537-5",
+    "status": "published",
+    "title": "4A tetrahedron system: a synergistic framework for panvascular intervention empowered by flexible electronics",
+    "authors": [
+      "Lingsen You",
+      "Yirong Qu",
+      "Yuheng Chen",
+      "Yu Wang",
+      "Li Shen",
+      "Junbo Ge"
+    ],
+    "image": {
+      "src": "/paper4.jpg",
+      "srcset": "/assets/optimized/paper4-320.webp 320w, /assets/optimized/paper4-640.webp 640w",
+      "width": 640,
+      "height": 653
+    },
+    "url": "https://doi.org/10.1038/s41528-026-00537-5",
+    "pdf": "/pdfs/npj-4a-tetrahedron-2026.pdf",
+    "download": "npj-4a-tetrahedron-2026.pdf",
+    "en": {
+      "alt": "4A tetrahedron system for panvascular intervention empowered by flexible electronics",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "npj Flexible Electronics"
+        },
+        {
+          "kind": "publisher",
+          "label": "Nature Portfolio"
+        },
+        {
+          "kind": "if",
+          "label": "IF 15.4"
+        },
+        {
+          "kind": "status",
+          "label": "Published 2026"
+        },
+        {
+          "kind": "honor",
+          "label": "2025 World-Class Sci-Tech Journal",
+          "title": "Included in the 2025 list of World-Class Sci-Tech Journals released by the Institute of Scientific and Technical Information of China (ISTIC) on 12 September 2026"
+        }
+      ],
+      "summaryHtml": "A four-dimensional framework for aligning anatomy, application, adaptation and assessment in flexible-electronic panvascular systems.",
+      "citation": "npj Flexible Electronics · 29 January 2026",
+      "identifierText": "DOI: 10.1038/s41528-026-00537-5"
+    },
+    "zh": {
+      "title": "4A四面体体系：柔性电子赋能泛血管介入的协同框架",
+      "alt": "柔性电子赋能泛血管介入的4A四面体体系",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "npj Flexible Electronics"
+        },
+        {
+          "kind": "publisher",
+          "label": "Nature Portfolio"
+        },
+        {
+          "kind": "if",
+          "label": "IF 15.4"
+        },
+        {
+          "kind": "status",
+          "label": "2026年发表"
+        },
+        {
+          "kind": "honor",
+          "label": "2025世界一流科技期刊",
+          "title": "入选中国科学技术信息研究所（ISTIC）于2026年9月12日发布的2025年世界一流科技期刊目录"
+        }
+      ],
+      "summaryHtml": "提出四维框架，在柔性电子泛血管系统中协调解剖结构、应用场景、适应性与评价。",
+      "citation": "npj Flexible Electronics · 2026年1月29日",
+      "identifierText": "DOI: 10.1038/s41528-026-00537-5"
+    }
+  },
+  {
+    "id": "paper-csb-2026-0332",
+    "status": "published",
+    "title": "AI-assisted generation and screening of PLLA modifiers for bioresorbable vascular scaffolds",
+    "authors": [
+      "Lingsen You",
+      "Yujun Guo",
+      "Zisu Peng",
+      "Wentong Wang",
+      "Li Shen",
+      "Junbo Ge"
+    ],
+    "image": {
+      "src": "/csb-plla-ai-screening.jpg",
+      "srcset": "/assets/optimized/csb-plla-ai-screening-320.webp 320w, /assets/optimized/csb-plla-ai-screening-640.webp 640w",
+      "width": 1400,
+      "height": 616
+    },
+    "url": "https://doi.org/10.1360/csb-2026-0332",
+    "pdf": "https://www.sciengine.com/doi/10.1360/CSB-2026-0332",
+    "en": {
+      "alt": "Two panels from the paper: predicted blend glass transition temperature against modifier fraction, and remaining scaffold mass against implantation time",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Science Bulletin(c)"
+        },
+        {
+          "kind": "tier",
+          "label": "CAS Tier 1",
+          "title": "Tier 1 in the Chinese Academy of Sciences journal ranking"
+        },
+        {
+          "kind": "status",
+          "label": "Published 2026"
+        },
+        {
+          "kind": "honor",
+          "label": "2025 World-Class Sci-Tech Journal",
+          "title": "Included in the 2025 list of World-Class Sci-Tech Journals released by the Institute of Scientific and Technical Information of China (ISTIC) on 12 September 2026"
+        }
+      ],
+      "summaryHtml": "An AI-assisted route to generating and screening candidate modifiers for poly-L-lactic acid, the polymer used in bioresorbable vascular scaffolds.",
+      "citation": "Science Bulletin(c) · 14 April 2026 · 71(19):4653–4662",
+      "identifierText": "DOI: 10.1360/csb-2026-0332"
+    },
+    "zh": {
+      "title": "人工智能辅助生成与筛选生物可吸收血管支架用PLLA改性剂",
+      "alt": "论文中的两个图板：共混物预测玻璃化转变温度与改性剂比例的关系，以及支架残余质量与植入时间的关系",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "科学通报（中文版）"
+        },
+        {
+          "kind": "tier",
+          "label": "中科院一区",
+          "title": "中国科学院期刊分区一区"
+        },
+        {
+          "kind": "status",
+          "label": "2026年发表"
+        },
+        {
+          "kind": "honor",
+          "label": "2025世界一流科技期刊",
+          "title": "入选中国科学技术信息研究所（ISTIC）于2026年9月12日发布的2025年世界一流科技期刊目录"
+        }
+      ],
+      "summaryHtml": "探索人工智能辅助的方法，为生物可吸收血管支架所用聚合物聚左旋乳酸（PLLA）生成并筛选候选改性剂。",
+      "citation": "科学通报（中文版） · 2026年4月14日 · 71(19):4653–4662",
+      "identifierText": "DOI: 10.1360/csb-2026-0332"
+    }
+  },
+  {
+    "id": "paper-ehaf418",
+    "status": "published",
+    "title": "The foundation and development of China’s National Basic Science Center for panvascular interventional complex systems: pioneering device-vessel suitcordance research",
+    "authors": [
+      "Lingsen You",
+      "Li Shen",
+      "Junbo Ge"
+    ],
+    "image": {
+      "src": "/paper1.jpg",
+      "srcset": "/assets/optimized/paper1-320.webp 320w, /assets/optimized/paper1-640.webp 640w",
+      "width": 640,
+      "height": 414
+    },
+    "url": "https://doi.org/10.1093/eurheartj/ehaf418",
+    "pdf": "https://academic.oup.com/eurheartj/article-pdf/46/35/3400/63435484/ehaf418.pdf",
+    "en": {
+      "alt": "European Heart Journal article on device-vessel suitcordance research",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "European Heart Journal"
+        },
+        {
+          "kind": "if",
+          "label": "IF 45.6",
+          "title": "2025 Journal Impact Factor. Official ESC journal published by Oxford University Press. Cardiac & Cardiovascular Systems rank: 2/237. Source: academic.oup.com/eurheartj/pages/About"
+        },
+        {
+          "kind": "status",
+          "label": "Published 2025"
+        },
+        {
+          "kind": "honor",
+          "label": "2025 World-Class Sci-Tech Journal",
+          "title": "Included in the 2025 list of World-Class Sci-Tech Journals released by the Institute of Scientific and Technical Information of China (ISTIC) on 12 September 2026"
+        }
+      ],
+      "summaryHtml": "An account of the centre’s scientific foundations and its programme for pioneering device–vessel suitcordance research.",
+      "citation": "European Heart Journal · 4 June 2025",
+      "notesHtml": [
+        "Oxford University Press · ESC official journal · <a href=\"https://academic.oup.com/eurheartj/pages/About\" rel=\"noopener\" target=\"_blank\" title=\"2025 Journal Impact Factor rank in Cardiac &amp; Cardiovascular Systems\">Cardiovascular rank 2/237</a>",
+        "2025 Journal Impact Factor and subject rank. <a href=\"https://academic.oup.com/eurheartj/pages/About\" rel=\"noopener\" target=\"_blank\">Official OUP source</a>."
+      ],
+      "identifierText": "DOI: 10.1093/eurheartj/ehaf418"
+    },
+    "zh": {
+      "title": "中国泛血管介入复杂系统国家基础科学中心的建立与发展：开拓器械与血管适配研究",
+      "alt": "European Heart Journal关于器械与血管适配研究的文章",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "European Heart Journal"
+        },
+        {
+          "kind": "if",
+          "label": "IF 45.6",
+          "title": "2025年期刊影响因子。牛津大学出版社出版，ESC官方期刊。心脏与心血管系统学科排名：2/237。来源：OUP期刊官方网站。"
+        },
+        {
+          "kind": "status",
+          "label": "2025年发表"
+        },
+        {
+          "kind": "honor",
+          "label": "2025世界一流科技期刊",
+          "title": "入选中国科学技术信息研究所（ISTIC）于2026年9月12日发布的2025年世界一流科技期刊目录"
+        }
+      ],
+      "summaryHtml": "介绍该中心的科学基础，以及开拓器械与血管适配研究的科研布局。",
+      "citation": "European Heart Journal · 2025年6月4日",
+      "notesHtml": [
+        "牛津大学出版社 · 欧洲心脏病学会（ESC）官方期刊 · <a href=\"https://academic.oup.com/eurheartj/pages/About\" rel=\"noopener\" target=\"_blank\" title=\"2025年心脏与心血管系统学科影响因子排名\">心血管学科排名 2/237</a>",
+        "2025年期刊影响因子及学科排名。<a href=\"https://academic.oup.com/eurheartj/pages/About\" rel=\"noopener\" target=\"_blank\">牛津大学出版社官方来源</a>。"
+      ],
+      "identifierText": "DOI: 10.1093/eurheartj/ehaf418"
+    }
+  },
+  {
+    "id": "paper-j-scib-2025-12-051",
+    "status": "published",
+    "title": "The FLOW Framework: a panvascular-on-a-chip platform to model systemic disease and guide panvascular interventional device suitcordance",
+    "authors": [
+      "Lingsen You",
+      "Yuheng Chen",
+      "Zeyang Zhang",
+      "Yu Wang",
+      "Zhongze Gu",
+      "Li Shen",
+      "Junbo Ge"
+    ],
+    "image": {
+      "src": "/paper2.jpg",
+      "srcset": "/assets/optimized/paper2-320.webp 320w, /assets/optimized/paper2-640.webp 640w",
+      "width": 640,
+      "height": 457
+    },
+    "url": "https://doi.org/10.1016/j.scib.2025.12.051",
+    "pdf": "/pdfs/flow-framework-science-bulletin-2026.pdf",
+    "download": "flow-framework-science-bulletin-2026.pdf",
+    "en": {
+      "alt": "The FLOW Framework panvascular-on-a-chip platform",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Science Bulletin"
+        },
+        {
+          "kind": "if",
+          "label": "IF 21.1"
+        },
+        {
+          "kind": "status",
+          "label": "Published 2026"
+        },
+        {
+          "kind": "honor",
+          "label": "2025 World-Class Sci-Tech Journal",
+          "title": "Included in the 2025 list of World-Class Sci-Tech Journals released by the Institute of Scientific and Technical Information of China (ISTIC) on 12 September 2026"
+        }
+      ],
+      "summaryHtml": "A panvascular-on-a-chip concept for modelling systemic vascular disease and evaluating how interventions interact with distinct vascular environments.",
+      "citation": "Science Bulletin · February 2026",
+      "identifierText": "DOI: 10.1016/j.scib.2025.12.051"
+    },
+    "zh": {
+      "title": "FLOW框架：模拟系统性疾病并指导泛血管介入器械适配的泛血管芯片平台",
+      "alt": "FLOW框架的泛血管芯片平台",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Science Bulletin"
+        },
+        {
+          "kind": "if",
+          "label": "IF 21.1"
+        },
+        {
+          "kind": "status",
+          "label": "2026年发表"
+        },
+        {
+          "kind": "honor",
+          "label": "2025世界一流科技期刊",
+          "title": "入选中国科学技术信息研究所（ISTIC）于2026年9月12日发布的2025年世界一流科技期刊目录"
+        }
+      ],
+      "summaryHtml": "提出泛血管芯片概念，用于模拟系统性血管疾病，并评价介入措施与不同血管微环境之间的相互作用。",
+      "citation": "Science Bulletin · 2026年2月",
+      "identifierText": "DOI: 10.1016/j.scib.2025.12.051"
+    }
+  },
+  {
+    "id": "paper-s42765-025-00542-9",
+    "status": "published",
+    "title": "High-Suitcordance Intelligent Fibers for Panvascular Disease Monitoring-Intervention",
+    "authors": [
+      "Lingsen You",
+      "Yuchen Luo",
+      "Qiang Cheng",
+      "Li Shen",
+      "Junbo Ge"
+    ],
+    "image": {
+      "src": "/advanced-fiber-materials-v7-i4-cover.jpg?v=20260918",
+      "srcset": "/assets/optimized/advanced-fiber-materials-v7-i4-cover-320.webp 320w, /assets/optimized/advanced-fiber-materials-v7-i4-cover-640.webp 640w",
+      "width": 640,
+      "height": 836
+    },
+    "url": "https://doi.org/10.1007/s42765-025-00542-9",
+    "pdf": "/pdfs/advanced-fiber-materials-2025.pdf",
+    "download": "advanced-fiber-materials-2025.pdf",
+    "en": {
+      "alt": "Advanced Fiber Materials, Volume 7 Issue 4 front cover featuring High-Suitcordance Intelligent Fibers for Panvascular Disease Monitoring-Intervention",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Advanced Fiber Materials"
+        },
+        {
+          "kind": "if",
+          "label": "IF 22.6"
+        },
+        {
+          "kind": "status",
+          "label": "Published 2025"
+        },
+        {
+          "kind": "honor",
+          "label": "2025 World-Class Sci-Tech Journal",
+          "title": "Included in the 2025 list of World-Class Sci-Tech Journals released by the Institute of Scientific and Technical Information of China (ISTIC) on 12 September 2026"
+        },
+        {
+          "kind": "award",
+          "label": "★ 2024-2025 Best Cover Article"
+        }
+      ],
+      "summaryHtml": "A perspective on fibre-based systems designed to sense and intervene while conforming to the mechanical and biological demands of vascular tissue.",
+      "citation": "Advanced Fiber Materials · 8 May 2025",
+      "identifierText": "DOI: 10.1007/s42765-025-00542-9"
+    },
+    "zh": {
+      "title": "用于泛血管疾病监测与干预的高适配性智能纤维",
+      "alt": "Advanced Fiber Materials第7卷第4期封面：用于泛血管疾病监测与干预的高适配性智能纤维",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Advanced Fiber Materials"
+        },
+        {
+          "kind": "if",
+          "label": "IF 22.6"
+        },
+        {
+          "kind": "status",
+          "label": "2025年发表"
+        },
+        {
+          "kind": "honor",
+          "label": "2025世界一流科技期刊",
+          "title": "入选中国科学技术信息研究所（ISTIC）于2026年9月12日发布的2025年世界一流科技期刊目录"
+        },
+        {
+          "kind": "award",
+          "label": "★ 2024至2025年度最佳封面文章"
+        }
+      ],
+      "summaryHtml": "探讨基于纤维的感知与干预系统，使其设计契合血管组织的力学及生物学需求。",
+      "citation": "Advanced Fiber Materials · 2025年5月8日",
+      "identifierText": "DOI: 10.1007/s42765-025-00542-9"
+    }
+  },
+  {
+    "id": "paper-research-0974",
+    "status": "published",
+    "title": "High Suitcordance for Panvascular Full-Watershed Organs: A New Interventional Perspective",
+    "authors": [
+      "Lingsen You",
+      "Yuheng Chen",
+      "Zeyang Zhang",
+      "Yu Wang",
+      "Li Shen",
+      "Junbo Ge"
+    ],
+    "image": {
+      "src": "/paper5.jpg",
+      "srcset": "/assets/optimized/paper5-320.webp 320w, /assets/optimized/paper5-640.webp 640w",
+      "width": 640,
+      "height": 511
+    },
+    "url": "https://doi.org/10.34133/research.0974",
+    "pdf": "https://spj.science.org/doi/pdf/10.34133/research.0974",
+    "en": {
+      "alt": "High Suitcordance for Panvascular Full-Watershed Organs article",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Research"
+        },
+        {
+          "kind": "publisher",
+          "label": "Science Partner Journal"
+        },
+        {
+          "kind": "if",
+          "label": "IF 12.9"
+        },
+        {
+          "kind": "status",
+          "label": "Published 2025"
+        },
+        {
+          "kind": "honor",
+          "label": "2025 World-Class Sci-Tech Journal",
+          "title": "Included in the 2025 list of World-Class Sci-Tech Journals released by the Institute of Scientific and Technical Information of China (ISTIC) on 12 September 2026"
+        }
+      ],
+      "summaryHtml": "A cross-organ perspective on tailoring devices and interventional strategies to the distinct requirements of full-watershed vascular systems.",
+      "citation": "Research · Published online 29 October 2025",
+      "identifierText": "DOI: 10.34133/research.0974"
+    },
+    "zh": {
+      "title": "泛血管全流域器官的高适配性：介入治疗新视角",
+      "alt": "泛血管全流域器官高适配性研究配图",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "Research"
+        },
+        {
+          "kind": "publisher",
+          "label": "Science合作期刊"
+        },
+        {
+          "kind": "if",
+          "label": "IF 12.9"
+        },
+        {
+          "kind": "status",
+          "label": "2025年发表"
+        },
+        {
+          "kind": "honor",
+          "label": "2025世界一流科技期刊",
+          "title": "入选中国科学技术信息研究所（ISTIC）于2026年9月12日发布的2025年世界一流科技期刊目录"
+        }
+      ],
+      "summaryHtml": "从跨器官视角探讨如何根据全流域血管系统的不同需求，定制器械与介入策略。",
+      "citation": "Research · 2025年10月29日",
+      "identifierText": "DOI: 10.34133/research.0974"
+    }
+  },
+  {
+    "id": "paper-2609-14709",
+    "status": "preprint",
+    "title": "An immune world model for multiscale forecasting and therapeutic hypothesis generation",
+    "authors": [
+      "Taoyong Cui",
+      "Xi Wang",
+      "Zonghang Li",
+      "Jinchao Ding",
+      "Lingsen You",
+      "Yuzhi Xu",
+      "Wanghan Xu",
+      "Fang Wu",
+      "Kejun Ying",
+      "Wanli Ouyang",
+      "Pheng Ann Heng",
+      "Ling Yang",
+      "Zhenfei Yin",
+      "Yingcheng Wu"
+    ],
+    "image": {
+      "src": "/immune-world-model.png",
+      "srcset": "/assets/optimized/immune-world-model-320.webp 320w, /assets/optimized/immune-world-model-640.webp 640w",
+      "width": 993,
+      "height": 1108
+    },
+    "url": "https://arxiv.org/abs/2609.14709",
+    "pdf": "/pdfs/immune-world-model-arxiv-2026.pdf",
+    "download": "immune-world-model-arxiv-2026.pdf",
+    "en": {
+      "alt": "Architecture of an immune world model linking cellular state, tissue immune context and individual context through a governed AI Scientist workflow",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "arXiv preprint"
+        },
+        {
+          "kind": "status",
+          "label": "Submitted 2026"
+        }
+      ],
+      "summaryHtml": "A governed evolutionary AI Scientist constructs an action-conditioned immune world model linking cellular programs, tissue ecology and individual immune context. The study nominates IL-36γ plus SIRPα inhibition as a prospectively testable hypothesis, not a validated therapy.",
+      "citation": "arXiv · submitted 13 September 2026",
+      "identifierText": "arXiv:2609.14709"
+    },
+    "zh": {
+      "title": "用于多尺度预测与治疗假设生成的免疫世界模型",
+      "alt": "通过受治理约束的AI科学家流程，连接细胞状态、组织免疫背景与个体背景的免疫世界模型结构图",
+      "badges": [
+        {
+          "kind": "journal",
+          "label": "arXiv预印本"
+        },
+        {
+          "kind": "status",
+          "label": "2026年提交"
+        }
+      ],
+      "summaryHtml": "由受治理机制约束的进化式AI科学家构建以干预行为为条件的免疫世界模型，连接细胞程序、组织生态与个体免疫背景。研究提出联合抑制IL-36γ与SIRPα这一可供前瞻性检验的假说，并非已验证的治疗方法。",
+      "citation": "arXiv · 2026年9月13日提交预印本",
+      "identifierText": "arXiv:2609.14709"
+    }
+  }
+]

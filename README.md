@@ -18,6 +18,7 @@ The English site remains at the original URLs. The Simplified Chinese edition is
 
 ### Maintenance rules
 
+- The 12 publication cards on the two homepages and two publication lists share one set of records: `data/publications.json`. Edit the bilingual record there, then run `python scripts/render-publication-cards.py` from the repository root. The script updates only the marked card regions. Run it again with `--check` to verify all four static pages are in sync. The common layout is in `assets/publication-cards.css`.
 - Treat each pair as two language versions of the same page. Preserve the publication order, author identities, source links, reported data, study limitations and publication status across both versions. English paper titles may be retained alongside Chinese explanations for reliable identification.
 - Update the Chinese HTML whenever the corresponding English content changes. Translate visible interface text, image alternative text, metadata and dynamic labels, not only headings. Shared images, PDFs and model/data assets should remain shared where possible.
 - Keep every page's canonical URL self-referencing. Each English and Chinese page must link to both versions using `hreflang="en"` and `hreflang="zh-Hans"`, with `hreflang="x-default"` pointing to its English counterpart. Do not canonicalize Chinese pages to English pages.

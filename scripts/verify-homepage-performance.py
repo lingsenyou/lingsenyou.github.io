@@ -1,7 +1,7 @@
 """Validate homepage image variants and optionally compare content with a Git ref.
 
 Run: python scripts/verify-homepage-performance.py --baseline-ref <commit>
-Requires Pillow, also used by optimize-homepage-images.py.
+Requires BeautifulSoup and Pillow.
 """
 
 import argparse
@@ -11,6 +11,7 @@ import subprocess
 from urllib.parse import urlsplit
 
 from PIL import Image
+from bs4 import BeautifulSoup
 
 
 ROOT = Path(__file__).resolve().parents[1]
@@ -50,11 +51,12 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--baseline-ref")
     args = parser.parse_args()
-    page = Homepage((ROOT / "index.html").read_text(encoding="utf-8"))
+    source_html = (ROOT / "index.html").read_text(encoding="utf-8")
+    page = Homepage(source_html)
     assert len(page.images) == len(page.sources) == 12
     small_bytes = large_bytes = original_bytes = 0
     for image, source in zip(page.images, page.sources):
-        original = ROOT / urlsplit(image["src"]).path
+        original = ROOT / urlsplit(image["src"]).path.lstrip("/")
         original_bytes += original.stat().st_size
         assert image.get("alt"), original.name
         assert int(image["width"]) > 0 and int(image["height"]) > 0
@@ -62,7 +64,7 @@ def main():
         variants = [part.strip().split() for part in source["srcset"].split(",")]
         assert len(variants) == 2
         for index, (path, descriptor) in enumerate(variants):
-            asset = ROOT / path
+            asset = ROOT / urlsplit(path).path.lstrip("/")
             with Image.open(asset) as decoded:
                 decoded.load()
                 assert decoded.format == "WEBP"
@@ -73,7 +75,7 @@ def main():
                 small_bytes += asset.stat().st_size
             else:
                 large_bytes += asset.stat().st_size
-        if "profile-img" in image["class"]:
+        if "profile-img" in image.get("class","").split():
             assert image.get("fetchpriority") == "high"
             assert image.get("loading") != "lazy"
         else:
@@ -83,17 +85,22 @@ def main():
         assert favicon.size == (32, 32)
     for link in page.links:
         if link.get("download"):
-            assert (ROOT / urlsplit(link["href"]).path).is_file()
+            assert (ROOT / urlsplit(link["href"]).path.lstrip("/")).is_file()
     if args.baseline_ref:
         baseline_html = subprocess.check_output(
             ["git", "show", f"{args.baseline_ref}:index.html"], cwd=ROOT
         ).decode("utf-8")
-        baseline = Homepage(baseline_html)
-        assert page.text == baseline.text, "Homepage text changed"
-        assert page.links == baseline.links, "Link attributes changed"
-        assert [i["alt"] for i in page.images] == [i["alt"] for i in baseline.images]
-        assert [i["src"] for i in page.images] == [i["src"] for i in baseline.images]
-        print("PASS: text, all link attributes, image descriptions and original fallbacks unchanged")
+        def outside_cards(html):
+            soup = BeautifulSoup(html,"html.parser")
+            for card in soup.select(".pub-item"):
+                card.decompose()
+            return Homepage(str(soup))
+        rest, previous = outside_cards(source_html), outside_cards(baseline_html)
+        assert rest.text == previous.text, "Visible homepage text changed outside publications"
+        assert rest.links == previous.links, "Link attributes changed outside publications"
+        assert rest.images == previous.images, "Image attributes changed outside publications"
+        assert [i["src"].lstrip("/") for i in page.images] == [i["src"].lstrip("/") for i in Homepage(baseline_html).images]
+        print("PASS: text, links and images outside publications and all original image fallbacks unchanged")
     print("PASS: all 12 responsive image pairs, dimensions, priority and local downloads")
     print(f"Full image set: original={original_bytes:,} B; small={small_bytes:,} B; retina={large_bytes:,} B")
     print(f"Image payload savings: small={1-small_bytes/original_bytes:.1%}; retina={1-large_bytes/original_bytes:.1%}")
