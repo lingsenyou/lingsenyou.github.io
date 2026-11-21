@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://lingsenyou.com/sitemap.xml
+Sitemap: https://lingsenyou.com/zh/sitemap.xml
