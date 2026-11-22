@@ -7,6 +7,7 @@ import json
 from pathlib import Path
 import subprocess
 from urllib.parse import urljoin, urlsplit, unquote
+import xml.etree.ElementTree as ET
 
 from bs4 import BeautifulSoup
 from PIL import Image
@@ -82,6 +83,8 @@ def main():
     parser = argparse.ArgumentParser(description=__doc__)
     parser.add_argument("--baseline-ref", default="8717f0d")
     args = parser.parse_args()
+    sitemap = ET.parse(ROOT / "sitemap.xml").getroot()
+    modified = {u.findtext("{*}loc"): u.findtext("{*}lastmod") for u in sitemap.findall("{*}url")}
     old = {r: load(r, args.baseline_ref) for r in ROUTES}
     expected = {r: old_cards(p) for r, p in old.items()}
     ids = [c["id"] for c in expected["/zh/"]]
@@ -102,7 +105,7 @@ def main():
             # The homepages now cite their biographical sources separately from
             # publication cards. Keep these intentional changes narrow and visible.
             if route == home and record.get("@id") == BASE + home + "#webpage":
-                record["dateModified"] = "2026-11-21"
+                record["dateModified"] = modified[BASE + home]
                 record["citation"] = [
                     "https://doi.org/10.1093/eurheartj/ehag783",
                     "https://shmc.fudan.edu.cn/news/2026/0529/c1893a149384/page.htm",
