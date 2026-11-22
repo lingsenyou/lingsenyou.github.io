@@ -647,38 +647,39 @@
         }
     </style>
 <link rel="stylesheet" href="/assets/publication-cards.css?v=1">
+<link rel="stylesheet" href="/assets/profile-header.css">
 </head>
 <body>
 
 <div class="container">
     
-    <div class="sidebar">
+    <header class="profile-header">
         <picture>
             <source type="image/webp" srcset="assets/optimized/avatar-200.webp 200w, assets/optimized/avatar-400.webp 400w" sizes="200px">
             <img src="avatar.jpg?v=20260814" alt="Lingsen You" class="profile-img" width="800" height="800" fetchpriority="high" decoding="async">
         </picture>
         
-        <h1 class="my-name">Lingsen You<span class="name-alt">Lingsen (Lucas) You<span lang="zh-CN"> · 游凌森</span></span></h1>
-        <nav class="language-switch" aria-label="Language">
-            <span lang="en" aria-current="page">English</span>
-            <a href="/zh/" lang="zh-Hans" hreflang="zh-Hans">游凌森医生中文主页</a>
-        </nav>
-        <div class="my-title">
-            M.D., Ph.D.<br><br>
-            <strong>Physician at<br>Zhongshan Hospital, Fudan University</strong><br><br>
-            Interventional Cardiologist &<br>
-            <strong>Scientific Secretary</strong><br><br>
-            National Basic Science Center for Panvascular Interventional Complex Systems<br><br>
-            <strong>Executive Committee Member</strong><br>
-            Center of Cardiovascular Innovation of China (CCI)<br><br>
-            <strong>Zhongshan Hospital,<br>Fudan University</strong><br>
-            <span style="font-size: 13px; color: #666; font-weight: normal;">(QS World Rank: 26)</span>
+        <div>
+            <h1 class="my-name">Lingsen You, M.D., Ph.D.<span class="name-alt">Lingsen (Lucas) You · <span lang="zh-Hans">游凌森</span></span></h1>
+            <nav class="language-switch" aria-label="Language">
+                <span lang="en" aria-current="page">English</span>
+                <a href="/zh/" lang="zh-Hans" hreflang="zh-Hans">游凌森医生中文主页</a>
+            </nav>
+            <section id="physician-profile" aria-label="Physician profile">
+                <p class="profile-summary"><strong>Lingsen You</strong> (<span lang="zh-Hans">游凌森</span>) is a physician in the <strong>Department of Cardiology at Zhongshan Hospital, Fudan University</strong>. An interventional cardiologist and research fellow in Professor Junbo Ge’s team, he studies how cardiovascular devices interact with the vessels they treat. He also serves as scientific secretary of the National Basic Science Center for Panvascular Interventional Complex Systems.</p>
+                <p class="profile-sources">
+                    <a href="https://doi.org/10.1093/eurheartj/ehag783"><cite>European Heart Journal</cite> author disclosure (“physician and fellow”)</a>
+                    <a href="https://shmc.fudan.edu.cn/news/2026/0529/c1893a149384/page.htm">Fudan Shanghai Medical College report on the team’s cardiac device research</a>
+                </p>
+            </section>
         </div>
+    </header>
 
+    <div class="sidebar">
         <section class="clinic-hours" aria-labelledby="clinic-hours-heading">
-            <h2 id="clinic-hours-heading">Outpatient Clinic Hours</h2>
+            <h2 id="clinic-hours-heading">Clinic hours and appointments</h2>
             <p class="clinic-time">Wednesdays, 8:00 a.m.–12:00 noon</p>
-            <p class="clinic-note">Clinic availability is subject to arrangements by Prof. Junbo Ge, CAS Academician and Director of Cardiology.</p>
+            <p class="clinic-note">Dr. You’s availability depends on Professor Junbo Ge’s schedule. For current cardiology hours and appointments, check the hospital’s WeChat account <span lang="zh-Hans">复旦大学附属中山医院门诊服务</span>. <a href="https://sghexport.shobserver.com/html/baijiahao/2022/05/10/737924.html">Hospital booking guide (in Chinese)</a></p>
         </section>
 
         <div class="contact-info">
@@ -693,6 +694,7 @@
             <div>
                 <span class="ui-icon" aria-hidden="true">●</span> Shanghai, China
             </div>
+            <div class="institution-rank">Fudan University · QS World Rank 26</div>
             
             <a href="CV_Lingsen_You.pdf?v=20261120-4" download="CV_Lingsen_You.pdf" class="action-btn btn-cv">Download CV</a><br>
             <a href="https://lingsenyou.com/publications/" class="action-btn btn-cv">Publications &amp; Research &rarr;</a>
@@ -718,16 +720,14 @@
     <div class="main-content">
         
         <section>
-            <h2 id="physician-profile">About Me</h2>
-            <p>I am <strong>Lingsen You</strong> (<span lang="zh-CN">游凌森</span>), a <strong>physician, interventional cardiologist and research fellow</strong> at <strong>Zhongshan Hospital, Fudan University</strong>.</p>
-            <p>The <a href="https://doi.org/10.1093/eurheartj/ehag783">author disclosure in the <cite>European Heart Journal</cite></a> identifies me (L.Y.) as a physician in Professor Junbo Ge’s cardiology team. <a href="https://shmc.fudan.edu.cn/news/2026/0529/c1893a149384/page.htm">Fudan University’s Shanghai Medical College</a> also reports on my work on medical devices in the hospital’s cardiology department.</p>
+            <h2>Clinical work and research</h2>
             
             <div class="slogan">
                 "I believe in AI-empowered translational medicine. I build the <strong>'Device-Vessel Suitcordance'</strong> framework to bridge large animal preclinical models with next-generation panvascular interventions."
             </div>
 
             <p>
-                Currently, I serve as the <strong>Scientific Secretary</strong> of the <strong>National Basic Science Center for Panvascular Interventional Complex Systems</strong>, working directly under the leadership of <strong>Prof. Junbo Ge</strong> (Academician of CAS). In this role, I assist in coordinating national-level research initiatives while conducting my own translational research. I also serve as an <strong>Executive Committee Member</strong> of the <strong>Center of Cardiovascular Innovation of China (CCI)</strong>.
+                At the center, I help coordinate national research projects under the direction of <strong>Professor Junbo Ge</strong>, a member of the Chinese Academy of Sciences. I also serve on the executive committee of the <strong>Center of Cardiovascular Innovation of China (CCI)</strong>.
             </p>
             <p>
                 My research bridges the critical gap between biomedical engineering and clinical cardiology. I specialize in <strong>translational medicine</strong>, spanning from <strong>large animal models</strong> (swine/canine) for preclinical validation to <strong>clinical investigation</strong> of novel interventional devices and <strong>flexible electronics</strong>.
