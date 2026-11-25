@@ -65,7 +65,8 @@ def card(record, lang, on_home):
     zh = lang == "zh"
     local = record[lang]
     key = record["id"]
-    title = local.get("title", record["title"])
+    title = record["title"]
+    title_attrs = ' lang="en" translate="no"' if zh else ''
     url = record.get("url")
     anchor = ("/zh" if zh else "") + "/publications/#" + key
     title_link = link(title, url or anchor) if url or on_home else escape(title)
@@ -90,10 +91,8 @@ def card(record, lang, on_home):
         f'<article class="pub-card pub-item" id="{key}" data-status="{record["status"]}">',
         f'  <div class="pc-media">{media}</div>',
         '  <div class="pc-body">',
-        f'    <h3 class="pc-title">{title_link}</h3>',
+        f'    <h3 class="pc-title"{title_attrs}>{title_link}</h3>',
     ]
-    if zh:
-        lines.append(f'    <p class="pc-subtitle" lang="en">{escape(record["title"])}</p>')
     lines.append(f'    <p class="pc-authors">{byline(record["authors"], lang)}</p>')
     order = {"journal": 0, "if": 1, "status": 2, "publisher": 3, "tier": 4, "honor": 5, "award": 6}
     lines.append('    <div class="pc-badges">' + ' '.join(badge(b) for b in sorted(local["badges"], key=lambda b: order[b["kind"]])) + '</div>')
