@@ -48,6 +48,12 @@
   line-height: 1.6;
 }
 
+.profile-credential {
+  margin: .8rem 0 0;
+  font-size: 1rem;
+  line-height: 1.55;
+}
+
 .sidebar .clinic-hours {
   margin-top: 0;
 }
